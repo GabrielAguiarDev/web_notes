@@ -1,0 +1,17 @@
+<%- include('./include/header') %>
+
+<body>
+    <h1>Adicionar Tarefas</h1>
+    <form action="/post" method="post">
+        <label for="titulo">Título</label>
+        <input type="text" name="titulo" id="titulo">
+        <br>
+        <label for="conteudo">Conteudo</label>
+        <textarea name="conteudo" id="conteudo" cols="30" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Adicionar">
+        <a href="/home">Cancelar</a>
+    </form>
+
+<%- include('./include/footer') %>
+</body>

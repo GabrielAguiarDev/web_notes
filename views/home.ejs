@@ -1,0 +1,30 @@
+<%- include('./include/header') %>
+
+<main>
+    <form action="" method="post">
+        <h1>Tarefas Diárias</h1>
+        <i class='bx bx-task'></i>
+        <hr>
+        <div class="adicionar">
+            <h3 id="nome"> </h3>
+            <a class="btn" href="/postagem">Adicionar Tarefa</a>
+        </div>
+        <div class="posts">
+            <% docs.forEach((post) => { %>
+                <input type="checkbox" name="<%= post.titulo %> " id="<%= post.id %> ">
+                <label for="<%= post.id %> "><%= post.titulo %> </label>
+                <p><%= post.conteudo %> </p>
+                <a href="/deletar">Deletar</a>
+                <hr>
+            <%});%>
+        </div>
+    </form>
+    <br><br>
+    <form action="/logout" method="post"><input type="submit" value="Sair" class="btn"></form>
+</main>
+
+<%- include('./include/footer') %>
+<%- include('./include/script') %>
+
+</body>
+</html>

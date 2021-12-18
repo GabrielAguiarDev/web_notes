@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar</title>
+    <link rel="stylesheet" href="/css/test.css">
+</head>
+<body>
+    <form action="/register" method="post">
+        <h1>Cadastrar</h1>
+        Nome: <input type="text" name="nome" id="nome">
+        <br>
+        Usuário: <input type="text" name="usuario" id="usuario">
+        <br>
+        Email: <input type="email" name="email" id="email">
+        <br>
+        Senha: <input type="password" name="senha" id="senha">
+        <br>
+        Confirmar Senha: <input type="password" name="confirmarSenha" id="confirmarSenha">
+        <br>
+        <input type="submit" value="Cadastrar">
+        <a href="/">Cancelar</a>
+    </form>
+        <% if(massage > 0) { %>
+            <li><%= massage %></li>
+        <% } %>
+</body>
+</html>
