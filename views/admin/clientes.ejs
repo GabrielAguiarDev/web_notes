@@ -1,0 +1,21 @@
+<%- include('../include/header') %>
+
+<main>
+    <h1>Teste de página de admin</h1>
+    <p>Listagem de clientes</p>
+    <% users.forEach(user => { %>
+        <hr>
+        <h4> <%= user.nome %>  </h4>
+        <ul>
+            <li> <span>Usuario:</span>%= user.usuario %> </li>
+            <li> <span>Email:</span> <%= user.email %> </li>
+            <li> <span>Senha:</span>%= user.senha %> </li>
+            <li> <span>Data de cadastro:</span> <%= user.data %> </li>
+        </ul>
+    <% }); %> 
+</main>
+
+<%- include('../include/script') %>
+<%- include('../include/footer') %>
+</body>
+</html>

@@ -1,8 +1,8 @@
 <%- include('./include/header') %>
 
-<body>
+<main>
     <h1>Adicionar Tarefas</h1>
-    <form action="/post" method="post">
+    <form action="/notes" method="post">
         <label for="titulo">Título</label>
         <input type="text" name="titulo" id="titulo">
         <br>
@@ -12,6 +12,10 @@
         <input type="submit" value="Adicionar">
         <a href="/home">Cancelar</a>
     </form>
+</main>
 
 <%- include('./include/footer') %>
+<%- include('./include/script') %>
+
 </body>
+</html>

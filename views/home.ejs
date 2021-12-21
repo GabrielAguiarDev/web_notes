@@ -10,13 +10,12 @@
             <a class="btn" href="/postagem">Adicionar Tarefa</a>
         </div>
         <div class="posts">
-            <% docs.forEach((post) => { %>
-                <input type="checkbox" name="<%= post.titulo %> " id="<%= post.id %> ">
-                <label for="<%= post.id %> "><%= post.titulo %> </label>
-                <p><%= post.conteudo %> </p>
-                <a href="/deletar">Deletar</a>
+            <% listNotes.forEach(note => { %>
+                <h4> <%= note.titulo %>  </h4>
+                <a href="//edit/<%= note.id %> "> <button class="btn">Editar</button> </a>
+                <p> <%= note.conteudo %>  </p>
                 <hr>
-            <%});%>
+            <% }); %> 
         </div>
     </form>
     <br><br>

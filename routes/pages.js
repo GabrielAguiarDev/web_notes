@@ -1,27 +1,34 @@
 const express = require('express')
 const authController = require('../controllers/auth');
-const Post = require('../sql/commands/Post');
-const usuario = require('../sql/commands/usuario')
+const mongoose = require('mongoose')
+const User = mongoose.model("user")
+const Note = mongoose.model("notes")
 
 const router = express.Router()
 
 // Rotas 
     // INDEX
-    router.get('/', function(req, res){
+    router.get('/', (req, res)=>{
         if(req.session.login){
-            res.render('home', { nome: "Gabriel Aguiar"})
+            Note.find().sort({data: 'desc'}).then((Note)=>{
+                res.render('home', {
+                    listNotes: Note,
+                    nome: "Gabriel Aguiar"
+                    })
+            })
         } else {
             res.render('index')
         }  
-    });
+    }); 
 
     // HOME 
     router.get('/home', async(req, res) => {
         if(req.session.login){
-            const docs = await Post.findAll({})
-            res.render('home', {
-            docs,
-            nome: "Gabriel Aguiar"
+            Note.find().sort({data: 'desc'}).then((Note)=>{
+                res.render('home', {
+                    listNotes: Note,
+                    nome: "Gabriel Aguiar"
+                    })
             })
         } else {
             res.render('index')
@@ -29,15 +36,23 @@ const router = express.Router()
         
     })
 
+    // PERFIL
+    router.get('/perfil', (req, res)=>{
+        if(req.session.login){
+            res.render('perfil', {
+                nome: "Gabriel Aguiar" })
+            } else {
+                res.render('index')
+            }
+    })
+
     // CADASTRO
-    router.get('/cadastro', function(req, res){
-        res.render('cadastro', {
-            massage: "teste"
-        })
+    router.get('/cadastro', (req, res)=>{
+        res.render('cadastro')
     });
 
     // POSTAGENS
-    router.get('/postagem', function(req, res){
+    router.get('/postagem', (req, res)=>{
         if(req.session.login){
         res.render('createpost', {
             nome: "Gabriel Aguiar" })
@@ -46,14 +61,48 @@ const router = express.Router()
         }
     });
 
+    // MINHAS METAS
+    router.get('/metas', (req, res)=>{
+        if(req.session.login){
+            res.render('metas', {
+                nome: "Gabriel Aguiar" })
+            } else {
+                res.render('index')
+            }
+    })
+
+    // OUTROS
+    router.get('/outros', (req, res)=>{
+        if(req.session.login){
+            res.render('outros', {
+                nome: "Gabriel Aguiar" })
+            } else {
+                res.render('index')
+            }
+    })
+
+    // EDITAR NOTES 
+    router.get("/notes/edit/:id", (req, res)=>{
+        if(req.session.login){
+        res.send("Página de edição de anotações")
+        console.log("rota funcionando")
+        } else {
+            res.render('index')
+        }
+    })
+
+    // PAGES ADMIN
+            // Lista de Clientes
+            router.get('/admin', authController.admin)
+
 // MÉTODO POST
     // Rota Cadastro
     router.post('/register', authController.register)
 
     // Rota Postagem
-    router.post('/post', authController.post)
+    router.post('/notes', authController.notes)
 
-    // Rota Index
+    // // Rota Index
     router.post('/', authController.index)
 
 module.exports = router;

@@ -1,6 +1,8 @@
-const Usuario = require('../sql/commands/usuario');
-const Post = require('../sql/commands/Post');
-const db = require('../sql/db');
+const mongoose = require('mongoose')
+require('../models/Note')
+require('../models/User')
+const User = mongoose.model("user")
+const Note = mongoose.model("notes")
 
 var password = "123";
 var login =  "Gabriel";
@@ -9,61 +11,85 @@ exports.index = async(req, res) => {
     if(req.body.password == password && req.body.login == login){
         // Logado com sucesso
         req.session.login = login;
-        const docs = await Post.findAll({})
-        res.render('home', {
-            docs,
-            nome: "Gabriel Aguiar"
-            })
+        Note.find().sort({data: 'desc'}).then((Note)=>{
+            res.render('home', {
+                listNotes: Note,
+                nome: "Gabriel Aguiar"
+                })
+        })
     } else {
         res.render('index')
     }
 }
 
-exports.register = async(req, res) => {
+exports.register = (req, res) => {
     // const { nome, usuario, senha, confirmarSenha, email } = req.body;
-    // // db.sequelize.findOne({
-    // //     include: [{
-             
-    // //     }]
-    // // })
-    // db.sequelize.query('SELECT email FROM usuarios WHERE email = ?', [email], (error, results) => {
-    //     if(error) {
-    //         console.log(error);
-    //     }
-
-    //     if(results.length > 0) {
-    //         return res.render('cadastro', console.log("O email já está em uso por outro usuário"))
-    //     } else if( senha !== confirmarSenha) {
-    //         return res.render('cadastro', console.log("As senhas não correspondem"))
-    //     }
-    // })
-
-    Usuario.create({
+    const novoUsuario = {
         nome: req.body.nome,
         usuario: req.body.usuario,
-        senha: req.body.senha,
-        confirmarSenha: req.body.confirmarSenha,
-        email: req.body.email
-    }).then(function(){
-        console.log(req.body)
-        // var nomeUsuario = req.body.nome
-        res.redirect('/')
-    }).catch(function(erro){
-        res.send("Erro ao cadastrar usuário: " + erro)
-    })
+        email: req.body.email,
+        senha: req.body.senha
+    }
+    var massage_erros = []
+
+    if(!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
+        massage_erros.push({erros: "Nome inválido"})
+    }
+
+    if(!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
+        massage_erros.push({erros: "Usuário inválido"})
+    }
+
+    if(!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
+        massage_erros.push({erros: "Email inválido"})
+    }
+
+    if(req.body.senha !== req.body.confirmarSenha || !req.body.senha || typeof req.body.usuario == undefined || req.body.usuario == null){
+        massage_erros.push({erros: "Senha inválida"})
+    }
+
+    if(massage_erros.length > 0){
+        res.render('cadastro', massage_erros)
+        console.log(massage_erros)
+    } else {
+        new User(novoUsuario).save().then((req, res)=>{
+            console.log("Usuário criado com sucesso!")
+            res.redirect('/')
+        }).catch((err)=>{
+            res.redirect('/')
+            console.log("Erro ao criar usuario: " + err)
+        })
+    }
 }
 
-exports.post = (req, res) => {
-    Post.create({
+exports.notes = (req, res)=>{
+    const novaAnotacao = {
         titulo: req.body.titulo,
         conteudo: req.body.conteudo
-    }).then(async()=> {
-        const docs = await Post.findAll({})
-        res.render('home', {
-            docs,
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+    } else {
+        new Note(novaAnotacao).save().then((req, res)=>{
+            console.log("Anotação salva com sucesso!")
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar a Anotacao: " + err)
+        })
+        res.redirect('/home')
+    }
+}
+
+exports.admin = (req, res)=>{
+    User.find().sort({data: 'desc'}).then((User)=> {
+        res.render('admin/clientes', {
+            users: User,
             nome: "Gabriel Aguiar"
-            })
-    }).catch(function(erro){
-        res.send("Erro ao cadastrar Postagem: " + erro)
-    }) 
+        })
+    }).catch((err)=>{
+        console.log("Erro ao listar usuarios: " + err)
+    })
 }
