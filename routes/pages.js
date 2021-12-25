@@ -82,16 +82,28 @@ const router = express.Router()
     })
 
     // EDITAR NOTES 
-    router.get("/notes/edit/:id", (req, res)=>{
-        if(req.session.login){
-        res.send("Página de edição de anotações")
-        console.log("rota funcionando")
-        } else {
-            res.render('index')
-        }
+    router.get("/note/edit/:id", (req, res)=>{
+        Note.findOne({_id: req.params.id}).then((note)=>{
+            res.render('crud/edit', {Note: note, nome: "Gabriel Aguiar"})
+        }).catch((err)=>{
+            console.log("Esta anotação não existe!... " + err)
+            res.redirect('/home')
+        })
+    })
+
+    // DELETAR NOTES
+    router.get('/note/delete/:id', (req, res)=>{
+        Note.deleteOne({_id: req.params.id}).then((note)=>{
+            console.log("Anotação deletada com sucesso!")
+            res.redirect('/home')
+        }).catch((err)=>{
+            console.log("Erro ao deletar: " + err)
+            res.redirect('/home')
+        })
     })
 
     // PAGES ADMIN
+    
             // Lista de Clientes
             router.get('/admin', authController.admin)
 
@@ -99,10 +111,13 @@ const router = express.Router()
     // Rota Cadastro
     router.post('/register', authController.register)
 
-    // Rota Postagem
+    // Rota Anotações
     router.post('/notes', authController.notes)
 
-    // // Rota Index
+    // Rota Index
     router.post('/', authController.index)
+
+    // Editar Anotação (Salvar)
+    router.post('/note/edit', authController.edit)
 
 module.exports = router;

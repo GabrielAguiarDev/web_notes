@@ -33,7 +33,7 @@
     app.use('/js', express.static(__dirname + '/public/js'));
 
 // Body Parser 
-    app.use(bodyParser.urlencoded({extended: false}));
+    app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
 // Mongoose
@@ -85,4 +85,4 @@
     })
 
 // Servidor rodando na porta 3000
-    app.listen(porta, ()=>{console.log(`Servidor Rodando ${porta}`)});
+    app.listen(porta, ()=>{console.log(`Servidor Rodando na porta ${porta}`)});

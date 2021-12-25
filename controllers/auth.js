@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 require('../models/Note')
 require('../models/User')
+const db = require('../app')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 
@@ -93,3 +94,31 @@ exports.admin = (req, res)=>{
         console.log("Erro ao listar usuarios: " + err)
     })
 }
+
+exports.edit = (req, res)=> {
+    Note.findOne({_id: req.body.id}).then((note)=>{
+        note.titulo = req.body.titulo
+        note.conteudo = req.body.conteudo
+
+        note.save().then(()=>{
+            console.log("Anotação editada com sucesso!")
+            res.redirect('/home')
+        }).catch((err)=>{
+            console.log("Erro ao salvar a edição da anotação... " + err)
+            res.redirect('/home')
+        })
+
+    }).catch((err)=>{
+        console.log("Erro ao editar a anotação: " + err)
+    })
+}
+
+// exports.delete = (req, res)=> {
+//     Note.remove({_id: req.body.id}).then(()=>{
+//         console.log("Anotação deletada com sucesso!")
+//         res.redirect('/home')
+//     }).catch((err)=>{
+//         console.log("Erro ao deletar a anotação: " + err)
+//         res.redirect('/home')
+//     })
+// }

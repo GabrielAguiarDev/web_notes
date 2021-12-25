@@ -1,0 +1,23 @@
+<%- include('../include/header') %>
+
+<main>
+    <form action="/note/edit" method="post">
+        <h1>Editar Anotação</h1>
+        <input type="hidden" name="id" value="<%= Note._id %>">
+        <br>
+        <label for="titulo">Titulo: </label>
+        <input type="text" name="titulo" id="Titulo" value="<%= Note.titulo %> ">
+        <br>
+        <label for="conteudo">Conteudo: </label>
+        <input type="text" name="conteudo" id="conteudo" value="<%= Note.conteudo %> ">
+        <br>
+        <button type="submit">Salvar</button>
+        <a href="/home">Cancelar</a>
+    </form>
+</main>
+
+
+<%- include('../include/script') %>
+<%- include('../include/footer') %>
+</body>
+</html>
