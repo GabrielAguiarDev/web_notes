@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 require('../models/Note')
 require('../models/User')
-const db = require('../app')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
+const bcrypt = require('bcryptjs')
 
 var password = "123";
 var login =  "Gabriel";
@@ -24,13 +24,7 @@ exports.index = async(req, res) => {
 }
 
 exports.register = (req, res) => {
-    // const { nome, usuario, senha, confirmarSenha, email } = req.body;
-    const novoUsuario = {
-        nome: req.body.nome,
-        usuario: req.body.usuario,
-        email: req.body.email,
-        senha: req.body.senha
-    }
+    
     var massage_erros = []
 
     if(!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
@@ -49,16 +43,50 @@ exports.register = (req, res) => {
         massage_erros.push({erros: "Senha inválida"})
     }
 
+    if(req.body.senha < 5){
+        massage_erros.push({erros: "Senha muito curta"})
+    }
+
     if(massage_erros.length > 0){
         res.render('cadastro', massage_erros)
         console.log(massage_erros)
     } else {
-        new User(novoUsuario).save().then((req, res)=>{
-            console.log("Usuário criado com sucesso!")
-            res.redirect('/')
+
+        User.findOne({email: req.body.email}).then((user)=>{
+            if(user){
+                console.log("Já existe uma conta com esse endereço de email")
+                res.redirect('/cadastro')
+            } else {
+                const novoUsuario = new User({
+                    nome: req.body.nome,
+                    usuario: req.body.usuario,
+                    email: req.body.email,
+                    senha: req.body.senha
+                })
+
+                bcrypt.genSalt(10, (erro, salt)=>{
+                    bcrypt.hash(novoUsuario.senha, salt, (erro, hash)=>{
+                        if(erro){
+                            console.log("Houve um erro ao salvar o usuário")
+                            res.redirect('/cadastro')
+                        }
+
+                        novoUsuario.senha = hash
+
+                        novoUsuario.save().then(()=>{
+                            console.log("Usuário criado com sucesso!")
+                            res.redirect('/')
+                        }).catch((err)=>{
+                            console.log("Erro ao criar o usuário: " + err)
+                            res.redirect('/cadastro')
+                        })
+                    })
+                })
+
+            }
         }).catch((err)=>{
-            res.redirect('/')
-            console.log("Erro ao criar usuario: " + err)
+            console.log("Houve um erro interno")
+            res.redirect('/cadastro')
         })
     }
 }
@@ -112,13 +140,3 @@ exports.edit = (req, res)=> {
         console.log("Erro ao editar a anotação: " + err)
     })
 }
-
-// exports.delete = (req, res)=> {
-//     Note.remove({_id: req.body.id}).then(()=>{
-//         console.log("Anotação deletada com sucesso!")
-//         res.redirect('/home')
-//     }).catch((err)=>{
-//         console.log("Erro ao deletar a anotação: " + err)
-//         res.redirect('/home')
-//     })
-// }

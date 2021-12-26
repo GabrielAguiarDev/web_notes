@@ -16,7 +16,11 @@ const User = new Schema({
     },
     senha: {
         type: String,
-        request: true
+        required: true
+    },
+    admin: {
+        type: Number,
+        default: 0
     },
     data: {
         type: Date,

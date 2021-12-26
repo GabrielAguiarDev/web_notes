@@ -10,6 +10,11 @@ const Notes = new Schema({
         type: String,
         required: true
     },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true
+    },
     data: {
         type: Date,
         default: Date.now()
