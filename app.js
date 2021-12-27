@@ -6,6 +6,10 @@
     const path = require('path');
     const mongoose = require('mongoose')
     const bodyParser = require('body-parser');
+    const passport = require('passport')
+    require('./config/auth')(passport)
+
+// Porta
     const porta = process.env.PORT || 3000;
 
 //  Session
@@ -14,12 +18,16 @@
         resave: true,
         saveUninitialized: true
     }));
+    app.use(passport.initialize())
+    app.use(passport.session())
     app.use(flash())
 
 // Middlewere
     app.use((req, res, next)=>{
         res.locals.success_msg = req.flash("sucesse_msg")
         res.locals.error_msg = req.flash('error_msg')
+        res.locals.error = req.flash('error')
+        res.locals.user = req.user || null
         next()
     })
   
@@ -80,7 +88,7 @@
     
     // LogOut
     app.get('/logout', function(req, res){
-        req.session.destroy();
+        req.logout();
         res.redirect('/')
     })
 

@@ -4,23 +4,31 @@ require('../models/User')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const bcrypt = require('bcryptjs')
+const passport = require('passport')
 
-var password = "123";
-var login =  "Gabriel";
+// var password = "123";
+// var email =  "Gabriel";
 
-exports.index = async(req, res) => {
-    if(req.body.password == password && req.body.login == login){
-        // Logado com sucesso
-        req.session.login = login;
-        Note.find().sort({data: 'desc'}).then((Note)=>{
-            res.render('home', {
-                listNotes: Note,
-                nome: "Gabriel Aguiar"
-                })
-        })
-    } else {
-        res.render('index')
-    }
+exports.index = (req, res, next) => {
+    // if(req.body.password == password && req.body.email == email){
+    //     // Logado com sucesso
+    //     req.session.login = email;
+    //     Note.find().sort({data: 'desc'}).then((Note)=>{
+    //         res.render('home', {
+    //             listNotes: Note,
+    //             nome: "Gabriel Aguiar"
+    //             })
+    //     })
+    // } else {
+    //     res.render('index')
+    // }
+
+    passport.authenticate("local", {
+        successRedirect: "/home",
+        failureRedirect: "/",
+        failureFlash: true
+    })(req, res, next)
+    
 }
 
 exports.register = (req, res) => {
@@ -61,7 +69,8 @@ exports.register = (req, res) => {
                     nome: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha
+                    senha: req.body.senha,
+                    eAdmin: 1
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{
@@ -113,14 +122,7 @@ exports.notes = (req, res)=>{
 }
 
 exports.admin = (req, res)=>{
-    User.find().sort({data: 'desc'}).then((User)=> {
-        res.render('admin/clientes', {
-            users: User,
-            nome: "Gabriel Aguiar"
-        })
-    }).catch((err)=>{
-        console.log("Erro ao listar usuarios: " + err)
-    })
+    
 }
 
 exports.edit = (req, res)=> {
