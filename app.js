@@ -80,12 +80,6 @@
     // Admin: Clientes
     app.use('/admin', require('./routes/pages'))
 
-    // // Deletar Post
-    // app.get('/deletar', async(req, res) => {
-    //     const Post = await Post.findByPk(1)
-    //     Post.destroy()
-    // })
-    
     // LogOut
     app.get('/logout', function(req, res){
         req.logout();

@@ -6,29 +6,13 @@ const Note = mongoose.model("notes")
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
-// var password = "123";
-// var email =  "Gabriel";
-
 exports.index = (req, res, next) => {
-    // if(req.body.password == password && req.body.email == email){
-    //     // Logado com sucesso
-    //     req.session.login = email;
-    //     Note.find().sort({data: 'desc'}).then((Note)=>{
-    //         res.render('home', {
-    //             listNotes: Note,
-    //             nome: "Gabriel Aguiar"
-    //             })
-    //     })
-    // } else {
-    //     res.render('index')
-    // }
 
     passport.authenticate("local", {
         successRedirect: "/home",
         failureRedirect: "/",
         failureFlash: true
-    })(req, res, next)
-    
+    })(req, res, next) 
 }
 
 exports.register = (req, res) => {
@@ -69,8 +53,7 @@ exports.register = (req, res) => {
                     nome: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha,
-                    eAdmin: 1
+                    senha: req.body.senha
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{
@@ -119,10 +102,6 @@ exports.notes = (req, res)=>{
         })
         res.redirect('/home')
     }
-}
-
-exports.admin = (req, res)=>{
-    
 }
 
 exports.edit = (req, res)=> {

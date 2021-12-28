@@ -15,11 +15,11 @@ const router = express.Router()
     }); 
 
     // HOME 
-    router.get('/home', logado, (req, res) => {
+    router.get('/home',logado, (req, res) => {
         Note.find().sort({data: 'desc'}).then((Note)=>{
             res.render('home', {
                 listNotes: Note,
-                nome: "Gabriel Aguiar"
+                nome: req.user.nome
                 })
         })        
     })
@@ -27,7 +27,7 @@ const router = express.Router()
     // PERFIL
     router.get('/perfil', logado, (req, res)=>{
         res.render('perfil', {
-            nome: "Gabriel Aguiar" })
+            nome: req.user.nome})
     })
 
     // CADASTRO
@@ -38,25 +38,25 @@ const router = express.Router()
     // POSTAGENS
     router.get('/postagem', logado, (req, res)=>{
         res.render('createpost', {
-            nome: "Gabriel Aguiar" })
+            nome: req.user.nome})
     });
 
     // MINHAS METAS
     router.get('/metas', logado, (req, res)=>{
         res.render('metas', {
-            nome: "Gabriel Aguiar" })
+            nome: req.user.nome})
     })
 
     // OUTROS
     router.get('/outros', logado, (req, res)=>{
         res.render('outros', {
-            nome: "Gabriel Aguiar" })
+            nome: req.user.nome})
     })
 
     // EDITAR NOTES 
     router.get("/note/edit/:id", logado, (req, res)=>{
         Note.findOne({_id: req.params.id}).then((note)=>{
-            res.render('crud/edit', {Note: note, nome: "Gabriel Aguiar"})
+            res.render('crud/edit', {Note: note, nome: req.user.nome})
         }).catch((err)=>{
             console.log("Esta anotação não existe!... " + err)
             res.redirect('/home')
@@ -81,7 +81,7 @@ const router = express.Router()
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
-                        nome: "Gabriel Aguiar"
+                        nome: req.user.nome
                     })
                 }).catch((err)=>{
                     console.log("Erro ao listar usuarios: " + err)
