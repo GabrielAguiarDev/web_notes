@@ -1,0 +1,21 @@
+<%- include('./include/header') %>
+
+<main>
+    <h1>Adicionar Meta</h1>
+    <form action="/notes" method="post">
+        <label for="titulo">Minha Meta</label>
+        <input type="text" name="titulo" id="titulo">
+        <br>
+        <label for="conteudo">Conteudo</label>
+        <textarea name="conteudo" id="conteudo" cols="30" rows="10" placeholder="Opcional"></textarea>
+        <br>
+        <input type="submit" value="Adicionar">
+        <a href="/home">Cancelar</a>
+    </form>
+</main>
+
+<%- include('./include/footer') %>
+<%- include('./include/script') %>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ require('../models/Note')
 require('../models/User')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
+const Meta = mongoose.model("metas")
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -53,7 +54,8 @@ exports.register = (req, res) => {
                     nome: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha
+                    senha: req.body.senha,
+                    eAdmin: 1
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{
@@ -86,17 +88,46 @@ exports.register = (req, res) => {
 exports.notes = (req, res)=>{
     const novaAnotacao = {
         titulo: req.body.titulo,
-        conteudo: req.body.conteudo
+        conteudo: req.body.conteudo,
+        userId: req.user.id
     }
 
     if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
         console.log("Titulo inválido!")
+        res.redirect('/postagem')
     }
     if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
         console.log("Conteudo inválido!")
+        res.redirect('/postagem')
     } else {
         new Note(novaAnotacao).save().then((req, res)=>{
             console.log("Anotação salva com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar a Anotacao: " + err)
+        })
+        res.redirect('/home')
+    }
+}
+
+exports.metas = (req, res)=>{ // Pendente...
+    const novaMeta = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/criarMeta')
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/criarMeta')
+    } else {
+        new Meta(novaMeta).save().then((req, res)=>{
+            console.log("Anotação salva com sucesso!")
+
         }).catch((err)=>{
             console.log("Houve um erro ao salvar a Anotacao: " + err)
         })
@@ -120,4 +151,23 @@ exports.edit = (req, res)=> {
     }).catch((err)=>{
         console.log("Erro ao editar a anotação: " + err)
     })
+}
+
+exports.updateUser = (req, res)=> { // Problema ao salvar: "TypeError: user.save is not a function"
+    User.updateOne({_id: req.user.id}).then((user)=>{
+        user.nome = req.body.nome,
+        user.email = req.body.email,
+        user.senha = req.body.senha
+
+        user.save().then(()=>{
+            console.log("Dados Atualizados com sucesso!")
+            res.redirect('/home')
+        }).catch((err)=> {
+            console.log("Erro ao salvar dados: " + err)
+            res.redirect('/perfil')
+        })
+    }).catch((err)=>{
+        console.log("Erro ao editar dados do usuario: " + err)
+    })
+    
 }

@@ -1,9 +1,28 @@
 <%- include('./include/header') %>
 
 <main>
-    <h1>Minhas Metas vão ficar aqui</h1>
-    <p>hohohoho</p>
+    <form action="">
+        <h1>Metas</h1>
+        <hr>
+        <div class="adicionar">
+            <a class="btn" href="/postagem">Adicionar Meta</a>
+        </div>
+        <div class="posts">
+            <div class="cardPost">
+                <% listNotes.forEach(note => { %>
+                    <h4><%= note.titulo %></h4>
+                    <input type="hidden" name="id" value="<%= note.id %>">
+                    <a class="btn-danger" href="/note/delete/<%= note.id %>"><i class='bx bx-trash'></i></a>
+                    <a class="btn" href="/note/edit/<%= note.id %>">Editar</a>
+                    <p><%= note.conteudo %></p>
+                    <hr>
+                <% }); %>
+            </div>
+        </div>
+    </form>
 </main>
+
+<!-- &#x2B50; -->
 
 <%- include('./include/footer') %>
 <%- include('./include/script') %>

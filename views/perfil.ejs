@@ -4,6 +4,28 @@
     <h1>Perfil</h1>
     <p>O usuário poderá colocar foto, alterar a foto, alterar tema, alterar dados pessoais, e etc.</p>
     <br><br>
+
+    <h2>Dados do Usuário</h2>
+    <form action="/update/user" method="post">
+        <label for="nome">Nome: </label>
+        <input type="text" name="nome" id="nome" value="<%= user.nome %>">
+        <br>
+        <label for="email">Email: </label>
+        <input type="text" name="email" id="email" value="<%= user.email %>">
+        <br>
+        <label for="senha">Senha: </label>
+        <input type="text" name="senha" id="senha" value="<%= user.senha %>">
+        <br>
+        <label for="admin">Admin </label>
+        <input type="checkbox" name="1" id="1">
+
+        <br><br>
+        <button type="submit">Salvar</button>
+    </form>
+
+
+
+    <br><br>
     <a href="/admin" class="btn">Página de Admin</a>
 </main>
 

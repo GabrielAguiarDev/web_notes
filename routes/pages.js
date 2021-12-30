@@ -5,6 +5,7 @@ const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const {eAdmin} = require('../helpers/authadmin')
 const {logado} = require('../helpers/authadmin')
+const erros = require('../controllers/auth')
 
 const router = express.Router()
 
@@ -16,10 +17,10 @@ const router = express.Router()
 
     // HOME 
     router.get('/home',logado, (req, res) => {
-        Note.find().sort({data: 'desc'}).then((Note)=>{
+        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Note)=>{
             res.render('home', {
                 listNotes: Note,
-                nome: req.user.nome
+                user: req.user
                 })
         })        
     })
@@ -27,7 +28,8 @@ const router = express.Router()
     // PERFIL
     router.get('/perfil', logado, (req, res)=>{
         res.render('perfil', {
-            nome: req.user.nome})
+            user: req.user
+        })
     })
 
     // CADASTRO
@@ -38,25 +40,30 @@ const router = express.Router()
     // POSTAGENS
     router.get('/postagem', logado, (req, res)=>{
         res.render('createpost', {
-            nome: req.user.nome})
+            user: req.user})
     });
+
+    router.get('/criarMeta', logado, (req, res)=>{
+        res.render('createmeta', {
+            user: req.user})
+    })
 
     // MINHAS METAS
     router.get('/metas', logado, (req, res)=>{
         res.render('metas', {
-            nome: req.user.nome})
+            user: req.user})
     })
 
     // OUTROS
     router.get('/outros', logado, (req, res)=>{
         res.render('outros', {
-            nome: req.user.nome})
+            user: req.user})
     })
 
     // EDITAR NOTES 
     router.get("/note/edit/:id", logado, (req, res)=>{
         Note.findOne({_id: req.params.id}).then((note)=>{
-            res.render('crud/edit', {Note: note, nome: req.user.nome})
+            res.render('edit', {Note: note, user: req.user})
         }).catch((err)=>{
             console.log("Esta anotação não existe!... " + err)
             res.redirect('/home')
@@ -81,7 +88,7 @@ const router = express.Router()
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
-                        nome: req.user.nome
+                        user: req.user
                     })
                 }).catch((err)=>{
                     console.log("Erro ao listar usuarios: " + err)
@@ -101,5 +108,8 @@ const router = express.Router()
 
     // Editar Anotação (Salvar)
     router.post('/note/edit', authController.edit)
+
+    // Editar Dados do Usuário
+    router.post('/update/user', authController.updateUser)
 
 module.exports = router;
