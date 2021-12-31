@@ -3,6 +3,7 @@ const authController = require('../controllers/auth');
 const mongoose = require('mongoose')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
+const Meta = mongoose.model("metas")
 const {eAdmin} = require('../helpers/authadmin')
 const {logado} = require('../helpers/authadmin')
 const erros = require('../controllers/auth')
@@ -50,8 +51,12 @@ const router = express.Router()
 
     // MINHAS METAS
     router.get('/metas', logado, (req, res)=>{
-        res.render('metas', {
-            user: req.user})
+        Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
+            res.render('metas', {
+                listMetas: Meta,
+                user: req.user
+                })
+        })  
     })
 
     // OUTROS
@@ -61,12 +66,33 @@ const router = express.Router()
     })
 
     // EDITAR NOTES 
-    router.get("/note/edit/:id", logado, (req, res)=>{
+    router.get('/note/edit/:id', logado, (req, res)=>{
         Note.findOne({_id: req.params.id}).then((note)=>{
             res.render('edit', {Note: note, user: req.user})
         }).catch((err)=>{
             console.log("Esta anotação não existe!... " + err)
             res.redirect('/home')
+        })
+    })
+
+    // EDITAR METAS
+    router.get('/meta/edit/:id', logado, (req, res)=>{
+        Meta.findOne({_id: req.params.id}).then((meta)=>{
+            res.render('editMeta', {Meta: meta, user: req.user})
+        }).catch((err)=>{
+            console.log("Esta Meta não existe!... " + err)
+            res.redirect('/metas')
+        })
+    })
+
+    // DELETAR METAS
+    router.get('/meta/delete/:id', logado, (req, res)=>{
+        Meta.deleteOne({_id: req.params.id}).then((note)=>{
+            console.log("Meta deletada com sucesso!")
+            res.redirect('/metas')
+        }).catch((err)=>{
+            console.log("Erro ao deletar: " + err)
+            res.redirect('/metas')
         })
     })
 
@@ -103,11 +129,17 @@ const router = express.Router()
     // Rota Anotações
     router.post('/notes', authController.notes)
 
+    // Rota Metas
+    router.post('/goal', authController.metas)
+
     // Rota Index
     router.post('/', authController.index)
 
     // Editar Anotação (Salvar)
     router.post('/note/edit', authController.edit)
+
+    // Editar Meta
+    router.post('/meta/edit', authController.editMeta)
 
     // Editar Dados do Usuário
     router.post('/update/user', authController.updateUser)

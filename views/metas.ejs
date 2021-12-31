@@ -5,22 +5,27 @@
         <h1>Metas</h1>
         <hr>
         <div class="adicionar">
-            <a class="btn" href="/postagem">Adicionar Meta</a>
+            <a class="btn" href="/criarMeta">Adicionar Meta</a>
         </div>
         <div class="posts">
             <div class="cardPost">
-                <% listNotes.forEach(note => { %>
-                    <h4><%= note.titulo %></h4>
-                    <input type="hidden" name="id" value="<%= note.id %>">
-                    <a class="btn-danger" href="/note/delete/<%= note.id %>"><i class='bx bx-trash'></i></a>
-                    <a class="btn" href="/note/edit/<%= note.id %>">Editar</a>
-                    <p><%= note.conteudo %></p>
+                <% listMetas.forEach(meta => { %>
+                    &#x2B50;<h4 style="display: inline-block"><%= meta.titulo %></h4>
+                    <input type="hidden" name="id" value=" meta.id %>">
+                    <a class="btn-danger" href="/meta/delete/<%= meta.id %>"><i class='bx bx-trash'></i></a>
+                    <a class="btn" href="/meta/edit/<%= meta.id %>"><i class='bx bx-pencil'></i></a>
+                    <p><%= meta.conteudo %></p>
                     <hr>
                 <% }); %>
             </div>
         </div>
     </form>
 </main>
+<!-- Estrela sem preenchimento -->
+<!-- <i class='bx bx-star'></i> -->
+
+<!-- Estrela com preenchimento -->
+<!-- <i class='bx bxs-star' ></i> -->
 
 <!-- &#x2B50; -->
 

@@ -73,6 +73,7 @@
 
     // Minhas Metas
     app.use('/metas', require('./routes/pages'));
+    app.use('/criarMeta', require('./routes/pages'))
 
     // Outros
     app.use('/outros', require('./routes/pages'))

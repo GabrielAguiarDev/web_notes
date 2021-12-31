@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 require('../models/Note')
 require('../models/User')
+require('../models/Meta')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const Meta = mongoose.model("metas")
@@ -54,8 +55,7 @@ exports.register = (req, res) => {
                     nome: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha,
-                    eAdmin: 1
+                    senha: req.body.senha
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{
@@ -120,19 +120,33 @@ exports.metas = (req, res)=>{ // Pendente...
     if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
         console.log("Titulo inválido!")
         res.redirect('/criarMeta')
-    }
-    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
-        console.log("Conteudo inválido!")
-        res.redirect('/criarMeta')
     } else {
         new Meta(novaMeta).save().then((req, res)=>{
-            console.log("Anotação salva com sucesso!")
+            console.log("Meta salva com sucesso!")
 
         }).catch((err)=>{
-            console.log("Houve um erro ao salvar a Anotacao: " + err)
+            console.log("Houve um erro ao salvar a meta: " + err)
         })
-        res.redirect('/home')
+        res.redirect('/metas')
     }
+}
+
+exports.editMeta = (req, res)=> {
+    Meta.findOne({_id: req.body.id}).then((meta)=>{
+        meta.titulo = req.body.titulo
+        meta.conteudo = req.body.conteudo
+
+        meta.save().then(()=>{
+            console.log("Meta editada com sucesso!")
+            res.redirect('/metas')
+        }).catch((err)=>{
+            console.log("Erro ao salvar a edição da meta... " + err)
+            res.redirect('/metas')
+        })
+
+    }).catch((err)=>{
+        console.log("Erro ao editar a Meta: " + err)
+    })
 }
 
 exports.edit = (req, res)=> {
