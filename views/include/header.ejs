@@ -14,10 +14,19 @@
 <body>
     <header>
         <h1 class="logo">Anotações Web</h1>
-            <nav class="nav">
-                <a href="/outros">Outros</a>
-                <a href="/metas">Minhas Metas</a>
-                <a class="active" href="/home">Tarefas Diárias</a>
-                <a href="/perfil"> <%= user.nome %>  </a>
-            </nav>
+            <ul>
+                <% if(user.eAdmin == 1){ %>
+                    <li><a href="/admin">Clientes</a></li>
+                <% } %>
+                <li><a href="/outros">Outros</a></li>
+                <li><a href="/metas">Minhas Metas</a></li>
+                <li class="active"><a href="/home">Tarefas Diárias</a></li>
+                <li><a href="/perfil"> <%= user.nome %>  </a></li>
+                <li class="slide"></li>
+
+                
+                <!-- Possível solução para o problema com o nav.active
+                <li <% if (page_name === 'about') { %>class="current" <% } %> ><a href="/about">About</a></li> -->
+
+            </ul>
     </header>

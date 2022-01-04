@@ -29,38 +29,76 @@ header {
     margin: 20px 0px 0px 35px;
 }
 
-.nav {
-    display: inline-block;
+ul {
     position: absolute;
     right: 45px;
     top: 35px;
+    display: flex;
+    margin: 0;
+    padding: 0;
+   
 }
 
-.nav a {
+ul li {
+    list-style: none;
+    z-index: 2;
+    text-align: center;
+}
+
+ul li a {
+    display: block;
     margin-left: 45px;
     font-size: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
     font-weight: 600;
     color: var(--cor-3);
+    transition: 0.5s;
 }
 
-.nav a:hover {
+ul li a:hover {
     color: var(--cor-2);
     transition: all .3s ease;
 }
 
-.nav a.active {
-    color: var(--cor-2);
+ul li.active a {
+    color: var(--cor-2)
+
 }
 
-.nav a.active::before {
-    content: '';
+.slide {
     position: absolute;
     bottom: -6px;
-    width: 40px;
+    left: 0;
+    width: 90px;
     height: 3px;
     border-radius: 8px;
-    background-color: var(--cor-4);
+    background-color: var(--cor-2);
+    z-index: 1;
     transition: all .5s ease;
+    opacity: 0;
+}
+
+ul li:nth-child(1).active ~ .slide {
+    left: 37px;
+    opacity: 1;
+}
+ul li:nth-child(2).active ~ .slide {
+    left: 150px;
+    opacity: 1;
+}
+ul li:nth-child(3).active ~ .slide {
+    width: 143px;
+    left: 264px;
+    opacity: 1;
+}
+ul li:nth-child(4).active ~ .slide {
+    width: 140px;
+    left: 443px;
+    opacity: 1;
+}
+ul li:nth-child(5).active ~ .slide {
+    width: 130px;
+    left: 603px;
+    opacity: 1;
 }

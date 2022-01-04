@@ -14,7 +14,7 @@
 
 //  Session
     app.use(session({
-        secret: 'heqvdgeehfbhewwekbkdbfhwei',
+        secret: 'session secret key',
         resave: true,
         saveUninitialized: true
     }));

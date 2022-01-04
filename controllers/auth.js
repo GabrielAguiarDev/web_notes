@@ -167,21 +167,47 @@ exports.edit = (req, res)=> {
     })
 }
 
-exports.updateUser = (req, res)=> { // Problema ao salvar: "TypeError: user.save is not a function"
-    User.updateOne({_id: req.user.id}).then((user)=>{
-        user.nome = req.body.nome,
-        user.email = req.body.email,
-        user.senha = req.body.senha
+exports.updateUser = (req, res)=> { // 
+    let valorAntigo = {
+        nome: req.user.nome,
+        usuario: req.user.usuario,
+        email: req.user.email,
+        senha: req.user.senha,
+        eAdmin: req.user.eAdmin
+    }
 
-        user.save().then(()=>{
-            console.log("Dados Atualizados com sucesso!")
-            res.redirect('/home')
-        }).catch((err)=> {
-            console.log("Erro ao salvar dados: " + err)
-            res.redirect('/perfil')
-        })
-    }).catch((err)=>{
-        console.log("Erro ao editar dados do usuario: " + err)
+    let valorNovo = {
+        nome: req.body.nome,
+        usuario: req.body.usuario,
+        email: req.body.email,
+        senha: req.body.senha,
+        eAdmin: req.body.eAdmin
+    }
+
+    // let usuario = new User({
+    //     nome: req.body.nome,
+    //     email: req.body.email,
+    //     senha: req.body.senha,
+    //     eAdmin: req.body.eAdmin
+    // })
+    
+    // var _ = require('lodash');
+
+    // // fetch user
+    // User.findById(req.user.id, function(err, post) {
+    //     if (err) return next(err);
+
+    //     _.assign(post, req.body); // update user
+    //     post.save(function(err) {
+    //         if (err) return next(err);
+    //         return res.json(200, post);
+    //     })
+    // });
+
+    User.updateOne(valorAntigo, valorNovo, (err, res)=>{
+        if (err) throw err
+        console.log('Usuário atualizado')
     })
+    res.redirect('/home')
     
 }
