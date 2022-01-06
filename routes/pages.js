@@ -21,7 +21,8 @@ const router = express.Router()
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Note)=>{
             res.render('home', {
                 listNotes: Note,
-                user: req.user
+                user: req.user,
+                page_name: 'home'
                 })
         })        
     })
@@ -29,7 +30,8 @@ const router = express.Router()
     // PERFIL
     router.get('/perfil', logado, (req, res)=>{
         res.render('perfil', {
-            user: req.user
+            user: req.user,
+            page_name: 'perfil'
         })
     })
 
@@ -41,12 +43,14 @@ const router = express.Router()
     // POSTAGENS
     router.get('/postagem', logado, (req, res)=>{
         res.render('createpost', {
-            user: req.user})
+            user: req.user,
+            page_name: 'postagem'})
     });
 
     router.get('/criarMeta', logado, (req, res)=>{
         res.render('createmeta', {
-            user: req.user})
+            user: req.user,
+            page_name: 'criarMeta'})
     })
 
     // MINHAS METAS
@@ -54,7 +58,8 @@ const router = express.Router()
         Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
             res.render('metas', {
                 listMetas: Meta,
-                user: req.user
+                user: req.user,
+                page_name: 'metas'
                 })
         })  
     })
@@ -62,7 +67,9 @@ const router = express.Router()
     // OUTROS
     router.get('/outros', logado, (req, res)=>{
         res.render('outros', {
-            user: req.user})
+            user: req.user,
+            page_name: 'outros'
+        })
     })
 
     // EDITAR NOTES 
@@ -114,7 +121,8 @@ const router = express.Router()
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
-                        user: req.user
+                        user: req.user,
+                        page_name: 'admin'
                     })
                 }).catch((err)=>{
                     console.log("Erro ao listar usuarios: " + err)

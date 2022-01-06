@@ -5,13 +5,17 @@
     <p>Listagem de clientes</p>
     <% users.forEach(user => { %>
         <hr>
-        <h4> <%= user.nome %>  </h4>
+        <div>
+            <h4> <%= user.nome %> </h4>
+
+        </div>
+        
         <ul>
-            <li> <span>Id do usuário:</span> <%= user.id %> </li>
-            <li> <span>Usuario:</span> <%= user.usuario %> </li>
-            <li> <span>Email:</span> <%= user.email %> </li>
-            <li> <span>Senha:</span> <%= user.senha %> </li>
-            <li> <span>Data de cadastro:</span> <%= user.data %> </li>
+            <li class="listClientes"> <span>Id do usuário:</span> <%= user.id %> </li>
+            <li class="listClientes"> <span>Usuario:</span> <%= user.usuario %> </li>
+            <li class="listClientes"> <span>Email:</span> <%= user.email %> </li>
+            <li class="listClientes"> <span>Senha:</span> <%= user.senha %> </li>
+            <li class="listClientes"> <span>Data de cadastro:</span> <%= user.data %> </li>
         </ul>
     <% }); %> 
 </main>

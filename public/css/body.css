@@ -107,3 +107,8 @@ hr {
 .btn-danger:hover {
     background-color: #b91212f8;
 }
+
+.listClientes {
+    list-style: none;
+    text-align: left;
+}

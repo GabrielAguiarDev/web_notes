@@ -14,19 +14,23 @@
 <body>
     <header>
         <h1 class="logo">Anotações Web</h1>
-            <ul>
+            <ul class="nav">
                 <% if(user.eAdmin == 1){ %>
-                    <li><a href="/admin">Clientes</a></li>
+                    <li <% if (page_name === 'admin') { %>class="active" <% } %>><a href="/admin">Clientes</a></li>
                 <% } %>
-                <li><a href="/outros">Outros</a></li>
-                <li><a href="/metas">Minhas Metas</a></li>
-                <li class="active"><a href="/home">Tarefas Diárias</a></li>
-                <li><a href="/perfil"> <%= user.nome %>  </a></li>
+                <li <% if (page_name === 'outros') { %>class="active" <% } %>><a href="/outros">Outros</a></li>
+                <li <% if (page_name === 'metas' || page_name === 'criarMeta') { %>class="active" <% } %>><a href="/metas">Minhas Metas</a></li>
+                <li <% if (page_name === 'home' || page_name === 'postagem') { %>class="active" <% } %>><a href="/home">Anotações</a></li>
+                <li <% if (page_name === 'perfil') { %>class="active" <% } %>> <h4 class="perfil"> <%= user.nome %> </h4> </li>
                 <li class="slide"></li>
-
-                
-                <!-- Possível solução para o problema com o nav.active
-                <li <% if (page_name === 'about') { %>class="current" <% } %> ><a href="/about">About</a></li> -->
-
             </ul>
+            <div class="config">
+                <a href="/perfil" class="linkPerfil"><img class="imgPerfil" src="img/imagem_lulamolusco.jpg" alt="Imagem de perfil do Lula Molusco"> <%= user.usuario %> </a>
+                <i class='bx bx-chevron-right'></i>
+                <a href="#" class="linkTema"><i class='bx bx-palette'></i> Temas</a>
+                <a href="#" class="feedback"><i class='bx bxs-megaphone'></i> Feedback</a>
+                <label for="darkMode" class="darkMode"><i class='bx bxs-moon'></i></label>
+                <input type="checkbox" name="darkMode" id="darkMode">
+                <a href="/logout" class="logOut"><i class='bx bx-log-out'></i> Sair</a>
+            </div>
     </header>
