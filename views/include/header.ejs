@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <link rel="stylesheet" type="text/css" href="css/body.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <script src="js/navBar.js"></script>
     
 </head>
 <body>
@@ -16,12 +17,12 @@
         <h1 class="logo">Anotações Web</h1>
             <ul class="nav">
                 <% if(user.eAdmin == 1){ %>
-                    <li <% if (page_name === 'admin') { %>class="active" <% } %>><a href="/admin">Clientes</a></li>
+                    <li <% if (page_name === 'admin') { %>class="active" <% } %>><a href="/admin" class="clientes">Clientes</a></li>
                 <% } %>
-                <li <% if (page_name === 'outros') { %>class="active" <% } %>><a href="/outros">Outros</a></li>
-                <li <% if (page_name === 'metas' || page_name === 'criarMeta') { %>class="active" <% } %>><a href="/metas">Minhas Metas</a></li>
-                <li <% if (page_name === 'home' || page_name === 'postagem') { %>class="active" <% } %>><a href="/home">Anotações</a></li>
-                <li <% if (page_name === 'perfil') { %>class="active" <% } %>> <h4 class="perfil"> <%= user.nome %> </h4> </li>
+                <li <% if (page_name === 'outros') { %>class="active" <% } %>><a href="/outros" class="outros">Outros</a></li>
+                <li <% if (page_name === 'metas' || page_name === 'criarMeta') { %>class="active" <% } %>><a href="/metas" class="metas">Minhas Metas</a></li>
+                <li <% if (page_name === 'home' || page_name === 'postagem') { %>class="active" <% } %>><a href="/home" class="anotacoes">Anotações</a></li>
+                <li <% if (page_name === 'perfil') { %>class="activePerfil" <% } %>> <h4 class="perfil"> <%= user.nome %> </h4> </li>
                 <li class="slide"></li>
             </ul>
             <div class="config">

@@ -63,7 +63,18 @@ ul li a:hover {
 
 ul li.active a {
     color: var(--cor-2)
+}
 
+ul li:nth-child(1) a {
+    color: rgb(141, 1, 1);
+}
+
+ul li:nth-child(1).active a {
+    color: rgb(212, 6, 6);
+}
+
+ul li:nth-child(1) a:hover {
+    color: rgb(212, 6, 6);
 }
 
 ul li h4.perfil {
@@ -83,15 +94,38 @@ ul li h4.perfil:hover {
     cursor: pointer;
 }
 
-.config {
+ul li.activePerfil h4.perfil {
+    color: var(--cor-2);
+}
+
+.perfil.activePerfil {
+    color: var(--cor-2);
+}
+
+.config.activeConfig {
     position: absolute;
     right: 20px;
+    top: 70px;
+    opacity: 1;
+    transition: 0.5s all ease;
+}
+
+.config {
+    position: absolute;
+    right: -250px;
+    top: -20px;
     width: 200px;
     height: 300px;
     border-radius: 8px 0px 8px 0px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
     z-index: 3;
     background-color: var(--cor-3);
+    transition: 0.5s all ease;
+    opacity: 0;
+}
+
+.config.activeConfig .bx-chevron-right {
+    animation: 1s ease 0s normal forwards 1 delayNav;
 }
 
 .bx-chevron-right {
@@ -271,6 +305,7 @@ ul li h4.perfil:hover {
 ul li:nth-child(1).active ~ .slide {
     left: 37px;
     opacity: 0;
+    background-color: red;
 }
 
 ul li:nth-child(2).active ~ .slide {
@@ -287,8 +322,8 @@ ul li:nth-child(4).active ~ .slide {
     left: 437px;
     opacity: 1;
 }
-ul li:nth-child(5).active ~ .slide {
+ul li:nth-child(5).activePerfil ~ .slide {
     width: 130px;
     left: 570px;
-    opacity: 1;
+    opacity: 0;
 }

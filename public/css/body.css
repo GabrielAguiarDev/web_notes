@@ -16,6 +16,13 @@
     --cor-4: #0f553af8;
 }
 
+body {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
 main {
     width: 80vw;
     
@@ -54,6 +61,10 @@ form h1 {
 hr {
     margin-top: 10px;
     margin-bottom: 20px;
+}
+
+h4 {
+    color: var(--cor-2);
 }
 
 .adicionar {
