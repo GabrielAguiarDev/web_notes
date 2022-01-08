@@ -10,10 +10,10 @@
         <div class="posts">
             <div class="cardPost">
                 <% listMetas.forEach(meta => { %>
-                    &#x2B50;<h4><%= meta.titulo %></h4>
+                    &#x2B50;<h4 class="tituloMeta"><%= meta.titulo %></h4>
                     <input type="hidden" name="id" value=" meta.id %>">
                     <a class="btn-danger" href="/meta/delete/<%= meta.id %>"><i class='bx bx-trash'></i></a>
-                    <a class="btn" href="/meta/edit/<%= meta.id %>"><i class='bx bx-pencil'></i></a>
+                    <a class="btn-edit" href="/meta/edit/<%= meta.id %>"><i class='bx bx-pencil'></i></a>
                     <p><%= meta.conteudo %></p>
                     <hr>
                 <% }); %>

@@ -1,0 +1,22 @@
+.darkMode {
+    display: inline-block;
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    font-size: 22px;
+    cursor: pointer;
+    padding: 1px 6px 0px 6px;
+    border-radius: 50%;
+    color: white;
+    background-color: rgba(128, 128, 128, 0.356);
+    transition: 0.5s all ease;
+}
+
+.darkMode:hover {
+    background-color: rgba(128, 128, 128, 0.425);
+    color: rgba(0, 0, 0, 0.767);
+}
+
+#darkMode {
+    display: none;
+}

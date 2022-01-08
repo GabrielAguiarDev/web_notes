@@ -1,0 +1,151 @@
+.config.activeConfig {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    opacity: 1;
+    transition: 0.5s all ease;
+}
+
+.config {
+    position: absolute;
+    right: -250px;
+    top: -20px;
+    width: 200px;
+    height: 300px;
+    border-radius: 8px 0px 8px 0px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
+    z-index: 3;
+    background-color: var(--cor-3);
+    transition: 0.5s all ease;
+    opacity: 0;
+}
+
+.config.activeConfig .bx-chevron-right {
+    animation: 1s ease 0s normal forwards 1 delayNav;
+}
+
+.bx-chevron-right {
+    position: relative;
+    left: -40px;
+    top: 5px;
+    font-size: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    background-color: rgba(31, 182, 94, 0.432);
+    transition: 0.5s all ease;
+}
+
+.bx-chevron-right:hover {
+    background-color: rgba(31, 182, 94, 0.89);
+}
+
+.config .imgPerfil {
+    border-radius: 50%;
+    width: 100%;
+    display: inline-block;
+}
+
+.config .linkPerfil {
+    position: absolute;
+    top: 8px;
+    padding: 8px 61px;
+    border-radius: 8px 0px 0px 0px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+}
+
+.config .linkPerfil:hover {
+    color: rgba(24, 215, 240, 0.788);
+}
+
+.bx-palette {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    color: white;
+    font-size: 23px;
+    transition: 0.5s all ease;
+}
+
+.config .linkTema {
+    display: inline-block;
+    position: relative;
+    top: 120px;
+    padding: 8px 83px 8px 61px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    color: white;
+    font-weight: 600;
+}
+
+.config .linkTema:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: rgb(212, 74, 143);
+}
+
+.linkTema:hover .bx-palette {
+    color: rgb(212, 74, 143);
+}
+
+.bxs-megaphone {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    color: white;
+    font-size: 23px;
+    transition: 0.5s all ease;
+}
+
+.config .feedback {
+    display: inline-block;
+    position: relative;
+    top: 123px;
+    padding: 8px 60px 8px 61px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    color: white;
+    font-weight: 600;
+}
+
+.config .feedback:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: rgb(196, 129, 41);
+}
+
+.config .feedback:hover .bxs-megaphone {
+    color: rgb(196, 129, 41);
+}
+
+.bx-log-out {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    left: 3px;
+}
+
+.config .logOut {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    left: 126px;
+    bottom: -150px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 29px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.5s all ease;
+    
+}
+
+.config .logOut:hover {
+    background-color: rgba(214, 18, 18, 0.575);
+}
