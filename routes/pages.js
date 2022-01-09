@@ -75,7 +75,10 @@ const router = express.Router()
     // EDITAR NOTES 
     router.get('/note/edit/:id', logado, (req, res)=>{
         Note.findOne({_id: req.params.id}).then((note)=>{
-            res.render('edit', {Note: note, user: req.user})
+            res.render('edit', {
+                Note: note,
+                user: req.user,
+                page_name: 'edit'})
         }).catch((err)=>{
             console.log("Esta anotação não existe!... " + err)
             res.redirect('/home')
@@ -85,7 +88,10 @@ const router = express.Router()
     // EDITAR METAS
     router.get('/meta/edit/:id', logado, (req, res)=>{
         Meta.findOne({_id: req.params.id}).then((meta)=>{
-            res.render('editMeta', {Meta: meta, user: req.user})
+            res.render('editMeta', {
+                Meta: meta,
+                user: req.user,
+                page_name: 'edit'})
         }).catch((err)=>{
             console.log("Esta Meta não existe!... " + err)
             res.redirect('/metas')

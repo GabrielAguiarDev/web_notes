@@ -10,16 +10,16 @@
             <p><%= listNotes.userId %> </p>
         </div>
         <div class="posts">
-            <div class="cardPost">
-                <% listNotes.forEach(note => { %>
-                    <h4><%= note.titulo %></h4>
-                    <input type="hidden" name="id" value="<%= note.id %>">
+            <% listNotes.forEach(note => { %>
+                <div class="cardPost">
                     <a class="btn-edit" href="/note/edit/<%= note.id %>"><i class='bx bx-pencil'></i></a>
                     <a class="btn-danger" href="/note/delete/<%= note.id %>"><i class='bx bx-trash'></i></a>
+                    <h4><%= note.titulo %></h4>
+                    <input type="hidden" name="id" value="<%= note.id %>">
                     <p><%= note.conteudo %></p>
                     <hr>
-                <% }); %>
-            </div>
+                </div>
+            <% }); %>
         </div>
     </form>
     <br><br>
