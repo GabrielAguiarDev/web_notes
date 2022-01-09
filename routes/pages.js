@@ -123,15 +123,27 @@ const router = express.Router()
     // PAGES ADMIN
     
             // Lista de Clientes
-            router.get('/admin', eAdmin, (req, res)=>{
+            router.get('/admin', eAdmin, async(req, res)=>{
+
+                let countMeta = await Meta.find({userId: req.user.id}).count().then((count) => {
+                    return count
+                });
+
+                let countNote = await Note.find({userId: req.user.id}).count().then((count)=>{
+                    return count
+                })
+
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
                         user: req.user,
+                        countMeta,
+                        countNote,
                         page_name: 'admin'
                     })
                 }).catch((err)=>{
                     console.log("Erro ao listar usuarios: " + err)
+                    res.redirect('/home')
                 })
             })
 

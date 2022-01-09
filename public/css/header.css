@@ -140,3 +140,8 @@ ul li:nth-child(4).active ~ .slide {
     left: 367px;
     opacity: 1;
 }
+ul li:nth-child(5).activePerfil ~ .slide {
+    width: 105px;
+    left: 505px;
+    opacity: 1;
+}

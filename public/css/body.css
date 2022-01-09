@@ -13,7 +13,7 @@
     --cor-1: #f0f0f0;
     --cor-2: #13ccadf6;
     --cor-3: #167464f8;
-    --cor-4: #0f553af8;
+    --cor-4: #034d30f8;
 }
 
 body {
@@ -150,7 +150,19 @@ p {
     color: var(--cor-2);
 }
 
+.nomeClientes {
+    color: var(--cor-2);
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
 .listClientes {
-    list-style: none;
     text-align: left;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 1.1em;
+}
+
+.listClientes span {
+    font-weight: 600;
+    color: var(--cor-4);
 }
