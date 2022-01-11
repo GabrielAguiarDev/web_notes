@@ -114,7 +114,7 @@ form input[type="submit"] {
 }
 form input[type="submit"]:hover {
     letter-spacing: 0.5px;
-    background: linear-gradient(to left, #13ccadf6, #167464f8 80%);
+    background: linear-gradient(to left, #13ccadf6, #167464f8 90%);
 }
 
 footer {
