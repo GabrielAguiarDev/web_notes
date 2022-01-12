@@ -166,3 +166,16 @@ p {
     font-weight: 600;
     color: var(--cor-4);
 }
+
+.userAdmin {
+    display: inline-block;
+    color: rgb(0, 236, 0);
+    margin-left: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.tornarAdm {
+    font-weight: 600;
+    color: var(--cor-4);
+}

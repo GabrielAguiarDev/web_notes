@@ -167,7 +167,7 @@ exports.edit = (req, res)=> {
     })
 }
 
-exports.updateUser = (req, res)=> { // 
+exports.updateUser = (req, res)=> {
     let valorAntigo = {
         nome: req.user.nome,
         usuario: req.user.usuario,

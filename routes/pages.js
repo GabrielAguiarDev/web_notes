@@ -125,20 +125,18 @@ const router = express.Router()
             // Lista de Clientes
             router.get('/admin', eAdmin, async(req, res)=>{
 
-                let countMeta = await Meta.find({userId: { $eq: [] }}).count().then((count) => {
-                    return count
-                });
+                // let countMeta = await Meta.find({userId: { $eq: [] }}).count().then((count) => {
+                //     return count
+                // });
 
-                let countNote = await Note.find({userId: { $eq: [] }}).count().then((count) => {
-                    return count
-                })
+                // let countNote = await Note.find({userId: { $eq: [] }}).count().then((count) => {
+                //     return count
+                // })
 
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
                         user: req.user,
-                        countMeta,
-                        countNote,
                         page_name: 'admin'
                     })
                 }).catch((err)=>{

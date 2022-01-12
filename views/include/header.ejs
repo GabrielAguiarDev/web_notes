@@ -16,14 +16,16 @@
 <body>
     <header>
         <h1 class="logo">Anotações Web</h1>
+            <% if(user.eAdmin){ %>
+                <h2 <% if (page_name === 'admin') { %>class="active" <% } %> >
+                    <a href="/admin" class="clientes">Clientes</a>
+                </h2>
+            <% } %>
             <ul class="nav">
-                <% if(user.eAdmin == 1){ %>
-                    <li <% if (page_name === 'admin') { %>class="active" <% } %>><a href="/admin" class="clientes">Clientes</a></li>
-                <% } %>
                 <li <% if (page_name === 'outros') { %>class="active" <% } %>><a href="/outros" class="outros">Outros</a></li>
                 <li <% if (page_name === 'metas' || page_name === 'criarMeta') { %>class="active" <% } %>><a href="/metas" class="metas">Metas</a></li>
                 <li <% if (page_name === 'home' || page_name === 'postagem') { %>class="active" <% } %>><a href="/home" class="anotacoes">Anotações</a></li>
-                <li <% if (page_name === 'perfil') { %>class="activePerfil" <% } %>> <h4 class="perfil"> <%= user.nome %> </h4> </li>
+                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil" > <%= user.nome %> </h4> </li>
                 <li class="slide"></li>
             </ul>
             <div class="config">

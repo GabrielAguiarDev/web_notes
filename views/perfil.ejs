@@ -5,7 +5,7 @@
     <p>O usuário poderá colocar foto, alterar a foto, alterar tema, alterar dados pessoais, e etc.</p>
     <br><br>
 
-    <h2>Dados do Usuário</h2>
+    <h3>Dados do Usuário</h3>
     <form action="/update/user" method="post">
         <label for="nome">Nome: </label>
         <input type="text" name="nome" id="nome" value="<%= user.nome %>">
@@ -19,8 +19,8 @@
         <label for="senha">Senha: </label>
         <input type="text" name="senha" id="senha" value="<%= user.senha %>">
         <br>
-        <label for="admin">Admin </label>
-        <% if(user.eAdmin == 1){ %>
+        <label for="eAdmin">Admin </label>
+        <% if(user.eAdmin){ %>
             <input type="text" name="eAdmin" id="eAdmin" value="<%= user.eAdmin %>">
         <% } else {%>
             <input type="text" name="eAdmin" id="eAdmin" value="0">
