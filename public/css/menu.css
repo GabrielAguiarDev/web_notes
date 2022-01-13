@@ -10,8 +10,8 @@
     position: absolute;
     right: -250px;
     top: -20px;
-    width: 200px;
-    height: 300px;
+    width: 210px;
+    height: 340px;
     border-radius: 8px 0px 8px 0px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
     z-index: 3;
@@ -123,6 +123,41 @@
 
 .config .feedback:hover .bxs-megaphone {
     color: rgb(196, 129, 41);
+}
+
+.bx-user {
+    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    color: white;
+    font-size: 23px;
+    transition: 0.5s all ease;
+}
+
+.config .linkAdmin {
+    display: inline-block;
+    position: relative;
+    top: 125px;
+    padding: 8px 60px 8px 61px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    color: white;
+    font-weight: 600;
+}
+
+.config .linkAdmin:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: rgb(146, 17, 17);
+}
+
+.config .linkAdmin:hover .bx-user {
+    color: rgb(146, 17, 17);
+}
+
+.hid {
+    display: hidden;
 }
 
 .config .logOut {
