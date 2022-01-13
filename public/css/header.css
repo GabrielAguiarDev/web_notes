@@ -46,9 +46,38 @@ ul li {
     text-align: center;
 }
 
+.bx-customize {
+    position: absolute;
+    right: 70px;
+    bottom: 0px;
+    font-size: 25px;
+}
+
+.bx-line-chart {
+    position: absolute;
+    right: 64px;
+    bottom: 0px;
+    font-size: 25px;
+}
+
+.bx-edit {
+    position: absolute;
+    right: 105px;
+    bottom: 0px;
+    font-size: 25px; 
+}
+
+.bx-user-pin {
+    position: absolute;
+    right: 133px;
+    bottom: 0px;
+    font-size: 27px; 
+}
+
 ul li a {
-    display: block;
-    margin-left: 45px;
+    display: inline-block;
+    position: relative;
+    margin-left: 60px;
     font-size: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
@@ -66,33 +95,9 @@ ul li.active a {
     color: var(--cor-2)
 }
 
-h2 {
-    position: absolute;
-    left: 710px;
-    top: 3px;
-    font-size: 1.2em;
-}
-
-h2 a {
-    display: block;
-    font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;
-    font-weight: 600;
-    color: rgb(141, 1, 1);
-    transition: 0.5s;
-}
-
-h2.active a{
-    color: rgb(212, 6, 6);
-}
-
-h2 a:hover {
-    color: rgb(212, 6, 6);
-}
-
 ul li h4.perfil {
     display: block;
-    margin-left: 45px;
+    margin-left: 60px;
     font-size: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
@@ -134,27 +139,23 @@ ul li.activePerfil h4.perfil {
     100% { opacity:1; }
 }
 
-h2.active ~ ul .slide {
-    left: -90px;
-    opacity: 1;
-    background-color: red;
-}
-
 ul li:nth-child(1).active ~ .slide {
-    left: 30px;
+    left: 27px;
+    width: 100px;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
 ul li:nth-child(2).active ~ .slide {
-    left: 135px;
+    left: 145px;
+    width: 98px;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
 ul li:nth-child(3).active ~ .slide {
-    width: 110px;
-    left: 246px;
+    width: 130px;
+    left: 268px;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
 ul li:nth-child(4).activePerfil ~ .slide {
-    width: 105px;
-    left: 405px;
+    width: 150px;
+    left: 435px;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
