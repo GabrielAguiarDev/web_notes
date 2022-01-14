@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/menu.css">
     <link rel="stylesheet" type="text/css" href="css/darkMode.css">
     <link rel="stylesheet" type="text/css" href="css/body.css">
+    <link rel="stylesheet" type="text/css" href="css/edit.css">
     <link rel="stylesheet" type="text/css" href="css/footer.css">
     <script src="js/navBar.js"></script>
 </head>
@@ -34,12 +35,13 @@
                 <i class='bx bx-chevron-right'></i>
                 <a href="#" class="linkTema"><i class='bx bx-palette'></i> Temas</a>
                 <a href="#" class="feedback"><i class='bx bxs-megaphone'></i> Feedback</a>
+                <a href="#" class="lixeira"><i class='bx bx-trash'></i> Lixeira</a>
                 <% if(user.eAdmin){ %>
                     <a href="/admin" 
                     class="linkAdmin"><i class='bx bx-user'></i> Usuários</a>
                 <% } %>
                 <label for="darkMode" class="darkMode"><i class='bx bxs-moon'></i></label>
-                <input type="checkbox" name="darkMode" id="darkMode">
+                <input name="theme" type="checkbox" class="toggle-dark-mode" id="darkMode">
                 <a href="/logout" class="logOut"><i class='bx bx-log-out'></i> Sair</a>
             </div>
     </header>

@@ -10,8 +10,8 @@
     position: absolute;
     right: -250px;
     top: -20px;
-    width: 210px;
-    height: 340px;
+    width: 240px;
+    height: 400px;
     border-radius: 8px 0px 8px 0px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
     z-index: 3;
@@ -42,7 +42,7 @@
 
 .config .imgPerfil {
     border-radius: 50%;
-    width: 100%;
+    width: 90px;
     display: inline-block;
 }
 
@@ -63,11 +63,11 @@
     color: rgba(24, 215, 240, 0.788);
 }
 
-.bx-palette {
+.config .bx-palette {
     display: inline-block;
     position: absolute;
     bottom: 10px;
-    left: 12px;
+    left: 25px;
     color: white;
     font-size: 23px;
     transition: 0.5s all ease;
@@ -76,8 +76,8 @@
 .config .linkTema {
     display: inline-block;
     position: relative;
-    top: 120px;
-    padding: 8px 83px 8px 61px;
+    top: 132px;
+    padding: 8px 108px 8px 83px;
     background-color: transparent;
     text-decoration: none;
     transition: 0.5s all ease;
@@ -94,11 +94,11 @@
     color: rgb(212, 74, 143);
 }
 
-.bxs-megaphone {
+.config .bxs-megaphone {
     display: inline-block;
     position: absolute;
     bottom: 10px;
-    left: 12px;
+    left: 25px;
     color: white;
     font-size: 23px;
     transition: 0.5s all ease;
@@ -107,8 +107,8 @@
 .config .feedback {
     display: inline-block;
     position: relative;
-    top: 123px;
-    padding: 8px 60px 8px 61px;
+    top: 135px;
+    padding: 8px 108px 8px 83px;
     background-color: transparent;
     text-decoration: none;
     transition: 0.5s all ease;
@@ -125,11 +125,42 @@
     color: rgb(196, 129, 41);
 }
 
-.bx-user {
+.config .bx-trash {
     display: inline-block;
     position: absolute;
     bottom: 10px;
-    left: 12px;
+    left: 25px;
+    color: white;
+    font-size: 23px;
+    transition: 0.5s all ease;
+}
+
+.config .lixeira {
+    display: inline-block;
+    position: relative;
+    top: 138px;
+    padding: 8px 108px 8px 83px;
+    background-color: transparent;
+    text-decoration: none;
+    transition: 0.5s all ease;
+    color: white;
+    font-weight: 600;
+}
+
+.config .lixeira:hover {
+    background-color: rgba(255, 255, 255, 0.123);
+    color: rgb(146, 17, 17);
+}
+
+.config .lixeira:hover .bx-trash {
+    color: rgb(146, 17, 17);
+}
+
+.bx-user {
+    display: inline-block;
+    position: absolute;
+    bottom: 9px;
+    left: 25px;
     color: white;
     font-size: 23px;
     transition: 0.5s all ease;
@@ -138,8 +169,8 @@
 .config .linkAdmin {
     display: inline-block;
     position: relative;
-    top: 125px;
-    padding: 8px 60px 8px 61px;
+    top: 140px;
+    padding: 8px 108px 8px 83px;
     background-color: transparent;
     text-decoration: none;
     transition: 0.5s all ease;
@@ -149,15 +180,11 @@
 
 .config .linkAdmin:hover {
     background-color: rgba(255, 255, 255, 0.123);
-    color: rgb(146, 17, 17);
+    color: rgb(25, 185, 47);
 }
 
 .config .linkAdmin:hover .bx-user {
-    color: rgb(146, 17, 17);
-}
-
-.hid {
-    display: hidden;
+    color: rgb(25, 185, 47);
 }
 
 .config .logOut {

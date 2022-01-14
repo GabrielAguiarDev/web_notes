@@ -1,0 +1,16 @@
+.editarNote {
+    position: absolute;
+    top: 80px;
+    left: 330px;
+    width: 50vw;
+    height: 60vh;
+    border-radius: 8px;
+    background-color: rgb(154, 211, 192);
+    z-index: -100;
+    visibility: hidden;
+}
+
+.activeModal {
+    z-index: 100;
+    visibility: visible;
+}

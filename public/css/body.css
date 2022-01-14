@@ -16,6 +16,11 @@
     --cor-4: #034d30f8;
 }
 
+html {
+    --background: white;
+    --text: black;
+}
+
 body {
     position: relative;
     min-height: 100vh;
@@ -25,7 +30,7 @@ body {
 
 main {
     width: 80vw;
-    
+    min-height: 54.5vh;
     margin: auto;
     border-radius: 8px;
 }
