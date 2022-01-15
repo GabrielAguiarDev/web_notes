@@ -1,16 +1,111 @@
-.editarNote {
+#editarNote {
     position: absolute;
-    top: 80px;
-    left: 330px;
+    top: -30px;
+    left: 210px;
     width: 50vw;
     height: 60vh;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.315);
     border-radius: 8px;
     background-color: rgb(154, 211, 192);
-    z-index: -100;
-    visibility: hidden;
+    /* z-index: -100;
+    visibility: hidden; */
+    transition: 0.5s all ease;
+    display: none;
 }
 
-.activeModal {
+/* .activeEdit {
     z-index: 100;
     visibility: visible;
+} */
+
+#editarNote h1 {
+    margin: 20px 0px 50px 210px;
+}
+
+#editarNote #labelTitulo {
+    position: relative;
+    left: 20px;
+    top: 0px;
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--cor-4);
+}
+
+#editarNote #Titulo {
+    position: relative;
+    left: 30px;
+    bottom: 2px;
+    width: 535px;
+    height: 45px;
+    padding: 6px 10px 0px 10px;
+    border-radius: 8px;
+    border: none;
+    border: 2px solid green;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--cor-2);
+}
+
+#editarNote #labelConteudo {
+    position: relative;
+    left: 20px;
+    top: 20px;
+    font-weight: 700;
+    font-size: 19px;
+    color: var(--cor-4);
+}
+
+#editarNote #conteudo {
+    position: relative;
+    left: 21px;
+    top: 20px;
+    height: 100px;
+    width: 623px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    border: 2px solid green;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: rgb(80, 80, 80);
+    resize: none;
+}
+
+#editarNote input[type="submit"] {
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+    padding: 8px 23px;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.329);
+    background-color: rgb(0, 138, 0);
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: 0.5s all ease;
+}
+
+#editarNote input[type="submit"]:hover {
+    background-color: rgb(3, 180, 3);
+}
+
+#editarNote a {
+    position: absolute;
+    bottom: 10px;
+    right: 130px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 7px 6px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.329);
+    background-color: rgb(122, 0, 0);
+    color: white;
+    transition: 0.5s all ease;
+}
+
+#editarNote a:hover {
+    background-color: rgb(170, 0, 0);
 }

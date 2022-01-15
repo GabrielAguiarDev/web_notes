@@ -18,13 +18,17 @@ const router = express.Router()
 
     // HOME 
     router.get('/home',logado, (req, res) => {
-        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Note)=>{
-            res.render('home', {
-                listNotes: Note,
+        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
+            Note.findOne({_id: req.body.id}).then((noteEdit)=>{
+                res.render('home', {
+                listNotes: note,
+                editNote: noteEdit,
                 user: req.user,
                 page_name: 'home'
                 })
-        })        
+            })
+            })
+            
     })
 
     // PERFIL
