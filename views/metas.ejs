@@ -1,25 +1,41 @@
 <%- include('./include/header') %>
 
 <main>
-    <form action="">
-        <h1>Minhas Metas</h1>
-        <hr>
-        <div class="adicionar">
-            <a class="btn" href="/criarMeta">Adicionar Meta</a>
-        </div>
-        <div class="posts">
-            <% listMetas.forEach(meta => { %>
-                <div class="cardPost">
-                    <a class="btn-danger" href="/meta/delete/<%= meta.id %>" onclick="return confirm('Deseja mesmo apagar esta Meta?');"><i class='bx bx-trash'></i></a>
-                    <a class="btn-edit" href="/meta/edit/<%= meta.id %>"><i class='bx bx-pencil'></i></a>
-                    <span class="star">&#x2B50;</span><h4 class="tituloMeta"><%= meta.titulo %></h4>
-                    <input type="hidden" name="id" value=" meta.id %>">
-                    <p><%= meta.conteudo %></p>
-                    <hr>
+    <h1>Minhas Metas</h1>
+    <hr>
+    <div class="adicionar">
+        <a class="btn" href="/criarMeta">Adicionar Meta</a>
+    </div>
+    <div class="posts">
+        <% listMetas.forEach(meta => { %>
+            <div class="cardPost">
+                <div class="btn-edit" onclick="Mudarestado('metaEdit-<%= meta.id %>')">
+                    <i class='bx bx-pencil'></i>
                 </div>
-            <% }); %>
-        </div>
-    </form>
+                <a class="btn-danger" href="/meta/delete/<%= meta.id %>" onclick="return confirm('Deseja mesmo apagar esta Meta?');"><i class='bx bx-trash'></i></a>
+                <span class="star">&#x2B50;</span><h4 class="tituloMeta"><%= meta.titulo %></h4>
+                <input type="hidden" name="id" value=" meta.id %>">
+                <p><%= meta.conteudo %></p>
+                <hr>
+            </div>
+            <div class="editar" id="metaEdit-<%= meta.id %>">
+                <form action="/meta/edit" method="post">
+                    <h1 class="h1Meta">Editar Meta</h1>
+                    <input type="hidden" name="id" value="<%= meta.id %>">
+                    <br>
+                    <label for="titulo" id="labelTitulo">Meta: </label>
+                    <input type="text" name="titulo" id="Titulo" value="<%= meta.titulo %>">
+                    <br>
+                    <label for="conteudo" id="labelConteudo">Descrição: </label>
+                    <!-- <input type="text" name="conteudo" id="Conteudo" value="%= meta.conteudo %>" placeholder="Opcional"> -->
+                    <textarea name="conteudo" id="Conteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
+                    <br>
+                    <input class="salvarEdit" id="edit-<%= meta.id %>" onclick="Mudarestado('metaEdit-<%= meta.id %>')" type="submit" value="Salvar">
+                    <a class="cancelarEdit" onclick="Mudarestado('metaEdit-<%= meta.id %>')" href="/metas">Cancelar</a>
+                </form>
+            </div>
+        <% }); %>
+    </div>
 </main>
 <!-- Estrela sem preenchimento -->
 <!-- <i class='bx bx-star'></i> -->

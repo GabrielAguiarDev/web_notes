@@ -1,4 +1,10 @@
-#editarNote {
+@keyframes delayNav{
+    0% { opacity:0; }
+    46% { opacity:0; }
+    100% { opacity:1; }
+}
+
+.editar {
     position: absolute;
     top: -30px;
     left: 210px;
@@ -7,22 +13,21 @@
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.315);
     border-radius: 8px;
     background-color: rgb(154, 211, 192);
-    /* z-index: -100;
-    visibility: hidden; */
+    z-index: 100;
     transition: 0.5s all ease;
+    animation: 0.5s ease 0s normal forwards 1 delayNav;
     display: none;
 }
 
-/* .activeEdit {
-    z-index: 100;
-    visibility: visible;
-} */
-
-#editarNote h1 {
-    margin: 20px 0px 50px 210px;
+.editar .h1Note {
+    margin: 20px 0px 30px 210px;
 }
 
-#editarNote #labelTitulo {
+.editar .h1Meta {
+    margin: 20px 0px 30px 240px;
+}
+
+.editar #labelTitulo {
     position: relative;
     left: 20px;
     top: 0px;
@@ -31,7 +36,7 @@
     color: var(--cor-4);
 }
 
-#editarNote #Titulo {
+.editar #Titulo {
     position: relative;
     left: 30px;
     bottom: 2px;
@@ -46,7 +51,7 @@
     color: var(--cor-2);
 }
 
-#editarNote #labelConteudo {
+.editar #labelConteudo {
     position: relative;
     left: 20px;
     top: 20px;
@@ -55,7 +60,7 @@
     color: var(--cor-4);
 }
 
-#editarNote #conteudo {
+.editar #Conteudo {
     position: relative;
     left: 21px;
     top: 20px;
@@ -72,7 +77,7 @@
     resize: none;
 }
 
-#editarNote input[type="submit"] {
+.editar input[type="submit"] {
     position: absolute;
     bottom: 10px;
     right: 30px;
@@ -88,11 +93,11 @@
     transition: 0.5s all ease;
 }
 
-#editarNote input[type="submit"]:hover {
+.editar input[type="submit"]:hover {
     background-color: rgb(3, 180, 3);
 }
 
-#editarNote a {
+.editar .cancelarEdit {
     position: absolute;
     bottom: 10px;
     right: 130px;
@@ -106,6 +111,6 @@
     transition: 0.5s all ease;
 }
 
-#editarNote a:hover {
+.editar a:hover {
     background-color: rgb(170, 0, 0);
 }

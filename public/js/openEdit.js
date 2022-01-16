@@ -15,7 +15,11 @@
 // }
 
 function Mudarestado(el) {
-    var display = document.getElementById(el).style.display;
+    let display = document.getElementById(el).style.display;
+    let titulo = document.getElementById('Titulo')
+    let conteudo = document.getElementById('Conteudo')
+
+
     if(display == "none")
         document.getElementById(el).style.display = 'block';
     else

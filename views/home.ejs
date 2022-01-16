@@ -12,7 +12,7 @@
         <% listNotes.forEach(note => { %>
             <div class="cardPost">
                 <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
-                <div class="btn-edit" onclick="Mudarestado('editarNote')">
+                <div class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
                     <i class='bx bx-pencil'></i>
                 </div>
                 <a class="btn-danger" href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>
@@ -21,26 +21,24 @@
                 <p><%= note.conteudo %></p>
                 <hr>
             </div>
-            <!-- < editNote.forEach(noteEdit => { %> Erro! não pode um forEach dentro do outro ao que parece -->
+            <div class="editar" id="noteEdit-<%= note.id %>">
                 <form action="/note/edit" method="post">
-                    <h1>Editar Anotação</h1>
+                    <h1 class="h1Note">Editar Anotação</h1>
                     <input type="hidden" name="id" value="<%= note._id %>">
                     <br>
-                    <% if(note.id == noteEdit.id) { %> 
                     <label for="titulo" id="labelTitulo">Titulo: </label>
-                    <input type="text" name="titulo" id="Titulo" value="<%= noteEdit.titulo %> ">
+                    <input type="text" name="titulo" id="Titulo" value="<%= note.titulo %> ">
                     <br>
                     <label for="conteudo" id="labelConteudo">Conteudo: </label>
                     <br>
-                    <textarea name="conteudo" id="conteudo" cols="30" rows="10"><%= noteEdit.conteudo %></textarea>
+                    <textarea name="conteudo" id="Conteudo" cols="30" rows="10"><%= note.conteudo %></textarea>
                     <br>
-                    <input class="salvarEdit" onclick="Mudarestado('editarNote')" type="submit" value="Salvar">
-                    <a class="cancelarEdit" onclick="Mudarestado('editarNote')" href="/home">Cancelar</a>
-                    <% } %> 
+                    <input class="salvarEdit" id="edit-<%= note.id %>" onclick="Mudarestado('noteEdit-<%= note.id %>')" type="submit" value="Salvar">
+                    <!-- <a class="cancelarEdit" onclick="Mudarestado('noteEdit-%= note.id %>')" href="/home">Cancelar</a> -->
+                    <div class="cancelarEdit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
+                        Cancelar
+                    </div>
                 </form>
-            <% }) %> 
-            <div id="editarNote">
-                
             </div>
         <% }); %>
     </div>
