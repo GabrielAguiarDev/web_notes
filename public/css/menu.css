@@ -211,34 +211,34 @@
 }
 
 @keyframes linhaCor {
-    0% {background: linear-gradient(to right, #167464f8, #198f7bf6, #198f7bf6, #167464f8); }
-    5% {background: linear-gradient(to right, #167464f8, #1a9681f6, #1a9681f6, #167464f8); }
-    10% {background: linear-gradient(to right, #167464f8, #1aa38cf6, #1aa38cf6, #167464f8); }
-    15% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
-    20% {background: linear-gradient(to right, #167464f8, #19bda1f6, #19bda1f6, #167464f8); }
-    25% {background: linear-gradient(to right, #167464f8, #17d1b2f6, #17d1b2f6, #167464f8); }
-    30% {background: linear-gradient(to right, #167464f8, #14d3b3f6, #14d3b3f6, #167464f8); }
-    35% {background: linear-gradient(to right, #167464f8, #12d8b7f6, #12d8b7f6, #167464f8); }
-    40% {background: linear-gradient(to right, #167464f8, #0fe2bff6, #0fe2bff6, #167464f8); }
-    45% {background: linear-gradient(to right, #167464f8, #0aecc7f6, #0aecc7f6, #167464f8); }
-    50% {background: linear-gradient(to right, #167464f8, #03ffd5f6, #03ffd5f6, #167464f8); }
-    55% {background: linear-gradient(to right, #167464f8, #0aecc7f6, #0aecc7f6, #167464f8); }
-    60% {background: linear-gradient(to right, #167464f8, #0fe2bff6, #0fe2bff6, #167464f8); }
-    65% {background: linear-gradient(to right, #167464f8, #12d8b7f6, #12d8b7f6, #167464f8); }
-    70% {background: linear-gradient(to right, #167464f8, #14d3b3f6, #14d3b3f6, #167464f8); }
-    75% {background: linear-gradient(to right, #167464f8, #17d1b2f6, #17d1b2f6, #167464f8); }
-    80% {background: linear-gradient(to right, #167464f8, #19bda1f6, #19bda1f6, #167464f8); }
-    85% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
-    90% {background: linear-gradient(to right, #167464f8, #1aa38cf6, #1aa38cf6, #167464f8); }
-    95% {background: linear-gradient(to right, #167464f8, #1a9681f6, #1a9681f6, #167464f8); }
-    100% {background: linear-gradient(to right, #167464f8, #198f7bf6, #198f7bf6, #167464f8); }
+    0% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
+    5% {background: linear-gradient(to right, #167464f8, #19b399f6, #19b399f6, #167464f8); }
+    10% {background: linear-gradient(to right, #167464f8, #18b99ef6, #18b99ef6, #167464f8); }
+    15% {background: linear-gradient(to right, #167464f8, #17c0a4f6, #17c0a4f6, #167464f8); }
+    20% {background: linear-gradient(to right, #167464f8, #15c5a8f6, #15c5a8f6, #167464f8); }
+    25% {background: linear-gradient(to right, #167464f8, #15cfb0f6, #15cfb0f6, #167464f8); }
+    30% {background: linear-gradient(to right, #167464f8, #13d6b6f6, #13d6b6f6, #167464f8); }
+    35% {background: linear-gradient(to right, #167464f8, #11ddbbf6, #11ddbbf6, #167464f8); }
+    40% {background: linear-gradient(to right, #167464f8, #10e2bff6, #10e2bff6, #167464f8); }
+    45% {background: linear-gradient(to right, #167464f8, #0eebc6f6, #0eebc6f6, #167464f8); }
+    50% {background: linear-gradient(to right, #167464f8, #05f8d0f6, #05f8d0f6, #167464f8); }
+    55% {background: linear-gradient(to right, #167464f8, #0eebc6f6, #0eebc6f6, #167464f8); }
+    60% {background: linear-gradient(to right, #167464f8, #10e2bff6, #10e2bff6, #167464f8); }
+    65% {background: linear-gradient(to right, #167464f8, #11ddbbf6, #11ddbbf6, #167464f8); }
+    70% {background: linear-gradient(to right, #167464f8, #13d6b6f6, #13d6b6f6, #167464f8); }
+    75% {background: linear-gradient(to right, #167464f8, #15cfb0f6, #15cfb0f6, #167464f8); }
+    80% {background: linear-gradient(to right, #167464f8, #15c5a8f6, #15c5a8f6, #167464f8); }
+    85% {background: linear-gradient(to right, #167464f8, #17c0a4f6, #17c0a4f6, #167464f8); }
+    90% {background: linear-gradient(to right, #167464f8, #18b99ef6, #18b99ef6, #167464f8); }
+    95% {background: linear-gradient(to right, #167464f8, #19b399f6, #19b399f6, #167464f8); }
+    100% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
 }
 
 .config .logOut {
     color: white;
     text-decoration: none;
     position: absolute;
-    bottom: 6px;
+    bottom: 9px;
     right: 8px;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
