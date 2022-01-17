@@ -4,9 +4,23 @@
     <h1>Minhas Metas</h1>
     <hr>
     <div class="adicionar">
-        <a class="btn" href="/criarMeta">Adicionar Meta</a>
+        <button class="btn" onclick="Mudarestado('adicionarMeta')">Adicionar Meta</button>
     </div>
     <div class="posts">
+        <div class="adicionarMeta" id="adicionarMeta">
+            <form action="/goal" method="post">
+                <h1>Adicionar Nova Meta</h1>
+                <br>
+                <label for="titulo" id="labelTitulo">Minha Meta</label>
+                <input type="text" name="titulo" id="Titulo">
+                <br>
+                <label for="conteudo" id="labelConteudo">Conteudo</label>
+                <textarea name="conteudo" id="Conteudo" cols="30" rows="10" placeholder="Opcional"></textarea>
+                <br>
+                <input type="submit" onclick="Mudarestado('adicionarMeta')" value="Adicionar">
+                <a href="/metas" class="cancelarEdit" onclick="Mudarestado('adicionarMeta')">Cancelar</a>
+            </form>
+        </div>
         <% listMetas.forEach(meta => { %>
             <div class="cardPost">
                 <div class="btn-edit" onclick="Mudarestado('metaEdit-<%= meta.id %>')">

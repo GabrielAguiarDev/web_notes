@@ -187,6 +187,53 @@
     color: rgb(25, 185, 47);
 }
 
+/* .config.activeConfig .underline::before {
+    content: '';
+    position: absolute;
+    bottom: 70px;
+    left: 35px;
+    height: 3px;
+    width: 70%;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.2);
+} */
+
+.config.activeConfig .underline::before {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 80%;
+    bottom: 70px;
+    left: 22px;
+    transform: scale(1);
+    transition: all .3s ease-in-out;
+    animation: linhaCor 2s ease-in infinite;
+}
+
+@keyframes linhaCor {
+    0% {background: linear-gradient(to right, #167464f8, #198f7bf6, #198f7bf6, #167464f8); }
+    5% {background: linear-gradient(to right, #167464f8, #1a9681f6, #1a9681f6, #167464f8); }
+    10% {background: linear-gradient(to right, #167464f8, #1aa38cf6, #1aa38cf6, #167464f8); }
+    15% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
+    20% {background: linear-gradient(to right, #167464f8, #19bda1f6, #19bda1f6, #167464f8); }
+    25% {background: linear-gradient(to right, #167464f8, #17d1b2f6, #17d1b2f6, #167464f8); }
+    30% {background: linear-gradient(to right, #167464f8, #14d3b3f6, #14d3b3f6, #167464f8); }
+    35% {background: linear-gradient(to right, #167464f8, #12d8b7f6, #12d8b7f6, #167464f8); }
+    40% {background: linear-gradient(to right, #167464f8, #0fe2bff6, #0fe2bff6, #167464f8); }
+    45% {background: linear-gradient(to right, #167464f8, #0aecc7f6, #0aecc7f6, #167464f8); }
+    50% {background: linear-gradient(to right, #167464f8, #03ffd5f6, #03ffd5f6, #167464f8); }
+    55% {background: linear-gradient(to right, #167464f8, #0aecc7f6, #0aecc7f6, #167464f8); }
+    60% {background: linear-gradient(to right, #167464f8, #0fe2bff6, #0fe2bff6, #167464f8); }
+    65% {background: linear-gradient(to right, #167464f8, #12d8b7f6, #12d8b7f6, #167464f8); }
+    70% {background: linear-gradient(to right, #167464f8, #14d3b3f6, #14d3b3f6, #167464f8); }
+    75% {background: linear-gradient(to right, #167464f8, #17d1b2f6, #17d1b2f6, #167464f8); }
+    80% {background: linear-gradient(to right, #167464f8, #19bda1f6, #19bda1f6, #167464f8); }
+    85% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
+    90% {background: linear-gradient(to right, #167464f8, #1aa38cf6, #1aa38cf6, #167464f8); }
+    95% {background: linear-gradient(to right, #167464f8, #1a9681f6, #1a9681f6, #167464f8); }
+    100% {background: linear-gradient(to right, #167464f8, #198f7bf6, #198f7bf6, #167464f8); }
+}
+
 .config .logOut {
     color: white;
     text-decoration: none;

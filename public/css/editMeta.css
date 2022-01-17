@@ -1,46 +1,36 @@
-@keyframes delayNav{
-    0% { opacity:0; }
-    46% { opacity:0; }
-    100% { opacity:1; }
-}
-
-.editar {
+.adicionarMeta {
     position: absolute;
     top: -30px;
     left: 210px;
     width: 50vw;
-    height: 60vh;
+    height: 65vh;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.315);
     border-radius: 8px;
     background-color: rgb(154, 211, 192);
     z-index: 100;
     transition: 0.5s all ease;
-    animation: 0.5s ease 0s normal forwards 1 delayNav;
+    animation: 0.3s ease 0s normal forwards 1 delayNav;
     display: none;
 }
 
-.editar .h1Note {
-    margin: 20px 0px 30px 210px;
+.adicionarMeta h1 {
+    margin: 20px 0px 30px 160px;
 }
 
-.editar .h1Meta {
-    margin: 20px 0px 30px 240px;
-}
-
-.editar #labelTitulo {
+.adicionarMeta #labelTitulo {
     position: relative;
-    left: 20px;
+    left: 30px;
     top: 0px;
     font-weight: 700;
     font-size: 24px;
     color: var(--cor-4);
 }
 
-.editar #Titulo {
+.adicionarMeta #Titulo {
     position: relative;
-    left: 30px;
+    left: 22px;
     bottom: 2px;
-    width: 535px;
+    width: 620px;
     height: 45px;
     padding: 6px 10px 0px 10px;
     border-radius: 8px;
@@ -51,16 +41,16 @@
     color: var(--cor-2);
 }
 
-.editar #labelConteudo {
+.adicionarMeta #labelConteudo {
     position: relative;
-    left: 20px;
+    left: 30px;
     top: 20px;
     font-weight: 700;
     font-size: 19px;
     color: var(--cor-4);
 }
 
-.editar #Conteudo {
+.adicionarMeta #Conteudo {
     position: relative;
     left: 21px;
     top: 20px;
@@ -77,11 +67,11 @@
     resize: none;
 }
 
-.editar input[type="submit"] {
+.adicionarMeta input[type="submit"] {
     position: absolute;
     bottom: 10px;
     right: 30px;
-    padding: 8px 23px;
+    padding: 8px 15px;
     font-weight: 600;
     font-size: 15px;
     border-radius: 7px;
@@ -93,14 +83,14 @@
     transition: 0.5s all ease;
 }
 
-.editar input[type="submit"]:hover {
+.adicionarMeta input[type="submit"]:hover {
     background-color: rgb(3, 180, 3);
 }
 
-.editar .cancelarEdit {
+.adicionarMeta .cancelarEdit {
     position: absolute;
     bottom: 10px;
-    right: 130px;
+    right: 137px;
     text-decoration: none;
     font-weight: 600;
     padding: 7px 6px;
@@ -111,6 +101,6 @@
     transition: 0.5s all ease;
 }
 
-.editar a:hover {
+.adicionarMeta a:hover {
     background-color: rgb(170, 0, 0);
 }

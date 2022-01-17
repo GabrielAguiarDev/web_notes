@@ -5,16 +5,30 @@
     <i class='bx bx-task'></i>
     <hr>
     <div class="adicionar">
-        <a class="btn" href="/postagem">Adicionar anotação</a>
-        <p><%= listNotes.userId %> </p>
+        <button class="btn" onclick="Mudarestado('adicionarNote')">Adicionar anotação</button>
     </div>
     <div class="posts">
+        <div class="adicionarNote" id="adicionarNote">
+            <form action="/notes" method="post">
+                <h1>Adicionar Nova Anotação</h1>
+                <br>
+                <label for="titulo" id="labelTitulo">Título: </label>
+                <input type="text" name="titulo" id="Titulo">
+                <br>
+                <label for="conteudo" id="labelConteudo">Conteudo: </label>
+                <textarea name="conteudo" id="Conteudo" cols="30" rows="10"></textarea>
+                <br>
+                <input type="submit" class="salvarEdit" value="Adicionar">
+                <a href="/home" class="cancelarEdit">Cancelar</a>
+            </form>
+        </div>
         <% listNotes.forEach(note => { %>
             <div class="cardPost">
                 <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
-                <div class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
-                    <i class='bx bx-pencil'></i>
-                </div>
+                <!-- <div class="btn-edit" onclick="Mudarestado('noteEdit-%= note.id %>')">
+                    
+                </div> -->
+                <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
                 <a class="btn-danger" href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>
                 <h4><%= note.titulo %></h4>
                 <input type="hidden" name="id" value="<%= note.id %>">
