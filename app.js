@@ -75,6 +75,12 @@
     // Outros
     app.use('/outros', require('./routes/pages'))
 
+    // Temas
+    app.use('/temas', require('./routes/pages'))
+
+    // Feedback
+    app.use('/feedback', require('./routes/pages'))
+
     // Lixeira
     app.use('/lixeira', require('./routes/pages'))
 

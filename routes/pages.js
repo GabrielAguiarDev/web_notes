@@ -63,6 +63,22 @@ const router = express.Router()
         })
     })
 
+    // Temas
+    router.get('/temas', logado, (req, res)=>{
+        res.render('user/temas', {
+            user: req.user,
+            page_name: 'temas'
+        })
+    })
+
+    // Feedback
+    router.get('/feedback', logado, (req, res)=>{
+        res.render('user/feedback', {
+            user: req.user,
+            page_name: 'feedback'
+        })
+    })
+
     // Lixeira
     router.get('/lixeira', logado, (req, res)=>{
         res.render('user/lixeira', {
