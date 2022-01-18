@@ -63,6 +63,14 @@ const router = express.Router()
         })
     })
 
+    // Lixeira
+    router.get('/lixeira', logado, (req, res)=>{
+        res.render('user/lixeira', {
+            user: req.user,
+            page_name: 'lixeira'
+        })
+    })
+
     // DELETAR METAS
     router.get('/meta/delete/:id', logado, (req, res)=>{
         Meta.deleteOne({_id: req.params.id}).then((note)=>{

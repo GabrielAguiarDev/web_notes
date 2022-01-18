@@ -75,6 +75,9 @@
     // Outros
     app.use('/outros', require('./routes/pages'))
 
+    // Lixeira
+    app.use('/lixeira', require('./routes/pages'))
+
     // Admin: Clientes
     app.use('/admin', require('./routes/pages'))
 
