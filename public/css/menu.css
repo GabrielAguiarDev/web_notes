@@ -187,17 +187,6 @@
     color: rgb(25, 185, 47);
 }
 
-/* .config.activeConfig .underline::before {
-    content: '';
-    position: absolute;
-    bottom: 70px;
-    left: 35px;
-    height: 3px;
-    width: 70%;
-    border: none;
-    background-color: rgba(0, 0, 0, 0.2);
-} */
-
 .config.activeConfig .underline::before {
     content: '';
     position: absolute;

@@ -13,14 +13,14 @@ const router = express.Router()
 // Rotas 
     // INDEX
     router.get('/', (req, res)=>{
-        res.render('index')
+        res.render('user/index')
     }); 
 
     // HOME 
     router.get('/home',logado, (req, res) => {
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
-                res.render('home', {
+                res.render('user/home', {
                 listNotes: note,
                 editNote: noteEdit,
                 user: req.user,
@@ -33,7 +33,7 @@ const router = express.Router()
 
     // PERFIL
     router.get('/perfil', logado, (req, res)=>{
-        res.render('perfil', {
+        res.render('user/perfil', {
             user: req.user,
             page_name: 'perfil'
         })
@@ -41,26 +41,13 @@ const router = express.Router()
 
     // CADASTRO
     router.get('/cadastro', (req, res)=>{
-        res.render('cadastro')
+        res.render('user/cadastro')
     });
-
-    // POSTAGENS
-    router.get('/postagem', logado, (req, res)=>{
-        res.render('createpost', {
-            user: req.user,
-            page_name: 'postagem'})
-    });
-
-    router.get('/criarMeta', logado, (req, res)=>{
-        res.render('createmeta', {
-            user: req.user,
-            page_name: 'criarMeta'})
-    })
 
     // MINHAS METAS
     router.get('/metas', logado, (req, res)=>{
         Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
-            res.render('metas', {
+            res.render('user/metas', {
                 listMetas: Meta,
                 user: req.user,
                 page_name: 'metas'
@@ -70,35 +57,9 @@ const router = express.Router()
 
     // OUTROS
     router.get('/outros', logado, (req, res)=>{
-        res.render('outros', {
+        res.render('user/outros', {
             user: req.user,
             page_name: 'outros'
-        })
-    })
-
-    // EDITAR NOTES 
-    router.get('/note/edit/:id', logado, (req, res)=>{
-        Note.findOne({_id: req.params.id}).then((note)=>{
-            res.render('edit', {
-                Note: note,
-                user: req.user,
-                page_name: 'edit'})
-        }).catch((err)=>{
-            console.log("Esta anotação não existe!... " + err)
-            res.redirect('/home')
-        })
-    })
-
-    // EDITAR METAS
-    router.get('/meta/edit/:id', logado, (req, res)=>{
-        Meta.findOne({_id: req.params.id}).then((meta)=>{
-            res.render('editMeta', {
-                Meta: meta,
-                user: req.user,
-                page_name: 'edit'})
-        }).catch((err)=>{
-            console.log("Esta Meta não existe!... " + err)
-            res.redirect('/metas')
         })
     })
 

@@ -68,9 +68,8 @@ ul li {
 }
 
 .bx-user-pin {
-    position: absolute;
-    right: 134px;
-    bottom: 0px;
+    position: relative;
+    top: 5px;
     font-size: 27px; 
 }
 
@@ -97,9 +96,11 @@ ul li.active a {
 }
 
 ul li h4.perfil {
+    position: relative;
+    bottom: 7px;
     display: block;
-    margin-left: 50px;
-    padding-left: 14px;
+    margin-left: 17px;
+    padding: 0px 0px 5px 10px;
     font-size: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;
@@ -114,6 +115,11 @@ ul li h4.perfil:hover {
     cursor: pointer;
 }
 
+ul li.activePerfil .underline {
+    position: relative;
+    bottom: 22px;
+}
+
 ul li.activePerfil h4.perfil {
     color: var(--cor-2);
 }
@@ -122,8 +128,8 @@ ul li.activePerfil h4.perfil {
     color: var(--cor-2);
 }
 
-.slide {
-    position: absolute;
+ul li .underline::before {
+    /* position: absolute;
     bottom: -6px;
     left: 0;
     width: 90px;
@@ -132,7 +138,18 @@ ul li.activePerfil h4.perfil {
     background-color: var(--cor-2);
     z-index: 1;
     transition: all .5s ease;
+    opacity: 0; */
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 28px;
+    left: 0;
+    z-index: 1;
     opacity: 0;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    transition: all .5s ease-in-out;
 }
 
 @keyframes delayNav{
@@ -141,23 +158,27 @@ ul li.activePerfil h4.perfil {
     100% { opacity:1; }
 }
 
-ul li:nth-child(1).active ~ .slide {
-    left: 27px;
-    width: 100px;
+ul li:nth-child(1).active a .underline::before {
+    left: -30px;
+    width: 160%;
+    opacity: 1;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
-ul li:nth-child(2).active ~ .slide {
-    left: 145px;
-    width: 98px;
+ul li:nth-child(2).active a .underline::before {
+    left: -27px;
+    width: 160%;
+    opacity: 1;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
-ul li:nth-child(3).active ~ .slide {
-    width: 130px;
-    left: 268px;
+ul li:nth-child(3).active a .underline::before {
+    left: -20px;
+    width: 130%;
+    opacity: 1;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }
-ul li:nth-child(4).activePerfil ~ .slide {
-    width: 150px;
-    left: 435px;
+ul li:nth-child(4).activePerfil h4.perfil .underline::before {
+    left: -5px;
+    width: 120%;
+    opacity: 1;
     animation: 1s ease 0s normal forwards 1 delayNav;
 }

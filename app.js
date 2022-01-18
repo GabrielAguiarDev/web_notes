@@ -57,7 +57,7 @@
     // Index
     app.use('/', require('./routes/pages'))
 
-    // Home
+    // Anotações
     app.use('/home', require('./routes/pages'));
 
     // Perfil
@@ -65,15 +65,12 @@
 
     // Cadastro
     app.use('/cadastro', require('./routes/pages'))
-    app.use('/register', require('./routes/pages'));
 
     // Postagem
     app.use('/postagem', require('./routes/pages'));
-    app.use('/post', require('./routes/pages'));
 
-    // Minhas Metas
+    // Metas
     app.use('/metas', require('./routes/pages'));
-    app.use('/criarMeta', require('./routes/pages'))
 
     // Outros
     app.use('/outros', require('./routes/pages'))

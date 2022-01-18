@@ -19,16 +19,16 @@
         <h1 class="logo">Anotações Web</h1>
             <ul class="nav">
                 <li <% if (page_name === 'outros') { %>class="active" <% } %>>
-                    <a href="/outros" class="outros"><i class='bx bx-customize'></i> Outros</a>
+                    <a href="/outros" class="outros"><i class='bx bx-customize'></i> Outros <div class="underline"></div></a>
                 </li>
                 <li <% if (page_name === 'metas' || page_name === 'criarMeta') { %>class="active" <% } %>>
-                    <a href="/metas" class="metas"><i class='bx bx-line-chart'></i> Metas</a>
+                    <a href="/metas" class="metas"><i class='bx bx-line-chart'></i> Metas <div class="underline"></div></a>
                 </li>
                 <li <% if (page_name === 'home' || page_name === 'postagem') { %>class="active" <% } %>>
-                    <a href="/home" class="anotacoes"><i class='bx bx-edit'></i> Anotações</a>
+                    <a href="/home" class="anotacoes"><i class='bx bx-edit'></i> Anotações <div class="underline"></div></a>
                 </li>
-                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user.nome %> </h4> </li>
-                <li class="slide"></li>
+                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user.nome %> <div class="underline"></div></h4>
+                </li>
             </ul>
             <div class="config">
                 <a href="/perfil" class="linkPerfil"><img class="imgPerfil" src="img/imagem_lulamolusco.jpg" alt="Imagem de perfil do Lula Molusco"> <%= user.usuario %> </a>
