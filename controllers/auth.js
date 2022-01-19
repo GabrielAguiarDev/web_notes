@@ -85,7 +85,7 @@ exports.register = (req, res) => {
     }
 }
 
-exports.notes = (req, res)=>{
+exports.notes = async(req, res)=>{
     const novaAnotacao = {
         titulo: req.body.titulo,
         conteudo: req.body.conteudo,
@@ -100,7 +100,7 @@ exports.notes = (req, res)=>{
         console.log("Conteudo inválido!")
         res.redirect('/postagem')
     } else {
-        new Note(novaAnotacao).save().then((req, res)=>{
+        await new Note(novaAnotacao).save().then((req, res)=>{
             console.log("Anotação salva com sucesso!")
 
         }).catch((err)=>{
@@ -110,7 +110,7 @@ exports.notes = (req, res)=>{
     }
 }
 
-exports.metas = (req, res)=>{ // Pendente...
+exports.metas = async(req, res)=>{ // Pendente...
     const novaMeta = {
         titulo: req.body.titulo,
         conteudo: req.body.conteudo,
@@ -121,7 +121,7 @@ exports.metas = (req, res)=>{ // Pendente...
         console.log("Titulo inválido!")
         res.redirect('/criarMeta')
     } else {
-        new Meta(novaMeta).save().then((req, res)=>{
+        await new Meta(novaMeta).save().then((req, res)=>{
             console.log("Meta salva com sucesso!")
 
         }).catch((err)=>{

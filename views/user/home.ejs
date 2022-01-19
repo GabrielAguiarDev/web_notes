@@ -30,9 +30,17 @@
                 </div> -->
                 <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
                 <a class="btn-danger" href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>
-                <h4><%= note.titulo %></h4>
+                <h4>
+                    <% if(note.titulo.lenght !== "") { %> 
+                        <%= note.titulo %>
+                    <% } %> 
+                </h4>
                 <input type="hidden" name="id" value="<%= note.id %>">
-                <p><%= note.conteudo %></p>
+                <p>
+                    <% if(note.conteudo.lenght !== "") { %> 
+                        <%= note.conteudo %>
+                    <% } %> 
+                </p>
                 <hr>
             </div>
             <div class="editar" id="noteEdit-<%= note.id %>">

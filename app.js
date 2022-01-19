@@ -1,13 +1,13 @@
 // Imports
     const express = require('express');
-    const session = require('express-session')
-    const flash = require('connect-flash')
+    const session = require('express-session');
+    const flash = require('connect-flash');
     const app = express();
     const path = require('path');
-    const mongoose = require('mongoose')
+    const mongoose = require('mongoose');
     const bodyParser = require('body-parser');
-    const passport = require('passport')
-    require('./config/auth')(passport)
+    const passport = require('passport');
+    require('./config/auth')(passport);
 
 // Porta
     const porta = process.env.PORT || 3000;

@@ -9,6 +9,18 @@ const Metas = new Schema({
     conteudo: {
         type: String
     },
+    trash: [
+        {
+            titulo: {
+                type: String,
+                required: true
+            }, 
+            conteudo: {
+                type: String,
+                required: true
+            }
+        }
+    ],
     userId: {
         type: Schema.Types.ObjectId,
         ref: "user",

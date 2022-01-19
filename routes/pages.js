@@ -81,9 +81,12 @@ const router = express.Router()
 
     // Lixeira
     router.get('/lixeira', logado, (req, res)=>{
-        res.render('user/lixeira', {
+        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
+            res.render('user/lixeira', {
+            listTrash: note,
             user: req.user,
             page_name: 'lixeira'
+            })
         })
     })
 
@@ -97,17 +100,28 @@ const router = express.Router()
             res.redirect('/metas')
         })
     })
-
-    // DELETAR NOTES
+    
+    // MOVER PARA LIXEIRA
     router.get('/note/delete/:id', logado, (req, res)=>{
-        Note.deleteOne({_id: req.params.id}).then((note)=>{
-            console.log("Anotação deletada com sucesso!")
+        Note.findByIdAndUpdate(req.params.id, {titulo: "", conteudo: "", trash: [{titulo: 'testando apagando conteudo', conteudo: 'testando apagando conteudo e movendo para lixeira...'}]}).then((note)=>{ 
+            console.log("Anotação movida para lixeira!")
             res.redirect('/home')
         }).catch((err)=>{
             console.log("Erro ao deletar: " + err)
             res.redirect('/home')
         })
     })
+
+    // DELETAR NOTES
+    // router.get('/note/delete/:id', logado, (req, res)=>{
+    //     Note.deleteOne({_id: req.params.id}).then((note)=>{
+    //         console.log("Anotação deletada com sucesso!")
+    //         res.redirect('/home')
+    //     }).catch((err)=>{
+    //         console.log("Erro ao deletar: " + err)
+    //         res.redirect('/home')
+    //     })
+    // })
 
     // PAGES ADMIN
     
