@@ -103,7 +103,7 @@ const router = express.Router()
     
     // MOVER PARA LIXEIRA
     router.get('/note/delete/:id', logado, (req, res)=>{
-        Note.findByIdAndUpdate(req.params.id, {titulo: "", conteudo: "", trash: [{titulo: 'testando apagando conteudo', conteudo: 'testando apagando conteudo e movendo para lixeira...'}]}).then((note)=>{ 
+        Note.findByIdAndUpdate(req.params.id, {titulo: "", conteudo: "", trash: [{titulo: req.body.titulo, conteudo: req.body.conteudo}]}).then((note)=>{ 
             console.log("Anotação movida para lixeira!")
             res.redirect('/home')
         }).catch((err)=>{
