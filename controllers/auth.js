@@ -174,12 +174,13 @@ exports.trashesNote = (req, res)=> {
         const noteDelete = {
             titulo: req.body.titulo,
             conteudo: req.body.conteudo,
+            tipo: "notes",
             userId: req.user.id
         }
         await new Trash(noteDelete).save().then((req, res)=>{
-            console.log("Movido para lixeira")
+            console.log("Anotação movida para lixeira")
         }).catch((err)=>{
-            console.log("Erro ao mover para lixeira: " + err)
+            console.log("Erro ao mover anotação para lixeira: " + err)
         })
         await Note.deleteOne({_id: req.body.id}).then((req, res)=>{
             console.log("Apagado das anotações")
@@ -187,6 +188,28 @@ exports.trashesNote = (req, res)=> {
             console.log("Erro ao apagar das anotações: " + err)
         })
         res.redirect('/home')
+    })
+}
+
+exports.trashesMeta = (req, res)=> {
+    Note.findOne({_id: req.body.id}).then( async(note)=>{
+        const noteDelete = {
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo,
+            tipo: "metas",
+            userId: req.user.id
+        }
+        await new Trash(noteDelete).save().then((req, res)=>{
+            console.log("Meta movida para lixeira")
+        }).catch((err)=>{
+            console.log("Erro ao mover meta para lixeira: " + err)
+        })
+        await Meta.deleteOne({_id: req.body.id}).then((req, res)=>{
+            console.log("Apagado das Metas")
+        }).catch((err)=>{
+            console.log("Erro ao apagar das Metas: " + err)
+        })
+        res.redirect('/metas')
     })
 }
 
@@ -201,6 +224,27 @@ exports.rescueNote = (req, res)=> {
             console.log("Movido de volta para a página home")
         }).catch((err)=>{
             console.log("Erro ao mover para home: " + err)
+        })
+        await Trash.deleteOne({_id: req.body.id}).then((req, res)=>{
+            console.log("Apagado permanentemente")
+        }).catch((err)=>{
+            console.log("Erro ao apagar permanentemente: " + err)
+        })
+        res.redirect('/lixeira')
+    })
+}
+
+exports.rescueMeta = (req, res)=> {
+    Trash.findOne({_id: req.body.id}).then( async(note)=>{
+        const metaRescue = {
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo,
+            userId: req.user.id
+        }
+        await new Meta(metaRescue).save().then((req, res)=>{
+            console.log("Movido de volta para a página Metas")
+        }).catch((err)=>{
+            console.log("Erro ao mover para metas: " + err)
         })
         await Trash.deleteOne({_id: req.body.id}).then((req, res)=>{
             console.log("Apagado permanentemente")

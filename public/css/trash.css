@@ -18,6 +18,10 @@
     position: relative;
 }
 
+.trashsMetas {
+    position: relative;
+}
+
 #tituloTrash {
     display: inline-block;
     font-weight: 600;

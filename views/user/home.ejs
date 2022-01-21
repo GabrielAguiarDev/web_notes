@@ -24,45 +24,43 @@
             </form>
         </div>
         <% listNotes.forEach(note => { %>
-            <% if(note.titulo.length > 0 && note.conteudo.length > 0) {%>
-                <div class="cardPost">
-                    <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
-                    <!-- <div class="btn-edit" onclick="Mudarestado('noteEdit-%= note.id %>')">
-                        
-                    </div> -->
-                    <form action="/note/delete" method="post">
-                        <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
-                        <!-- <a class="btn-danger"  href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>-->
-                        <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
-                        <input type="hidden" name="id" value="<%= note.id %>">
-                        <label for="tituloNote" id="tituloLabel"><%= note.titulo %></label>
-                        <input type="hidden" name="titulo" id="tituloNote" value="<%= note.titulo %>">
-                        <br>
-                        <label for="conteudoNote" id="conteudoLabel"><%= note.conteudo %></label>
-                        <input type="hidden" name="conteudo" id="conteudoNote" value="<%= note.conteudo %>">
-                        <hr>
-                    </form>
-                </div>
-                <div class="editar" id="noteEdit-<%= note.id %>">
-                    <form action="/note/edit" method="post">
-                        <h1 class="h1Note">Editar Anotação</h1>
-                        <input type="hidden" name="id" value="<%= note._id %>">
-                        <br>
-                        <label for="titulo" id="labelTitulo">Titulo: </label>
-                        <input type="text" name="titulo" id="Titulo" value="<%= note.titulo %> ">
-                        <br>
-                        <label for="conteudo" id="labelConteudo">Conteudo: </label>
-                        <br>
-                        <textarea name="conteudo" id="Conteudo" cols="30" rows="10"><%= note.conteudo %></textarea>
-                        <br>
-                        <input class="salvarEdit" id="edit-<%= note.id %>" onclick="Mudarestado('noteEdit-<%= note.id %>')" type="submit" value="Salvar">
-                        <!-- <a class="cancelarEdit" onclick="Mudarestado('noteEdit-%= note.id %>')" href="/home">Cancelar</a> -->
-                        <div class="cancelarEdit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
-                            Cancelar
-                        </div>
-                    </form>
-                </div>
-            <% } %> 
+            <div class="cardPost">
+                <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
+                <!-- <div class="btn-edit" onclick="Mudarestado('noteEdit-%= note.id %>')">
+                    
+                </div> -->
+                <form action="/note/delete" method="post">
+                    <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
+                    <!-- <a class="btn-danger"  href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>-->
+                    <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
+                    <input type="hidden" name="id" value="<%= note.id %>">
+                    <label for="tituloNote" id="tituloLabel"><%= note.titulo %></label>
+                    <input type="hidden" name="titulo" id="tituloNote" value="<%= note.titulo %>">
+                    <br>
+                    <label for="conteudoNote" id="conteudoLabel"><%= note.conteudo %></label>
+                    <input type="hidden" name="conteudo" id="conteudoNote" value="<%= note.conteudo %>">
+                    <hr>
+                </form>
+            </div>
+            <div class="editar" id="noteEdit-<%= note.id %>">
+                <form action="/note/edit" method="post">
+                    <h1 class="h1Note">Editar Anotação</h1>
+                    <input type="hidden" name="id" value="<%= note._id %>">
+                    <br>
+                    <label for="titulo" id="labelTitulo">Titulo: </label>
+                    <input type="text" name="titulo" id="Titulo" value="<%= note.titulo %> ">
+                    <br>
+                    <label for="conteudo" id="labelConteudo">Conteudo: </label>
+                    <br>
+                    <textarea name="conteudo" id="Conteudo" cols="30" rows="10"><%= note.conteudo %></textarea>
+                    <br>
+                    <input class="salvarEdit" id="edit-<%= note.id %>" onclick="Mudarestado('noteEdit-<%= note.id %>')" type="submit" value="Salvar">
+                    <!-- <a class="cancelarEdit" onclick="Mudarestado('noteEdit-%= note.id %>')" href="/home">Cancelar</a> -->
+                    <div class="cancelarEdit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
+                        Cancelar
+                    </div>
+                </form>
+            </div>
         <% }); %>
 </main>
 

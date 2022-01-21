@@ -82,11 +82,14 @@ const router = express.Router()
 
     // Lixeira
     router.get('/lixeira', logado, (req, res)=>{
-        Trash.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((trashes)=>{
-            res.render('user/lixeira', {
-            listTrash: trashes,
-            user: req.user,
-            page_name: 'lixeira'
+        Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
+            Trash.find({userId: { $eq: req.user.id }, tipo: "metas"}).sort({_id: -1}).then((trashesMetas)=>{
+                res.render('user/lixeira', {
+                listNotesTrash: trashesNotes,
+                listMetasTrash: trashesMetas,
+                user: req.user,
+                page_name: 'lixeira'
+            })
             })
         })
     })
@@ -94,22 +97,11 @@ const router = express.Router()
     // DELETAR PERMANENTEMENTE
     router.get('/trash/delete/:id', logado, (req, res)=>{
         Trash.deleteOne({_id: req.params.id}).then((note)=>{
-            console.log("Note deletada da lixeira permanentemente com sucesso!")
+            console.log("Deletado da lixeira permanentemente com sucesso!")
             res.redirect('/lixeira')
         }).catch((err)=>{
             console.log("Erro ao deletar permanentemente: " + err)
             res.redirect('/lixeira')
-        })
-    })
-
-    // DELETAR PERMANENTEMENTE
-    router.get('/meta/delete/:id', logado, (req, res)=>{
-        Meta.deleteOne({_id: req.params.id}).then((note)=>{
-            console.log("Meta deletada com sucesso!")
-            res.redirect('/metas')
-        }).catch((err)=>{
-            console.log("Erro ao deletar: " + err)
-            res.redirect('/metas')
         })
     })
 
@@ -158,8 +150,14 @@ const router = express.Router()
     // Mover para lixeira (Notes)
     router.post('/note/delete', authController.trashesNote)
 
+    // Mover para lixeira (Metas)
+    router.post('/meta/delete', authController.trashesMeta)
+
     // Mover de volta da lixeira (Notes)
     router.post('/note/rescue', authController.rescueNote)
+
+    // Mover de volta da lixeira (Metas)
+    router.post('/meta/rescue', authController.rescueMeta)
 
     // Editar Anotação (Salvar)
     router.post('/note/edit', authController.edit)

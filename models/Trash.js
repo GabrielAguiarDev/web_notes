@@ -10,6 +10,10 @@ const Trashes = new Schema({
         type: String,
         required: true
     },
+    tipo: {
+        type: String,
+        required: true
+    },
     userId: {
         type: Schema.Types.ObjectId,
         ref: "user",

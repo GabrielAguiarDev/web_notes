@@ -24,14 +24,22 @@
         </div>
         <% listMetas.forEach(meta => { %>
             <div class="cardPost">
-                <div class="btn-edit" onclick="Mudarestado('metaEdit-<%= meta.id %>')">
-                    <i class='bx bx-pencil'></i>
-                </div>
-                <a class="btn-danger" href="/meta/delete/<%= meta.id %>" onclick="return confirm('Deseja mesmo apagar esta Meta?');"><i class='bx bx-trash'></i></a>
-                <span class="star">&#x2B50;</span><h4 class="tituloMeta"><%= meta.titulo %></h4>
-                <input type="hidden" name="id" value=" meta.id %>">
-                <p><%= meta.conteudo %></p>
-                <hr>
+                <form action="/meta/delete" method="post">
+                    <button class="btn-edit" onclick="Mudarestado('metaEdit-<%= meta.id %>')"><i class='bx bx-pencil'></i></button>
+                    <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
+                    <!-- <span class="star">&#x2B50;</span><h4 class="tituloMeta">%= meta.titulo %></h4>
+                    <input type="hidden" name="id" value=" meta.id %>">
+                    <p>%= meta.conteudo %></p> -->
+
+                    <input type="hidden" name="id" value="<%= meta.id %>">
+                    <span class="star">&#x2B50;</span>
+                    <label for="tituloMeta" id="tituloLabel"><%= meta.titulo %></label>
+                    <input type="hidden" name="titulo" id="tituloMeta" value="<%= meta.titulo %>">
+                    <br>
+                    <label for="conteudoNote" id="conteudoLabel"><%= meta.conteudo %></label>
+                    <input type="hidden" name="conteudo" id="conteudoMeta" value="<%= meta.conteudo %>">
+                    <hr>
+                </form>
             </div>
             <div class="editar" id="metaEdit-<%= meta.id %>">
                 <form action="/meta/edit" method="post">
