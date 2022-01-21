@@ -79,15 +79,17 @@ hr {
 }
 
 .tituloMeta {
+    display: inline-block;
     margin-left: 10px;
 }
 
-h4 {
+#tituloLabel {
     display: inline-block;
+    font-weight: 600;
     color: var(--cor-2);
 }
 
-p {
+#conteudoLabel {
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-weight: 600;
     color: rgb(80, 80, 80);
@@ -142,6 +144,7 @@ p {
     transition: all .3s ease;
     box-shadow: 0 0 0 0;
     border: 0 none;
+    background-color: transparent;
     outline: 0;
     cursor: pointer;
     transition: 0.5s all ease;
@@ -172,6 +175,7 @@ p {
 }
 
 .nomeClientes {
+    display: inline-block;
     color: var(--cor-2);
     font-size: 1.2em;
     margin-bottom: 5px;

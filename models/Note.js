@@ -3,23 +3,13 @@ const Schema = mongoose.Schema
 
 const Notes = new Schema({
     titulo: {
-        type: String
+        type: String,
+        required: true
     },
     conteudo: {
-        type: String
+        type: String,
+        required: true
     },
-    trash: [
-        {
-            titulo: {
-                type: String,
-                required: true
-            }, 
-            conteudo: {
-                type: String,
-                required: true
-            }
-        }
-    ],
     userId: {
         type: Schema.Types.ObjectId,
         ref: "user",

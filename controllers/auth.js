@@ -2,9 +2,11 @@ const mongoose = require('mongoose')
 require('../models/Note')
 require('../models/User')
 require('../models/Meta')
+require('../models/Trash')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const Meta = mongoose.model("metas")
+const Trash = mongoose.model("trashes")
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
@@ -165,6 +167,57 @@ exports.edit = (req, res)=> {
     }).catch((err)=>{
         console.log("Erro ao editar a anotação: " + err)
     })
+}
+
+exports.trashesNote = (req, res)=> {
+    Note.findOne({_id: req.body.id}).then( async(note)=>{
+        const noteDelete = {
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo,
+            userId: req.user.id
+        }
+        await new Trash(noteDelete).save().then((req, res)=>{
+            console.log("Movido para lixeira")
+        }).catch((err)=>{
+            console.log("Erro ao mover para lixeira: " + err)
+        })
+        await Note.deleteOne({_id: req.body.id}).then((req, res)=>{
+            console.log("Apagado das anotações")
+        }).catch((err)=>{
+            console.log("Erro ao apagar das anotações: " + err)
+        })
+        res.redirect('/home')
+    })
+}
+
+exports.rescueNote = (req, res)=> {
+    Trash.findOne({_id: req.body.id}).then( async(note)=>{
+        const noteRescue = {
+            titulo: req.body.titulo,
+            conteudo: req.body.conteudo,
+            userId: req.user.id
+        }
+        await new Note(noteRescue).save().then((req, res)=>{
+            console.log("Movido de volta para a página home")
+        }).catch((err)=>{
+            console.log("Erro ao mover para home: " + err)
+        })
+        await Trash.deleteOne({_id: req.body.id}).then((req, res)=>{
+            console.log("Apagado permanentemente")
+        }).catch((err)=>{
+            console.log("Erro ao apagar permanentemente: " + err)
+        })
+        res.redirect('/lixeira')
+    })
+}
+
+exports.cleanTrash = async(req, res)=> {
+    await Trash.deleteMany({userId: req.user.id}).then((req, res)=>{
+        console.log("Lixeira limpada com sucesso!")
+    }).catch((err)=>{
+        console.log("Erro ao limpar a lixeira: " + err)
+    })
+    res.redirect('/lixeira')
 }
 
 exports.updateUser = (req, res)=> {

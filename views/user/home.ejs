@@ -7,7 +7,8 @@
     <div class="adicionar">
         <button class="btn" onclick="Mudarestado('adicionarNote')">Adicionar anotação</button>
     </div>
-    <div class="posts">
+    <!-- Card adicionar e card editar feitos com algum tipo de mensagem na tela. ex: Confirm(''); - alert('');
+    -- Possível resolução do problema de clicar duas vezes para tornar um elemento com o display block novamente. -->
         <div class="adicionarNote" id="adicionarNote">
             <form action="/notes" method="post">
                 <h1>Adicionar Nova Anotação</h1>
@@ -23,21 +24,24 @@
             </form>
         </div>
         <% listNotes.forEach(note => { %>
-            <% if(note.titulo.lenght > 0 && note.conteudo.lenght > 0) {%>
+            <% if(note.titulo.length > 0 && note.conteudo.length > 0) {%>
                 <div class="cardPost">
                     <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
                     <!-- <div class="btn-edit" onclick="Mudarestado('noteEdit-%= note.id %>')">
                         
                     </div> -->
-                    <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
                     <form action="/note/delete" method="post">
-                        <i class='bx bx-trash'></i>
+                        <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
+                        <!-- <a class="btn-danger"  href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>-->
+                        <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
+                        <input type="hidden" name="id" value="<%= note.id %>">
+                        <label for="tituloNote" id="tituloLabel"><%= note.titulo %></label>
+                        <input type="hidden" name="titulo" id="tituloNote" value="<%= note.titulo %>">
+                        <br>
+                        <label for="conteudoNote" id="conteudoLabel"><%= note.conteudo %></label>
+                        <input type="hidden" name="conteudo" id="conteudoNote" value="<%= note.conteudo %>">
+                        <hr>
                     </form>
-                    <!-- <a class="btn-danger" href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"></a> -->
-                    <h4> <%= note.titulo %></h4>
-                    <input type="hidden" name="id" value="<%= note.id %>">
-                    <p> <%= note.conteudo %> </p>
-                    <hr>
                 </div>
                 <div class="editar" id="noteEdit-<%= note.id %>">
                     <form action="/note/edit" method="post">
@@ -60,7 +64,6 @@
                 </div>
             <% } %> 
         <% }); %>
-    </div>
 </main>
 
 <%- include('../include/footer') %>

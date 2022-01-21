@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const Meta = mongoose.model("metas")
+const Trash = mongoose.model("trashes")
 const {eAdmin} = require('../helpers/authadmin')
 const {logado} = require('../helpers/authadmin')
 const erros = require('../controllers/auth')
@@ -81,16 +82,27 @@ const router = express.Router()
 
     // Lixeira
     router.get('/lixeira', logado, (req, res)=>{
-        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
+        Trash.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((trashes)=>{
             res.render('user/lixeira', {
-            listTrash: note,
+            listTrash: trashes,
             user: req.user,
             page_name: 'lixeira'
             })
         })
     })
 
-    // DELETAR METAS
+    // DELETAR PERMANENTEMENTE
+    router.get('/trash/delete/:id', logado, (req, res)=>{
+        Trash.deleteOne({_id: req.params.id}).then((note)=>{
+            console.log("Note deletada da lixeira permanentemente com sucesso!")
+            res.redirect('/lixeira')
+        }).catch((err)=>{
+            console.log("Erro ao deletar permanentemente: " + err)
+            res.redirect('/lixeira')
+        })
+    })
+
+    // DELETAR PERMANENTEMENTE
     router.get('/meta/delete/:id', logado, (req, res)=>{
         Meta.deleteOne({_id: req.params.id}).then((note)=>{
             console.log("Meta deletada com sucesso!")
@@ -100,28 +112,6 @@ const router = express.Router()
             res.redirect('/metas')
         })
     })
-    
-    // MOVER PARA LIXEIRA
-    router.get('/note/delete/:id', logado, (req, res)=>{
-        Note.findByIdAndUpdate(req.params.id, {titulo: "", conteudo: "", trash: [{titulo: req.body.titulo, conteudo: req.body.conteudo}]}).then((note)=>{ 
-            console.log("Anotação movida para lixeira!")
-            res.redirect('/home')
-        }).catch((err)=>{
-            console.log("Erro ao deletar: " + err)
-            res.redirect('/home')
-        })
-    })
-
-    // DELETAR NOTES
-    // router.get('/note/delete/:id', logado, (req, res)=>{
-    //     Note.deleteOne({_id: req.params.id}).then((note)=>{
-    //         console.log("Anotação deletada com sucesso!")
-    //         res.redirect('/home')
-    //     }).catch((err)=>{
-    //         console.log("Erro ao deletar: " + err)
-    //         res.redirect('/home')
-    //     })
-    // })
 
     // PAGES ADMIN
     
@@ -161,6 +151,15 @@ const router = express.Router()
 
     // Rota Index
     router.post('/', authController.index)
+
+    // Limpar Lixeira
+    router.post('/note/clean', authController.cleanTrash)
+
+    // Mover para lixeira (Notes)
+    router.post('/note/delete', authController.trashesNote)
+
+    // Mover de volta da lixeira (Notes)
+    router.post('/note/rescue', authController.rescueNote)
 
     // Editar Anotação (Salvar)
     router.post('/note/edit', authController.edit)

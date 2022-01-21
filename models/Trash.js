@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const Metas = new Schema({
+const Trashes = new Schema({
     titulo: {
         type: String,
         required: true
     },
     conteudo: {
-        type: String
+        type: String,
+        required: true
     },
     userId: {
         type: Schema.Types.ObjectId,
@@ -20,4 +21,4 @@ const Metas = new Schema({
     }
 })
 
-mongoose.model("metas", Metas)
+mongoose.model("trashes", Trashes)
