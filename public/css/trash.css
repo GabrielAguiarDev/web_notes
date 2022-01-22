@@ -1,3 +1,95 @@
+.navListTrash {
+    position: fixed;
+    left: 4px;
+    top: 160px;
+    width: 280px;
+    min-height: 360px;
+    border: 2px solid var(--cor-2);
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px #00000030;
+}
+
+.navListTrash h1 {
+    margin: 30px 100px 7px 100px;
+    font-size: 1.6em;
+}
+
+.navListTrash hr {
+    margin: 0px 0px 35px 40px;
+    height: 2px;
+    width: 70%;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-2);
+}
+
+.navListTrash ul li .bx-edit {
+    position: relative;
+    right: 20px;
+    top: 6px;
+    margin-right: 13px;
+    font-size: 28px;
+    color: var(--cor-2);
+    animation: none;
+}
+.navListTrash ul li .bx-line-chart {
+    position: relative;
+    right: 20px;
+    top: 6px;
+    margin-right: 13px;
+    font-size: 28px;
+    color: var(--cor-2);
+    animation: none;
+}
+.navListTrash ul li .bx-customize {
+    position: relative;
+    right: 20px;
+    bottom: -6px;
+    margin-right: 10px;
+    font-size: 28px;
+    color: var(--cor-2);
+}
+
+.navListTrash ul li {
+    position: relative;
+    text-align: left;
+    line-height: 50px;
+    padding-left: 55px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--cor-2);
+    cursor: pointer;
+    transition: 0.5s all ease;
+}
+
+.navListTrash ul li:hover {
+    background-color: rgba(236, 235, 235, 0.507);
+}
+
+.navListTrash .underline::before {
+    content: '';
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    height: 3px;
+    width: 70%;
+    z-index: 1;
+    opacity: 1;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    transition: all .5s ease-in-out;
+}
+
+.container {
+    position: fixed;
+    right: 50px;
+    width: 72vw;
+}
+
+.container h1 {
+    margin-left: 370px;
+}
+
 .iconeGrande .bx-trash {
     display: inline-block;
     position: absolute;

@@ -30,10 +30,9 @@ body {
 
 main {
     position: relative;
-    top: 50px;
-    margin-top: 45px;
+    top: 150px;
     width: 80vw;
-    min-height: 61.7vh;
+    min-height: 74.5vh;
     margin: auto;
     border-radius: 8px;
 }
