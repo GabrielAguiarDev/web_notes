@@ -255,8 +255,17 @@ exports.rescueMeta = (req, res)=> {
     })
 }
 
-exports.cleanTrash = async(req, res)=> {
-    await Trash.deleteMany({userId: req.user.id}).then((req, res)=>{
+exports.cleanTrashNotes = async(req, res)=> {
+    await Trash.deleteMany({userId: req.user.id, tipo: "notes"}).then((req, res)=>{
+        console.log("Lixeira limpada com sucesso!")
+    }).catch((err)=>{
+        console.log("Erro ao limpar a lixeira: " + err)
+    })
+    res.redirect('/lixeira')
+}
+
+exports.cleanTrashMetas = async(req, res)=> {
+    await Trash.deleteMany({userId: req.user.id, tipo: "metas"}).then((req, res)=>{
         console.log("Lixeira limpada com sucesso!")
     }).catch((err)=>{
         console.log("Erro ao limpar a lixeira: " + err)

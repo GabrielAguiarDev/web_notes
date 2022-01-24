@@ -123,7 +123,17 @@
 }
 
 .cleanTrash {
-    margin-bottom: 90px;
+    margin-bottom: 70px;
+}
+
+.nameTrash {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--cor-3);
+}
+
+.cardMetasTrash {
+    display: none;
 }
 
 .trashsNotes {

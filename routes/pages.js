@@ -121,7 +121,7 @@ const router = express.Router()
                 User.find().sort({data: 'desc'}).then((User)=> {
                     res.render('admin/clientes', {
                         users: User,
-                        user: req.user,
+                        User: req.user,
                         page_name: 'admin'
                     })
                 }).catch((err)=>{
@@ -144,8 +144,11 @@ const router = express.Router()
     // Rota Index
     router.post('/', authController.index)
 
-    // Limpar Lixeira
-    router.post('/note/clean', authController.cleanTrash)
+    // Limpar Lixeira (Notes)
+    router.post('/note/clean', authController.cleanTrashNotes)
+    
+    // Limpar Lixeira (Metas)
+    router.post('/meta/clean', authController.cleanTrashMetas)
 
     // Mover para lixeira (Notes)
     router.post('/note/delete', authController.trashesNote)

@@ -53,6 +53,18 @@ main .bx-edit {
     animation: icone 5s infinite;
 }
 
+main .bxs-user {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
 main .bx-line-chart {
     display: inline-block;
     position: absolute;
