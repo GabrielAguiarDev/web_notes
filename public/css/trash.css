@@ -29,7 +29,7 @@
     top: 6px;
     margin-right: 13px;
     font-size: 28px;
-    color: var(--cor-2);
+    color: var(--cor-3);
     animation: none;
 }
 .navListTrash ul li .bx-line-chart {
@@ -38,7 +38,7 @@
     top: 6px;
     margin-right: 13px;
     font-size: 28px;
-    color: var(--cor-2);
+    color: var(--cor-3);
     animation: none;
 }
 .navListTrash ul li .bx-customize {
@@ -47,7 +47,7 @@
     bottom: -6px;
     margin-right: 10px;
     font-size: 28px;
-    color: var(--cor-2);
+    color: var(--cor-3);
 }
 
 .navListTrash ul li {
@@ -57,9 +57,29 @@
     padding-left: 55px;
     font-size: 1.2em;
     font-weight: 600;
-    color: var(--cor-2);
+    color: var(--cor-3);
     cursor: pointer;
     transition: 0.5s all ease;
+}
+
+.navListTrash ul li:nth-child(1).activeListTrash .bx-edit{
+    color: var(--cor-2);
+}
+.navListTrash ul li:nth-child(2).activeListTrash .bx-line-chart{
+    color: var(--cor-2);
+}
+.navListTrash ul li:nth-child(3).activeListTrash .bx-customize{
+    color: var(--cor-2);
+}
+
+.navListTrash ul li:nth-child(1).activeListTrash {
+    color: var(--cor-2);
+}
+.navListTrash ul li:nth-child(2).activeListTrash {
+    color: var(--cor-2);
+}
+.navListTrash ul li:nth-child(3).activeListTrash {
+    color: var(--cor-2);
 }
 
 .navListTrash ul li:hover {
@@ -81,8 +101,8 @@
 }
 
 .container {
-    position: fixed;
-    right: 50px;
+    position: relative;
+    left: 190px;
     width: 72vw;
 }
 

@@ -32,9 +32,8 @@ main {
     position: relative;
     top: 150px;
     width: 80vw;
-    min-height: 74.5vh;
+    min-height: 53.7vh;
     margin: auto;
-    border-radius: 8px;
 }
 
 h1 {

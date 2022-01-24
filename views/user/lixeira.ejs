@@ -6,8 +6,8 @@
         <h1>Tipos</h1>
         <hr>
         <ul>
-            <li><i class='bx bx-edit'></i> Anotações</li>
-            <li><i class='bx bx-line-chart'></i> Metas</li>
+            <li class="noteTrash activeListTrash"><i class='bx bx-edit'></i> Anotações</li>
+            <li class="metaTrash"><i class='bx bx-line-chart'></i> Metas</li>
             <li><i class='bx bx-customize'></i> Outros tipos</li>
         </ul>
         <div class="underline"></div>
@@ -23,7 +23,7 @@
                 <button type="submit" class="btn" onclick="return confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
             </form>
         </div>
-        <div class="cardNotesTrash">
+        <div class="cardNotesTrash" id="cardNotesTrash">
             <% listNotesTrash.forEach(trash => { %>
                 <div class="trashsNotes">
                     <form action="/note/rescue" method="post">
@@ -40,7 +40,7 @@
                 </div>
             <% }) %>
         </div>
-        <div class="cardMetasTrash">
+        <div class="cardMetasTrash" id="cardMetasTrash" style="display: none;">
             <% listMetasTrash.forEach(trash => { %>
                 <div class="trashsMetas">
                     <form action="/meta/rescue" method="post">

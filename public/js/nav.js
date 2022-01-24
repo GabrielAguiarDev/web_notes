@@ -12,3 +12,5 @@ fecharConfig.onclick = function () {
     perfil.classList.toggle('activePerfil')
     config.classList.toggle('activeConfig')
 }
+
+// Script para listar apenas a anotações selecionadas na lixeira
