@@ -1,0 +1,74 @@
+.topoPerfil {
+    position: relative;
+    top: 33px;
+    height: 259px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
+    background-image: linear-gradient(to right, var(--cor-2) 0%, #cee7e7 10%, #cee7e7 90%, var(--cor-2)100%);
+}
+
+.mainPerfil {
+    position: relative;
+    top: 60px;
+    bottom: 20px;
+}
+
+.divImgPerfil {
+    display: inline-block;
+    position: relative;
+    top: -50px;
+    left: 108px;
+    width: 200px;
+    height: auto;
+}
+
+.imgPerfil {
+    border-radius: 50%;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border: 3px solid var(--cor-3)
+}
+
+.alterPerfil .bx-pencil {
+    position: relative;
+    bottom: 55px;
+    left: 147px;
+    font-size: 23px;
+    padding: 5px 5px;
+    border-radius: 50%;
+    border: 2px solid var(--cor-3);
+    color: var(--cor-3);
+    background-color: rgb(223, 223, 223);
+    cursor: pointer;
+}
+
+.topoPerfil .infoPerfil {
+    display: inline-block;
+    position: relative;
+    bottom: 110px;
+    left: 160px;
+    height: 180px;
+    width: 330px;
+}
+
+.topoPerfil .infoPerfil h1 {
+    position: relative;
+    left: -10px;
+    font-size: 30px;
+}
+
+.topoPerfil .infoPerfil h4 {
+    margin-top: 10px;
+    color: var(--cor-2);
+}
+
+.topoPerfil .infoPerfil .linha {
+    display: inline-block;
+    position: relative;
+    left: 318px;
+    top: 144px;
+    height: 190px;
+    width: 1px;
+    border: 2px solid var(--cor-2);
+}
