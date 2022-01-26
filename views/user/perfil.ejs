@@ -11,13 +11,16 @@
         </div>
         <div class="infoPerfil">
             <div class="linha"></div>
-            <h1 class="infoNome"><%= user.nome %> </h1>
-            <h4> <%= user.usuario %> </h4>
-            <h4> <%= user.email %> </h4>
-            <h4> <%= user.data %> </h4>
+            <ul>
+                <li><span>Nome: </span> <%= user.nome %></li>
+                <li><span>Usuário: </span> <%= user.usuario %></li>
+                <li><span>Email: </span> <%= user.email %></li>
+                <% let dFormat = dateUser.getDate()+" / "+(dateUser.getMonth()+1)+" / "+dateUser.getFullYear()+ " " + " às " + " " + dateUser.getHours() + ":" + dateUser.getMinutes() + ":" + dateUser.getSeconds() %> 
+                <li><span>Data e Hora de Registro: </span> <%= dFormat %></li>
+            </ul>
         </div>
     </div>
-    <div class="mainPerfil">
+    <!-- <div class="mainPerfil">
         <p>O usuário poderá colocar foto, alterar a foto, alterar tema, alterar dados pessoais, e etc.</p>
         <h3>Dados do Usuário</h3>
         <form action="/update/user" method="post">
@@ -41,8 +44,8 @@
             <% } %>
             <br><br>
             <button type="submit">Salvar</button>
-    </div>
-    </form>
+        </form>
+    </div> -->
 </main>
 
 <%- include('../include/footer') %>

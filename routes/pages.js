@@ -36,6 +36,7 @@ const router = express.Router()
     router.get('/perfil', logado, (req, res)=>{
         res.render('user/perfil', {
             user: req.user,
+            dateUser: req.user.data,
             page_name: 'perfil'
         })
     })
