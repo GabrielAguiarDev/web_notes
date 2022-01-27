@@ -22,24 +22,34 @@ const router = express.Router()
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
                 res.render('user/home', {
-                listNotes: note,
-                editNote: noteEdit,
-                user: req.user,
-                page_name: 'home'
+                    listNotes: note,
+                    editNote: noteEdit,
+                    user: req.user,
+                    page_name: 'home'
                 })
             })
-            })
-            
+        })       
     })
 
     // PERFIL
-    router.get('/perfil', logado, (req, res)=>{
+    router.get('/perfil', logado, async(req, res)=>{
+
+        let countMeta = await Meta.find({userId: req.user.id}).count().then((count) => {
+            return count
+        })
+
+        let countNote = await Note.find({userId: req.user.id}).count().then((count) => {
+            return count
+        })
+
         res.render('user/perfil', {
             user: req.user,
             dateUser: req.user.data,
+            countMeta, 
+            countNote,
             page_name: 'perfil'
         })
-    })
+    })           
 
     // CADASTRO
     router.get('/cadastro', (req, res)=>{
@@ -108,28 +118,21 @@ const router = express.Router()
 
     // PAGES ADMIN
     
-            // Lista de Clientes
-            router.get('/admin', eAdmin, async(req, res)=>{
-
-                // let countMeta = await Meta.find({userId: { $eq: [] }}).count().then((count) => {
-                //     return count
-                // });
-
-                // let countNote = await Note.find({userId: { $eq: [] }}).count().then((count) => {
-                //     return count
-                // })
-
-                User.find().sort({data: 'desc'}).then((User)=> {
-                    res.render('admin/clientes', {
-                        users: User,
-                        User: req.user,
-                        page_name: 'admin'
-                    })
-                }).catch((err)=>{
-                    console.log("Erro ao listar usuarios: " + err)
-                    res.redirect('/home')
+        // Lista de Clientes
+        router.get('/admin', eAdmin, (req, res)=>{
+            User.find().sort({data: 'desc'}).then((User)=> {
+                Notes.find().then()
+                res.render('admin/clientes', {
+                    users: User,
+                    User: req.user,
+                    dateUser: req.user.data,
+                    page_name: 'admin'
                 })
+            }).catch((err)=>{
+                console.log("Erro ao listar usuarios: " + err)
+                res.redirect('/home')
             })
+        })
 
 
 // MÉTODO POST

@@ -120,3 +120,32 @@
     font-size: 16px;
     color: var(--cor-2);
 }
+
+.topoPerfil .countPerfil {
+    position: absolute;
+    top: 9px;
+    left: 450px;
+    width: 150px;
+    height: 170px;
+}
+
+.topoPerfil .countPerfil ul li:nth-child(1) {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cor-2);
+}
+
+.topoPerfil .countPerfil ul li:nth-child(2) {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cor-2);
+}
+
+.topoPerfil .countPerfil ul li:nth-child(3) {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    color: var(--cor-2);
+}

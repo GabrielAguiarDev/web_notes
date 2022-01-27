@@ -10,7 +10,6 @@
             </div>
         </div>
         <div class="infoPerfil">
-            <div class="linha"></div>
             <ul>
                 <li><span>Nome: </span> <%= user.nome %></li>
                 <li><span>Usuário: </span> <%= user.usuario %></li>
@@ -18,6 +17,14 @@
                 <% let dFormat = dateUser.getDate()+" / "+(dateUser.getMonth()+1)+" / "+dateUser.getFullYear()+ " " + " às " + " " + dateUser.getHours() + ":" + dateUser.getMinutes() + ":" + dateUser.getSeconds() %> 
                 <li><span>Data e Hora de Registro: </span> <%= dFormat %></li>
             </ul>
+            <div class="linha"></div>
+            <div class="countPerfil">
+                <ul>
+                    <li><span>Anotações: </span><%= countNote %></li>
+                    <li><span>Metas: </span><%= countMeta %></li>
+                    <li><span>Outros Tipos: </span>undefine</li>
+                </ul>
+            </div>
         </div>
     </div>
     <!-- <div class="mainPerfil">

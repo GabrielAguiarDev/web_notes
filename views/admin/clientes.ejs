@@ -4,22 +4,32 @@
 <main>
     <h1>Lista de Usuário</h1>
     <i class='bx bxs-user'></i>
-    <% users.forEach(user => { %>
-        <% if(User.id !== user.id) { %>
-        <hr>
-            <h4 class="nomeClientes"><%= user.nome %></h4>
-            <% if(user.eAdmin) {%>
-                <h6 class="userAdmin">• <i>Admin</i></h6>
-            <% } %>
-            <ul>
-                <li class="listClientes"> <span>Usuário:</span> <%= user.usuario %> </li>
-                <li class="listClientes"> <span>Email:</span> <%= user.email %> </li>
-                <li class="listClientes"> <span>Quantidade de Metas:</span> undefine </li>
-                <li class="listClientes"> <span>Quantidade de anotações:</span> undefine </li>
-                <li class="listClientes"> <span>Data de cadastro:</span> <%= user.data %> </li>
-            </ul>
-            <% } %>
-    <% }); %> 
+    <hr>
+    <div class="cardPesquisa">
+        <input type="text" name="search" id="search" placeholder="Pesquisa">
+        <label for="search"><i class='bx bx-search-alt-2'></i></label>
+    </div>
+    <div class="cardUsers">
+        <% users.forEach(user => { %>
+            <div class="users" onclick="Mudarestado('infoUser-<%= user.id %>')">
+                <% if(User.id !== user.id) { %>
+                    <h4 class="nomeClientes"><%= user.nome %></h4>
+                    <% if(user.eAdmin) {%>
+                        <h6 class="userAdmin">• <i>Admin</i></h6>
+                    <% } %>
+                    <div class="infoUser" id="infoUser-<%= user.id %>">
+                        <ul>
+                            <li class="listClientes"> <span>Usuário: </span> <%= user.usuario %> </li>
+                            <li class="listClientes"> <span>Email: </span> <%= user.email %> </li>
+                            <% let dFormat = user.data.getDate()+" / "+(user.data.getMonth()+1)+" / "+user.data.getFullYear()+ " " + " às " + " " + user.data.getHours() + ":" + user.data.getMinutes() + ":" + user.data.getSeconds() %>
+                            <li class="listClientes"><span>Data e Hora de Registro:  </span> <%= dFormat %></li>
+                        </ul>
+                    </div>
+                    <hr>
+                <% } %>
+            </div>
+        <% }); %>
+    </div> 
 </main>
 
 <%- include('../include/footer') %>
