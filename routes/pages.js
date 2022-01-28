@@ -121,7 +121,6 @@ const router = express.Router()
         // Lista de Clientes
         router.get('/admin', eAdmin, (req, res)=>{
             User.find().sort({data: 'desc'}).then((User)=> {
-                Notes.find().then()
                 res.render('admin/clientes', {
                     users: User,
                     User: req.user,

@@ -6,9 +6,15 @@
         <h1>Tipos</h1>
         <hr>
         <ul>
-            <li onclick="displayNote('cardNotesTrash')"><i class='bx bx-edit'></i> Anotações</li>
-            <li onclick="displayMeta('cardMetasTrash')"><i class='bx bx-line-chart'></i> Metas</li>
+            <!-- <li onclick="displayMeta('cardNotesTrash')" class="lixeiraNote"><i class='bx bx-edit'></i> Anotações</li>
+            <li onclick="displayMeta('cardMetasTrash')" class="lixeiraMeta"><i class='bx bx-line-chart'></i> Metas</li> -->
+            <li class="lixeiraNote activeListTrash"><i class='bx bx-edit'></i> Anotações</li>
+            <li class="lixeiraMeta"><i class='bx bx-line-chart'></i> Metas</li>
             <li><i class='bx bx-customize'></i> Outros tipos</li>
+
+                Testar o visibility: hidden; com height: 0; na div cardNotesTrash pra ver se consigo manter o funcionamento e adicionar uma transição.
+
+
         </ul>
         <div class="underline"></div>
     </div>
@@ -18,11 +24,6 @@
             <i class='bx bx-trash'></i>
         </div>
         <hr>
-        <!-- <div class="cleanTrash">
-            <form action="/note/clean" method="post">
-                <button type="submit" class="btn" onclick="return confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
-            </form>
-        </div> -->
         <div class="cardNotesTrash" id="cardNotesTrash">
             <div class="cleanTrash">
                 <form action="/note/clean" method="post">
@@ -46,7 +47,7 @@
                 </div>
             <% }) %>
         </div>
-        <div class="cardMetasTrash" id="cardMetasTrash" style="display: none;">
+        <div class="cardMetasTrash" id="cardMetasTrash">
             <div class="cleanTrash">
                 <form action="/meta/clean" method="post">
                     <button type="submit" class="btn" onclick="return confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>

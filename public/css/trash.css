@@ -82,6 +82,7 @@
     color: var(--cor-2);
 }
 
+
 .navListTrash ul li:hover {
     background-color: rgba(236, 235, 235, 0.507);
 }
@@ -132,7 +133,7 @@
     color: var(--cor-3);
 }
 
-.cardMetasTrash {
+#cardMetasTrash {
     display: none;
 }
 

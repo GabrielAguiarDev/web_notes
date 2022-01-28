@@ -28,6 +28,15 @@ body {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    width: 11px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--cor-3);
+    border-radius: 18px;
+}
+
 main {
     position: relative;
     top: 150px;
