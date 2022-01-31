@@ -198,7 +198,7 @@
     background-color: rgb(3, 180, 3);
 }
 
-.editar .cancelarEdit {
+.editar .cancelarEditNote {
     position: absolute;
     bottom: 10px;
     right: 130px;
@@ -210,6 +210,21 @@
     background-color: rgb(122, 0, 0);
     color: white;
     transition: 0.5s all ease;
+}
+
+.adicionarNote .cancelarAddNote {
+    position: absolute;
+    bottom: 10px;
+    right: 140px;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 7px 6px;
+    border-radius: 7px;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.329);
+    background-color: rgb(122, 0, 0);
+    color: white;
+    transition: 0.5s all ease;
+    cursor: pointer;
 }
 
 .editar a:hover {

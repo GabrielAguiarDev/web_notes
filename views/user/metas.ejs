@@ -6,7 +6,7 @@
     <i class='bx bx-line-chart'></i>
     <hr>
     <div class="adicionar">
-        <button class="btn" onclick="Mudarestado('adicionarMeta')">Adicionar Meta</button>
+        <button class="btn-add-Meta">Adicionar Meta</button>
     </div>
     <div class="posts">
         <div class="adicionarMeta" id="adicionarMeta">
@@ -14,19 +14,20 @@
                 <h1>Adicionar Nova Meta</h1>
                 <br>
                 <label for="titulo" id="labelTitulo">Minha Meta</label>
-                <input type="text" name="titulo" id="Titulo">
+                <input type="text" name="titulo" id="Titulo" class="tituloMeta">
                 <br>
                 <label for="conteudo" id="labelConteudo">Conteudo</label>
-                <textarea name="conteudo" id="Conteudo" cols="30" rows="10" placeholder="Opcional"></textarea>
+                <textarea name="conteudo" id="Conteudo" class="conteudoMeta" cols="30" rows="10" placeholder="Opcional"></textarea>
                 <br>
                 <input type="submit" onclick="Mudarestado('adicionarMeta')" value="Adicionar">
-                <a href="/metas" class="cancelarEdit" onclick="Mudarestado('adicionarMeta')">Cancelar</a>
+                <div class="cancelarAddMeta">Cancelar</div>
             </form>
         </div>
         <% listMetas.forEach(meta => { %>
             <div class="cardPost">
                 <form action="/meta/delete" method="post">
-                    <button class="btn-edit" onclick="Mudarestado('metaEdit-<%= meta.id %>')"><i class='bx bx-pencil'></i></button>
+                    <!-- onclick="Mudarestado('metaEdit-<%= meta.id %>')" -->
+                    <div class="btn-editMeta"><i class='bx bx-pencil'></i></div>
                     <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
                     <!-- <span class="star">&#x2B50;</span><h4 class="tituloMeta">%= meta.titulo %></h4>
                     <input type="hidden" name="id" value=" meta.id %>">
@@ -55,7 +56,7 @@
                     <textarea name="conteudo" id="Conteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
                     <br>
                     <input class="salvarEdit" id="edit-<%= meta.id %>" onclick="Mudarestado('metaEdit-<%= meta.id %>')" type="submit" value="Salvar">
-                    <a class="cancelarEdit" onclick="Mudarestado('metaEdit-<%= meta.id %>')" href="/metas">Cancelar</a>
+                    <a class="cancelarEditMeta" onclick="Mudarestado('metaEdit-<%= meta.id %>')" href="/metas">Cancelar</a>
                 </form>
             </div>
         <% }); %>

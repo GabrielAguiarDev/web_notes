@@ -48,5 +48,7 @@
 }
 
 .cardUsers .infoUser {
-    display: none;
+    visibility: hidden;
+    height: 0px;
+    transition: 0.2s all ease;
 }

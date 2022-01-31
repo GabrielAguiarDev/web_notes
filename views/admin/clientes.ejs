@@ -11,7 +11,8 @@
     </div>
     <div class="cardUsers">
         <% users.forEach(user => { %>
-            <div class="users" onclick="Mudarestado('infoUser-<%= user.id %>')">
+            <!--  -->
+            <div class="users" onclick="infoUser('infoUser-<%= user.id %>')">
                 <% if(User.id !== user.id) { %>
                     <h4 class="nomeClientes"><%= user.nome %></h4>
                     <% if(user.eAdmin) {%>

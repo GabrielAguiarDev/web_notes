@@ -6,24 +6,24 @@
     <i class='bx bx-edit'></i>
     <hr>
     <div class="adicionar">
-        <button class="btn" onclick="Mudarestado('adicionarNote')">Adicionar anotação</button>
+        <button class="btn-add-Note">Adicionar anotação</button>
     </div>
-    <!-- Card adicionar e card editar feitos com algum tipo de mensagem na tela. ex: Confirm(''); - alert('');
-    -- Possível resolução do problema de clicar duas vezes para tornar um elemento com o display block novamente. -->
+
         <div class="adicionarNote" id="adicionarNote">
             <form action="/notes" method="post">
                 <h1>Adicionar Nova Anotação</h1>
                 <br>
                 <label for="titulo" id="labelTitulo">Título: </label>
-                <input type="text" name="titulo" id="Titulo">
+                <input type="text" name="titulo" id="Titulo" class="tituloNote">
                 <br>
                 <label for="conteudo" id="labelConteudo">Conteudo: </label>
-                <textarea name="conteudo" id="Conteudo" cols="30" rows="10"></textarea>
+                <textarea name="conteudo" id="Conteudo" class="conteudoNote" cols="30" rows="10"></textarea>
                 <br>
                 <input type="submit" class="salvarEdit" value="Adicionar">
-                <a href="/home" class="cancelarEdit">Cancelar</a>
+                <div class="cancelarAddNote">Cancelar</div>
             </form>
         </div>
+
         <% listNotes.forEach(note => { %>
             <div class="cardPost">
                 <!-- <a class="btn-edit" href="/note/edit/< note.id %>"><i class='bx bx-pencil'></i></a> -->
@@ -31,7 +31,7 @@
         
                 </div> -->
                 <form action="/note/delete" method="post">
-                    <button class="btn-edit" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></button>
+                    <div class="btn-editNote" onclick="Mudarestado('noteEdit-<%= note.id %>')"><i class='bx bx-pencil'></i></div>
                     <!-- <a class="btn-danger"  href="/note/delete/<%= note.id %>" onclick="return confirm('Deseja mesmo apagar esta Anotação?');"><i class='bx bx-trash'></i></a>-->
                     <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
                     <input type="hidden" name="id" value="<%= note.id %>">
@@ -43,6 +43,7 @@
                     <hr>
                 </form>
             </div>
+
             <div class="editar" id="noteEdit-<%= note.id %>">
                 <form action="/note/edit" method="post">
                     <h1 class="h1Note">Editar Anotação</h1>
@@ -57,7 +58,7 @@
                     <br>
                     <input class="salvarEdit" id="edit-<%= note.id %>" onclick="Mudarestado('noteEdit-<%= note.id %>')" type="submit" value="Salvar">
                     <!-- <a class="cancelarEdit" onclick="Mudarestado('noteEdit-%= note.id %>')" href="/home">Cancelar</a> -->
-                    <div class="cancelarEdit" onclick="Mudarestado('noteEdit-<%= note.id %>')">
+                    <div class="cancelarEditNote" onclick="Mudarestado('noteEdit-<%= note.id %>')">
                         Cancelar
                     </div>
                 </form>
