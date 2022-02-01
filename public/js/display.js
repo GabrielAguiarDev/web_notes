@@ -1,8 +1,9 @@
 function Mudarestado(el) {
     let display = document.getElementById(el).style.display;
 
-    if(display == "none")
+    if(display == "none") {
         document.getElementById(el).style.display = 'block';
-    else
+    } else {
         document.getElementById(el).style.display = 'none';
+    }
 }

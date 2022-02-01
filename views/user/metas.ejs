@@ -14,7 +14,7 @@
                 <h1>Adicionar Nova Meta</h1>
                 <br>
                 <label for="titulo" id="labelTitulo">Minha Meta</label>
-                <input type="text" name="titulo" id="Titulo" class="tituloMeta">
+                <input type="text" name="titulo" id="Titulo" class="tituloMeta" placeholder="Titulo">
                 <br>
                 <label for="conteudo" id="labelConteudo">Conteudo</label>
                 <textarea name="conteudo" id="Conteudo" class="conteudoMeta" cols="30" rows="10" placeholder="Opcional"></textarea>
@@ -26,13 +26,10 @@
         <% listMetas.forEach(meta => { %>
             <div class="cardPost">
                 <form action="/meta/delete" method="post">
-                    <!-- onclick="Mudarestado('metaEdit-<%= meta.id %>')" -->
-                    <div class="btn-editMeta"><i class='bx bx-pencil'></i></div>
+                    <div class="btn-editMeta" onclick="btnEdit('metaEdit-<%= meta.id %>')">
+                        <i class='bx bx-pencil'></i>
+                    </div>
                     <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
-                    <!-- <span class="star">&#x2B50;</span><h4 class="tituloMeta">%= meta.titulo %></h4>
-                    <input type="hidden" name="id" value=" meta.id %>">
-                    <p>%= meta.conteudo %></p> -->
-
                     <input type="hidden" name="id" value="<%= meta.id %>">
                     <span class="star">&#x2B50;</span>
                     <label for="tituloMeta" id="tituloLabel"><%= meta.titulo %></label>
@@ -49,14 +46,16 @@
                     <input type="hidden" name="id" value="<%= meta.id %>">
                     <br>
                     <label for="titulo" id="labelTitulo">Meta: </label>
-                    <input type="text" name="titulo" id="Titulo" value="<%= meta.titulo %>">
+                    <input type="text" name="titulo" id="EditTitulo" value="<%= meta.titulo %>">
                     <br>
                     <label for="conteudo" id="labelConteudo">Descrição: </label>
                     <!-- <input type="text" name="conteudo" id="Conteudo" value="%= meta.conteudo %>" placeholder="Opcional"> -->
-                    <textarea name="conteudo" id="Conteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
+                    <textarea name="conteudo" id="EditConteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
                     <br>
                     <input class="salvarEdit" id="edit-<%= meta.id %>" onclick="Mudarestado('metaEdit-<%= meta.id %>')" type="submit" value="Salvar">
-                    <a class="cancelarEditMeta" onclick="Mudarestado('metaEdit-<%= meta.id %>')" href="/metas">Cancelar</a>
+                    <div class="cancelarEditMeta" onclick="Mudarestado('metaEdit-<%= meta.id %>')">
+                        Cancelar
+                    </div>
                 </form>
             </div>
         <% }); %>
