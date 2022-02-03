@@ -54,6 +54,7 @@
                 <div class="trashsMetas">
                     <form action="/meta/rescue" method="post">
                         <input type="hidden" name="id" value="<%= trash.id %>">
+                        <span class="star">&#x2B50;</span>
                         <label for="tituloTrash" id="tituloLabel"><%= trash.titulo %></label>
                         <input type="hidden" name="titulo" id="tituloTrash" value="<%= trash.titulo %>">
                         <br>

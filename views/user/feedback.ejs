@@ -2,7 +2,16 @@
 <%- include('../include/navbar') %>
 
 <main>
-    <h1>Feedback</h1>
+    <div class="divFeedback">
+        <form action="/feedback" method="post">
+            <h1>Feedback</h1>
+            <hr>
+            <i class='bx bxs-megaphone'></i>
+            <h4>Seu Email: <span><%= user.email %></span></h4>
+            <textarea name="textarea" id="textarea" class="textarea" cols="30" rows="10" placeholder="Seu Feedback..."></textarea>
+            <button class="enviarFeedback" type="submit">Enviar</button>
+        </form>
+    </div>
 </main>
 
 <%- include('../include/footer') %>
