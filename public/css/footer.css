@@ -21,7 +21,7 @@ footer {
     width: 100%;
     height: 350px;
     position: relative;
-    bottom: 0px;
+    top: 100px;
     margin-top: 200px;
     align-items: center;
     justify-content: center;
@@ -84,6 +84,7 @@ footer {
     position: relative;
     right: 0px;
     top: 10px;
+    min-width: 150px;
 }
 
 .footerDivMeio h4 {
@@ -91,15 +92,18 @@ footer {
     margin-bottom: 20px;
 }
 
-.footerDivMeio p {
+.footerDivMeio a {
+    display: block;
     font-size: 13px;
     font-weight: 500;
-    margin-bottom: 5px;
+    text-align: center;
+    margin-bottom: 2px;
     color: rgb(199, 199, 199);
     cursor: pointer;
+    text-decoration: none;
 }
 
-.footerDivMeio p:hover {
+.footerDivMeio a:hover {
     text-decoration: underline;
 }
 
@@ -220,6 +224,14 @@ footer {
     font-size: 12px;
 }
 
+.footerDivBaixo .developer {
+    position: absolute;
+    right: 0;
+    font-size: 10px;
+    font-weight: 500;
+    color: rgb(199, 199, 199);
+    pointer-events: none;
+}
 .setaParaCima {
     position: absolute;
     top: -74px;
@@ -241,14 +253,6 @@ footer {
     background-color: rgba(15, 109, 65, 0.945);
 }
 
-.developer {
-    width: 200px;
-    height: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    margin: auto;
-}
 
 footer h4 {
     text-align: center;
