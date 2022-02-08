@@ -1,7 +1,7 @@
 .navListTrash {
-    position: fixed;
-    left: 4px;
-    top: 160px;
+    position: absolute;
+    left: -113px;
+    top: 55px;
     width: 280px;
     min-height: 360px;
     border: 2px solid var(--cor-2);
