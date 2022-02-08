@@ -29,12 +29,16 @@ body {
 }
 
 body::-webkit-scrollbar {
-    width: 11px;
+    width: 12px;
 }
 
 body::-webkit-scrollbar-thumb {
     background-color: var(--cor-3);
     border-radius: 18px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: rgb(216, 216, 216);
 }
 
 main {

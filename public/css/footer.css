@@ -21,11 +21,156 @@ footer {
     width: 100%;
     height: 350px;
     position: relative;
-    top: 130px;
-    margin-top: 160px;
+    bottom: 0px;
+    margin-top: 200px;
     align-items: center;
     justify-content: center;
     z-index: 1;
+}
+
+.footerConteudo {
+    width: 80%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    margin: auto;
+}
+
+.footerDivEsquerda {
+    position: relative;
+    top: -10px;
+    right: 135px;
+    color: white;
+}
+
+.footerDivEsquerda span {
+    font-size: 54px;
+    position: relative;
+    top: 16px;
+    right: 6px;
+}
+
+.footerDivEsquerda h1 {
+    color: var(--cor-2);
+    margin-bottom: 10px;
+}
+
+.footerDivEsquerda h6 {
+    position: absolute;
+    top: 65px;
+    left: 55px;
+    color: rgba(253, 250, 250, 0.521);
+}
+
+.footerDivEsquerda p {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgb(199, 199, 199);
+}
+
+.linhaVertical {
+    position: relative;
+    top: 8px;
+    right: 78px;
+    height: 160px;
+    width: 1px;
+    border: 1px solid #80808066;
+}
+
+.footerDivMeio {
+    position: relative;
+    right: 0px;
+    top: 10px;
+}
+
+.footerDivMeio h4 {
+    color: var(--cor-2);
+    margin-bottom: 20px;
+}
+
+.footerDivMeio p {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgb(199, 199, 199);
+}
+
+.footerDivDireita {
+    position: relative;
+    left: 70px;
+    width: 260px;
+    height: 137px;
+}
+
+.footerDivDireita .bxl-github {
+    position: absolute;
+    top: 40px;
+    left: 14px;
+    font-size: 50px;
+    color: #292929f3;
+    transition: 0.3s all ease;
+}
+
+.footerDivDireita .bxl-github:hover {
+    top: 26px;
+    color: black;
+}
+
+.footerDivDireita .bxl-instagram {
+    position: absolute;
+    left: 105px;
+    top: 40px;
+    font-size: 50px;
+    color: #292929f3;
+    transition: 0.3s all ease;
+}
+
+.footerDivDireita .bxl-instagram:hover {
+    color: rgb(185, 16, 72);
+}
+
+.footerDivDireita .bxl-whatsapp {
+    position: absolute;
+    right: 11px;
+    top: 40px;
+    font-size: 50px;
+    color: #292929f3;
+    transition: 0.3s all ease;
+}
+
+.footerDivDireita .bxl-whatsapp:hover {
+    color: rgb(31, 182, 31);
+}
+
+.footerParedeIcones {
+    position: relative;
+    top: 62px;
+    width: 100%;
+    height: 73px;
+    background-color: #15593f;
+}
+
+.footerParedeIcones hr {
+    border: 1px solid var(--cor-2);
+}
+
+.footerDivBaixo hr {
+    position: relative;
+    top: 18px;
+    border: 1px solid #80808066;
+}
+
+.footerDivBaixo {
+    position: absolute;
+    bottom: 25px;
+    width: 80%;
+    text-align: left;
+    color: rgb(199, 199, 199);
+    font-weight: 500;
+    font-size: 12px;
 }
 
 .setaParaCima {
