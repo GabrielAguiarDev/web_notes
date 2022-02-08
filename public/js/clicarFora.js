@@ -1,9 +1,16 @@
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+var fundo = document.getElementById('fundo')
 
-$("body").on('click', function (e) {
-    if ($(e.target).closest(".config").length === 0) {
-        $(".config").removeClass("activeConfig");
-    }
-});
+fundo.onclick = function() {
+    document.getElementById('fundo').style.zIndex = "0";
 
+    // Add Note
+    document.querySelector('.tituloNote').value = "";
+    document.querySelector('.conteudoNote').value = "";
+    document.getElementById('adicionarNote').style.display = "none";
+
+    // Add Meta
+    document.querySelector('.tituloMeta').value = "";
+    document.querySelector('.conteudoMeta').value = "";
+    document.getElementById('adicionarMeta').style.display = "none";
+}
     

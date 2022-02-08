@@ -14,7 +14,7 @@
     height: 400px;
     border-radius: 8px 0px 8px 0px;
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.233);
-    z-index: 100;
+    z-index: 3;
     background-color: var(--cor-3);
     transition: 0.5s all ease;
     opacity: 0;

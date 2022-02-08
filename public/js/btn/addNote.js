@@ -10,6 +10,6 @@ btnAddNote.onclick = function() {
 cancelarAddNote.onclick = function () {
     document.querySelector('.tituloNote').value = "";
     document.querySelector('.conteudoNote').value = "";
-    document.getElementById('fundo').style.zIndex = "0";
     document.getElementById('adicionarNote').style.display = "none";
+    document.getElementById('fundo').style.zIndex = "0";
 }
