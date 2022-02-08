@@ -96,6 +96,11 @@ footer {
     font-weight: 500;
     margin-bottom: 5px;
     color: rgb(199, 199, 199);
+    cursor: pointer;
+}
+
+.footerDivMeio p:hover {
+    text-decoration: underline;
 }
 
 .footerDivDireita {
@@ -115,7 +120,7 @@ footer {
 }
 
 .footerDivDireita .bxl-github:hover {
-    top: 26px;
+    top: 23px;
     color: black;
 }
 
@@ -129,6 +134,7 @@ footer {
 }
 
 .footerDivDireita .bxl-instagram:hover {
+    top: 23px;
     color: rgb(185, 16, 72);
 }
 
@@ -142,7 +148,48 @@ footer {
 }
 
 .footerDivDireita .bxl-whatsapp:hover {
+    top: 23px;
     color: rgb(31, 182, 31);
+}
+
+.footerDivDireita .labelIcone {
+    position: absolute;
+    top: -13px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    padding: 3px 7px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.507);
+    background-color: rgba(0, 0, 0, 0.541);
+    transition: 0.5s all ease;
+}
+
+.footerDivDireita a:nth-child(1) label {
+    left: 10px;
+    opacity: 0;
+}
+
+.footerDivDireita a:nth-child(1):hover label {
+    opacity: 1;
+}
+
+.footerDivDireita a:nth-child(2) label {
+    left: 88px;
+    opacity: 0;
+}
+
+.footerDivDireita a:nth-child(2):hover label {
+    opacity: 1;
+}
+
+.footerDivDireita a:nth-child(3) label {
+    right: -4px;
+    opacity: 0;
+}
+
+.footerDivDireita a:nth-child(3):hover label {
+    opacity: 1;
 }
 
 .footerParedeIcones {
