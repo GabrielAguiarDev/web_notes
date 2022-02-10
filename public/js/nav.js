@@ -17,7 +17,7 @@ fecharConfig.onclick = function () {
 }
 
 fundoNavbar.onclick = function () {
-    perfil.classList.toggle('activePerfil')
-    config.classList.toggle('activeConfig')
+    perfil.classList.remove('activePerfil')
+    config.classList.remove('activeConfig')
     document.getElementById('fundoNavbar').style.zIndex = "0"
 }

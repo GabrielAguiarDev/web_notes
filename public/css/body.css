@@ -16,9 +16,12 @@
     --cor-4: #034d30f8;
 }
 
-html {
-    --background: white;
-    --text: black;
+html.dark-mode {
+    --cor-1: #f0f0f0;
+    --cor-2: #13ccadf6;
+    --cor-3: #167464f8;
+    --cor-4: #034d30f8;
+    background-color: black;
 }
 
 body {
