@@ -1,5 +1,5 @@
 header {
-    background-image: linear-gradient(to bottom, var(--cor-1)70%, white);
+    background-image: linear-gradient(to bottom, var(--header)70%, var(--body));
     width: 100%;
     height: 130px;
     position: fixed;

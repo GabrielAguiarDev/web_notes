@@ -1,5 +1,5 @@
 footer {
-    background-color: var(--cor-4);
+    background-color: var(--footer);
     width: 100%;
     height: 350px;
     position: relative;
@@ -30,7 +30,7 @@ footer h4 {
 .footerDivEsquerda {
     position: relative;
     top: -10px;
-    right: 135px;
+    right: 115px;
     color: white;
 }
 
@@ -57,13 +57,13 @@ footer h4 {
     font-size: 13px;
     font-weight: 500;
     margin-bottom: 5px;
-    color: rgb(199, 199, 199);
+    color: var(--footer-conteudo);
 }
 
 .linhaVertical {
     position: relative;
     top: 8px;
-    right: 78px;
+    right: 38px;
     height: 160px;
     width: 1px;
     border: 1px solid #80808066;
@@ -71,7 +71,7 @@ footer h4 {
 
 .footerDivMeio {
     position: relative;
-    right: 0px;
+    left: 20px;
     top: 10px;
     min-width: 150px;
 }
@@ -87,7 +87,7 @@ footer h4 {
     font-weight: 500;
     text-align: center;
     margin-bottom: 2px;
-    color: rgb(199, 199, 199);
+    color: var(--footer-conteudo);
     cursor: pointer;
     text-decoration: none;
 }
@@ -98,7 +98,7 @@ footer h4 {
 
 .footerDivDireita {
     position: relative;
-    left: 70px;
+    left: 100px;
     width: 260px;
     height: 137px;
 }
@@ -108,7 +108,7 @@ footer h4 {
     top: 40px;
     left: 14px;
     font-size: 50px;
-    color: #292929f3;
+    color: var(--footer-conteudo);
     transition: 0.3s all ease;
 }
 
@@ -122,7 +122,7 @@ footer h4 {
     left: 105px;
     top: 40px;
     font-size: 50px;
-    color: #292929f3;
+    color: var(--footer-conteudo);
     transition: 0.3s all ease;
 }
 
@@ -136,7 +136,7 @@ footer h4 {
     right: 11px;
     top: 40px;
     font-size: 50px;
-    color: #292929f3;
+    color: var(--footer-conteudo);
     transition: 0.3s all ease;
 }
 
@@ -190,7 +190,7 @@ footer h4 {
     top: 62px;
     width: 100%;
     height: 73px;
-    background-color: #15593f;
+    background-color: var(--footer);
 }
 
 .footerParedeIcones hr {

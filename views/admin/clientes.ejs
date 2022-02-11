@@ -11,24 +11,28 @@
     </div>
     <div class="cardUsers">
         <% users.forEach(user => { %>
-            <!--  -->
-            <div class="users" onclick="infoUser('infoUser-<%= user.id %>')">
-                <% if(User.id !== user.id) { %>
-                    <h4 class="nomeClientes"><%= user.nome %></h4>
-                    <% if(user.eAdmin) {%>
-                        <h6 class="userAdmin">• <i>Admin</i></h6>
+            <!-- onclick="infoUser('infoUser-<%= user.id %>')" -->
+            <input type="checkbox" name="listAdmin" data-none id="listAdmin-<%= user.id %>">
+            <label for="listAdmin-<%= user.id %>" onclick="infoUser('infoUser-<%= user.id %>')">
+                <div class="users">
+                    <% if(User.id !== user.id) { %>
+                        <i class='bx bx-chevron-down'></i>
+                        <h4 class="nomeClientes"><%= user.nome %></h4>
+                        <% if(user.eAdmin) {%>
+                            <h6 class="userAdmin">• <i>Admin</i></h6>
+                        <% } %>
+                        <div class="infoUser" id="infoUser-<%= user.id %>">
+                            <ul>
+                                <li class="listClientes"> <span>Usuário: </span> <%= user.usuario %> </li>
+                                <li class="listClientes"> <span>Email: </span> <%= user.email %> </li>
+                                <% let dFormat = user.data.getDate()+" / "+(user.data.getMonth()+1)+" / "+user.data.getFullYear()+ " " + " às " + " " + user.data.getHours() + ":" + user.data.getMinutes() + ":" + user.data.getSeconds() %>
+                                <li class="listClientes"><span>Data e Hora de Registro:  </span> <%= dFormat %></li>
+                            </ul>
+                        </div>
+                        <hr>
                     <% } %>
-                    <div class="infoUser" id="infoUser-<%= user.id %>">
-                        <ul>
-                            <li class="listClientes"> <span>Usuário: </span> <%= user.usuario %> </li>
-                            <li class="listClientes"> <span>Email: </span> <%= user.email %> </li>
-                            <% let dFormat = user.data.getDate()+" / "+(user.data.getMonth()+1)+" / "+user.data.getFullYear()+ " " + " às " + " " + user.data.getHours() + ":" + user.data.getMinutes() + ":" + user.data.getSeconds() %>
-                            <li class="listClientes"><span>Data e Hora de Registro:  </span> <%= dFormat %></li>
-                        </ul>
-                    </div>
-                    <hr>
-                <% } %>
-            </div>
+                </div>
+            </label>
         <% }); %>
     </div> 
 </main>

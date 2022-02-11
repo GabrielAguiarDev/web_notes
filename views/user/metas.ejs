@@ -53,7 +53,7 @@
                     <textarea name="conteudo" id="EditConteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
                     <br>
                     <input class="salvarEdit" id="edit-<%= meta.id %>" onclick="Mudarestado('metaEdit-<%= meta.id %>')" type="submit" value="Salvar">
-                    <div class="cancelarEditMeta" onclick="Mudarestado('metaEdit-<%= meta.id %>')">
+                    <div class="cancelarEditMeta" onclick="cancelarEdit('metaEdit-<%= meta.id %>')">
                         Cancelar
                     </div>
                 </form>

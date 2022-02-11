@@ -60,6 +60,7 @@
     color: var(--cor-3);
     cursor: pointer;
     transition: 0.5s all ease;
+    z-index: 0;
 }
 
 .navListTrash ul li:nth-child(1).activeListTrash .bx-edit{

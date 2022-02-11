@@ -55,7 +55,7 @@
                     <br>
                     <input class="salvarEdit" id="edit-<%= note.id %>" onclick="Mudarestado('noteEdit-<%= note.id %>')" type="submit" value="Salvar">
                     <!-- <a class="cancelarEdit" onclick="Mudarestado('noteEdit-%= note.id %>')" href="/home">Cancelar</a> -->
-                    <div class="cancelarEditNote" onclick="Mudarestado('noteEdit-<%= note.id %>')">
+                    <div class="cancelarEditNote" onclick="cancelarEdit('noteEdit-<%= note.id %>')">
                         Cancelar
                     </div>
                 </form>
