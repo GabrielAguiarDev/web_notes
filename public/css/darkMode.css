@@ -10,9 +10,54 @@
     color: var(--body);
     background-color: rgba(128, 128, 128, 0.356);
     transition: 0.5s all ease;
+    border: none;
 }
 
 .darkMode:hover {
     background-color: rgba(128, 128, 128, 0.425);
     color: rgba(0, 0, 0, 0.767);
+}
+
+.btnDark {
+    position: absolute;
+    bottom: 13px;
+    left: 22px;
+    height: 36px;
+    width: 84px;
+    border-radius: 50px;
+    background-color: #ababab;
+}
+
+#exibirBtnTema {
+    position: relative;
+    top: 2px;
+    width: 33px;
+    height: 33px;
+    background: var(--cor-4);
+    border-radius: 50%;
+    transition: 0.5s all ease;
+    z-index: 1;
+}
+
+.btnDark button {
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 2px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btnDark #btnTemaDark {
+    position: absolute;
+    top: 0px;
+    right: 4px;
+    margin-left: 4px;
+}
+
+.btnDark #btnTemaLight {
+    position: absolute;
+    top: 0px;
 }

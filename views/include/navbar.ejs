@@ -10,7 +10,12 @@
     <% } else { %>
         <div class="underline"></div>
     <% } %> 
-    <label for="darkMode" class="darkMode"><i class='bx bxs-moon'></i></label>
-    <input name="theme" type="checkbox" class="toggle-dark-mode" data-none id="darkMode">
+    <!-- <label for="darkMode" class="darkMode"><i class='bx bxs-moon'></i></label>
+    <input name="theme" type="checkbox" class="toggle-dark-mode" data-none id="darkMode"> -->
+    <div class="btnDark">
+        <div id="exibirBtnTema"></div>
+        <button onclick="tema('light'), exibirLight('exibirBtnTema')" type="button" id="btnTemaLight"><i class='bx bxs-sun'></i></button>
+        <button onclick="tema('dark'), exibirDark('exibirBtnTema')" type="button" id="btnTemaDark"><i class='bx bxs-moon'></i></button>
+    </div>
     <a href="/logout" class="logOut"><i class='bx bx-log-out'></i> Sair</a>
 </div>

@@ -1,12 +1,25 @@
-const btnDarkMode = document.querySelector('.darkMode');
-const body = document.body
+const iconeSol = document.getElementById('btnTemaLight');
+const iconeLua = document.getElementById('btnTemaDark');
 
-btnDarkMode.onclick = function() {
-  body.classList.toggle('dark-mode')
+function exibirLight(el) {
+  document.getElementById(el).style.marginLeft = "4px"
 }
 
+function exibirDark(el) {
+  document.getElementById(el).style.marginLeft = "48px"
+}
 
+function tema(t){
+  const ls = localStorage.getItem("tema");
 
+  if(ls) document.body.classList.remove(ls);
+
+  document.body.classList.add(t)
+  localStorage.setItem("tema", t);
+}
+
+var ls = localStorage.getItem("tema");
+  if(ls) document.body.classList.add(ls);
 
 // const themes = {
 //     light: {
@@ -27,7 +40,7 @@ btnDarkMode.onclick = function() {
 // });
 // }
 
-// const darkModeToggle = document.querySelector('input[name=theme]');
+// const darkModeToggle = document.querySelector('.darkMode');
 
 // darkModeToggle.addEventListener('change', function({ target }) {
 //     setTheme(target.checked ? 'dark' : 'light');
