@@ -161,28 +161,34 @@ footer h4 {
 .footerDivDireita a:nth-child(1) label {
     left: 10px;
     opacity: 0;
+    pointer-events: none;
 }
 
 .footerDivDireita a:nth-child(1):hover label {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .footerDivDireita a:nth-child(2) label {
     left: 88px;
     opacity: 0;
+    pointer-events: none;
 }
 
 .footerDivDireita a:nth-child(2):hover label {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .footerDivDireita a:nth-child(3) label {
     right: -4px;
     opacity: 0;
+    pointer-events: none;
 }
 
 .footerDivDireita a:nth-child(3):hover label {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .footerParedeIcones {

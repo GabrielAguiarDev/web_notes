@@ -9,10 +9,12 @@ function btnEdit(el) {
     document.getElementById('EditConteudo').value = editConteudo;
     document.getElementById('fundoNavbar').style.backdropFilter = "blur(1px)"
     document.getElementById('fundoNavbar').style.zIndex = "1"
+    document.getElementById('fundoNavbar').style.pointerEvents = "auto"
 }
 
 function cancelarEdit(el) {
     document.getElementById(el).style.display = "none";
     document.getElementById('fundoNavbar').style.backdropFilter = "blur(0px)"
     document.getElementById('fundoNavbar').style.zIndex = "0"
+    
 }
