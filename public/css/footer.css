@@ -105,7 +105,7 @@ footer h4 {
 
 .footerDivDireita .bxl-github {
     position: absolute;
-    top: 40px;
+    top: 50px;
     left: 14px;
     font-size: 50px;
     color: var(--footer-conteudo);
@@ -113,41 +113,41 @@ footer h4 {
 }
 
 .footerDivDireita .bxl-github:hover {
-    top: 23px;
+    top: 28px;
     color: black;
 }
 
 .footerDivDireita .bxl-instagram {
     position: absolute;
     left: 105px;
-    top: 40px;
+    top: 50px;
     font-size: 50px;
     color: var(--footer-conteudo);
     transition: 0.3s all ease;
 }
 
 .footerDivDireita .bxl-instagram:hover {
-    top: 23px;
+    top: 28px;
     color: rgb(185, 16, 72);
 }
 
 .footerDivDireita .bxl-whatsapp {
     position: absolute;
     right: 11px;
-    top: 40px;
+    top: 50px;
     font-size: 50px;
     color: var(--footer-conteudo);
     transition: 0.3s all ease;
 }
 
 .footerDivDireita .bxl-whatsapp:hover {
-    top: 23px;
+    top: 28px;
     color: rgb(31, 182, 31);
 }
 
 .footerDivDireita .labelIcone {
     position: absolute;
-    top: -13px;
+    top: -7px;
     text-decoration: none;
     font-weight: 500;
     font-size: 12px;
@@ -193,7 +193,7 @@ footer h4 {
 
 .footerParedeIcones {
     position: relative;
-    top: 62px;
+    top: 78px;
     width: 100%;
     height: 73px;
     background-color: var(--footer);

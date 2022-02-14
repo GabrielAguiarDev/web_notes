@@ -157,7 +157,7 @@ hr.hrMain {
 
 #tituloLabel {
     display: inline-block;
-    margin-left: 5px;
+    margin-left: 0px;
     font-weight: 600;
     color: var(--cor-2);
 }
@@ -245,6 +245,25 @@ hr.hrMain {
     padding: 5px 11px 1px 11px;
     border-radius: 8px;
     background-color: #c7c5c54d;
+}
+
+.cardPost .star {
+    position: relative;
+    top: 3px;
+    left: 12px;
+    font-size: 21px;
+    transition: 0.5s all ease;
+}
+
+.cardPost .starSuccess {
+    position: relative;
+    top: 3px;
+    left: -13px;
+    font-size: 21px;
+    color: #e6e600;
+    transition: 0.5s all ease;
+    opacity: 0;
+    
 }
 
 .btn-edit {

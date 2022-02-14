@@ -24,20 +24,22 @@
             </form>
         </div>
         <% listMetas.forEach(meta => { %>
-            <div class="cardPost">
+            <div class="cardPost" onclick="metaStar('starSucess-<%= meta.id %>')">
                 <form action="/meta/delete" method="post">
                     <div class="btn-editMeta" onclick="btnEdit('metaEdit-<%= meta.id %>')">
                         <i class='bx bx-pencil'></i>
                     </div>
                     <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
                     <input type="hidden" name="id" value="<%= meta.id %>">
-                    <span class="star">&#x2B50;</span>
+                    <!-- <span class="star">&#x2B50;</span> -->
+                    <span class="star" id="star"><i class='bx bx-star'></i></span>
+                    <span class="starSuccess" id="starSucess-<%= meta.id %>"><i class='bx bxs-star'></i></span>
                     <label for="tituloMeta" id="tituloLabel"><%= meta.titulo %></label>
                     <input type="hidden" name="titulo" id="tituloMeta" value="<%= meta.titulo %>">
                     <br>
                     <label for="conteudoNote" id="conteudoLabel"><%= meta.conteudo %></label>
                     <input type="hidden" name="conteudo" id="conteudoMeta" value="<%= meta.conteudo %>">
-                    <hr>
+                    <hr class="hrMain">
                 </form>
             </div>
             <div class="editar" id="metaEdit-<%= meta.id %>">
@@ -49,7 +51,6 @@
                     <input type="text" name="titulo" id="EditTitulo" value="<%= meta.titulo %>">
                     <br>
                     <label for="conteudo" id="labelConteudo">Descrição: </label>
-                    <!-- <input type="text" name="conteudo" id="Conteudo" value="%= meta.conteudo %>" placeholder="Opcional"> -->
                     <textarea name="conteudo" id="EditConteudo" cols="30" rows="10" placeholder="Opcional"><%= meta.conteudo %></textarea>
                     <br>
                     <input class="salvarEdit" id="edit-<%= meta.id %>" onclick="Mudarestado('metaEdit-<%= meta.id %>')" type="submit" value="Salvar">

@@ -18,3 +18,7 @@ function cancelarEdit(el) {
 
 }
 
+function metaStar(el) {
+    document.getElementById(el).style.opacity = "1";
+    document.getElementById('star').style.opacity = "0";
+}
