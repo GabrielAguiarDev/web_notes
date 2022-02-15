@@ -124,12 +124,6 @@ ul li .underline::before {
     transition: all .5s ease-in-out;
 }
 
-@keyframes delayNav{
-    0% { opacity:0; }
-    66% { opacity:0; }
-    100% { opacity:1; }
-}
-
 ul li:nth-child(1).active a .underline::before {
     left: -30px;
     width: 160%;

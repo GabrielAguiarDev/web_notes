@@ -14,6 +14,9 @@ const Metas = new Schema({
         ref: "user",
         required: true
     },
+    dataPrevista: {
+        type: Date
+    },
     data: {
         type: Date,
         default: Date.now()

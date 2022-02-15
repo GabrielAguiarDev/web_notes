@@ -1,0 +1,35 @@
+@keyframes icone {
+    0% { color: var(--cor-3); }
+    50% { color: var(--cor-2); }
+    100% { color: var(--cor-3); }
+}
+
+@keyframes delayNav{
+    0% { opacity:0; }
+    66% { opacity:0; }
+    100% { opacity:1; }
+}
+
+@keyframes linhaCor {
+    0% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
+    5% {background: linear-gradient(to right, #167464f8, #19b399f6, #19b399f6, #167464f8); }
+    10% {background: linear-gradient(to right, #167464f8, #18b99ef6, #18b99ef6, #167464f8); }
+    15% {background: linear-gradient(to right, #167464f8, #17c0a4f6, #17c0a4f6, #167464f8); }
+    20% {background: linear-gradient(to right, #167464f8, #15c5a8f6, #15c5a8f6, #167464f8); }
+    25% {background: linear-gradient(to right, #167464f8, #15cfb0f6, #15cfb0f6, #167464f8); }
+    30% {background: linear-gradient(to right, #167464f8, #13d6b6f6, #13d6b6f6, #167464f8); }
+    35% {background: linear-gradient(to right, #167464f8, #11ddbbf6, #11ddbbf6, #167464f8); }
+    40% {background: linear-gradient(to right, #167464f8, #10e2bff6, #10e2bff6, #167464f8); }
+    45% {background: linear-gradient(to right, #167464f8, #0eebc6f6, #0eebc6f6, #167464f8); }
+    50% {background: linear-gradient(to right, #167464f8, #05f8d0f6, #05f8d0f6, #167464f8); }
+    55% {background: linear-gradient(to right, #167464f8, #0eebc6f6, #0eebc6f6, #167464f8); }
+    60% {background: linear-gradient(to right, #167464f8, #10e2bff6, #10e2bff6, #167464f8); }
+    65% {background: linear-gradient(to right, #167464f8, #11ddbbf6, #11ddbbf6, #167464f8); }
+    70% {background: linear-gradient(to right, #167464f8, #13d6b6f6, #13d6b6f6, #167464f8); }
+    75% {background: linear-gradient(to right, #167464f8, #15cfb0f6, #15cfb0f6, #167464f8); }
+    80% {background: linear-gradient(to right, #167464f8, #15c5a8f6, #15c5a8f6, #167464f8); }
+    85% {background: linear-gradient(to right, #167464f8, #17c0a4f6, #17c0a4f6, #167464f8); }
+    90% {background: linear-gradient(to right, #167464f8, #18b99ef6, #18b99ef6, #167464f8); }
+    95% {background: linear-gradient(to right, #167464f8, #19b399f6, #19b399f6, #167464f8); }
+    100% {background: linear-gradient(to right, #167464f8, #1aad95f6, #1aad95f6, #167464f8); }
+}

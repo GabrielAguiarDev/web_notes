@@ -19,12 +19,17 @@
                 <label for="conteudo" id="labelConteudo">Conteudo</label>
                 <textarea name="conteudo" id="Conteudo" class="conteudoMeta" cols="30" rows="10" placeholder="Opcional"></textarea>
                 <br>
+                <label for="dataPrevista" id="labelDataPrevista">Data Prevista</label>
+                <input type="date" name="dataPrevista" id="dataPrevista">
                 <input type="submit" onclick="Mudarestado('adicionarMeta')" value="Adicionar">
                 <div class="cancelarAddMeta">Cancelar</div>
             </form>
         </div>
         <% listMetas.forEach(meta => { %>
-            <div class="cardPost" onclick="metaStar('starSucess-<%= meta.id %>')">
+
+            <!-- <div class="cardPost" id="cardPost-<%= meta.id %>" onclick="metaStar('starSucess-<%= meta.id %>'), cardPost('cardPost-<%= meta.id %>')"> -->
+
+            <div class="cardPost" onclick="metaSuccess('cardPost-<%= meta.id %>')">
                 <form action="/meta/delete" method="post">
                     <div class="btn-editMeta" onclick="btnEdit('metaEdit-<%= meta.id %>')">
                         <i class='bx bx-pencil'></i>
@@ -33,12 +38,15 @@
                     <input type="hidden" name="id" value="<%= meta.id %>">
                     <!-- <span class="star">&#x2B50;</span> -->
                     <span class="star" id="star"><i class='bx bx-star'></i></span>
-                    <span class="starSuccess" id="starSucess-<%= meta.id %>"><i class='bx bxs-star'></i></span>
-                    <label for="tituloMeta" id="tituloLabel"><%= meta.titulo %></label>
+                    <span class="starSuccess" id="starSucess-<%= meta.id %>">&#x2B50;</span>
+                    <label for="tituloMeta" id="tituloLabelMeta"><%= meta.titulo %></label>
                     <input type="hidden" name="titulo" id="tituloMeta" value="<%= meta.titulo %>">
                     <br>
-                    <label for="conteudoNote" id="conteudoLabel"><%= meta.conteudo %></label>
-                    <input type="hidden" name="conteudo" id="conteudoMeta" value="<%= meta.conteudo %>">
+                    <label for="conteudoMeta" id="conteudoLabelMeta"><%= meta.conteudo %></label>
+                    <input type="hidden" name="conteudo" id="conteudoMeta" value="<%= meta.conteudo %>"> 
+                    
+                    <span>Data Prevista Para alcançar: <%= meta.dataPrevista %></span>
+
                     <hr class="hrMain">
                 </form>
             </div>

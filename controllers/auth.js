@@ -116,6 +116,7 @@ exports.metas = async(req, res)=>{ // Pendente...
     const novaMeta = {
         titulo: req.body.titulo,
         conteudo: req.body.conteudo,
+        dataPrevista: req.body.dataPrevista,
         userId: req.user.id
     }
 
