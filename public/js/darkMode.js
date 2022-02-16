@@ -19,4 +19,11 @@ function tema(t){
 }
 
 var ls = localStorage.getItem("tema");
-  if(ls) document.body.classList.add(ls);
+var bodyClass = document.body
+  if(ls) {
+    document.body.classList.add(ls);
+  }
+
+  if(bodyClass.className == "dark") {
+    document.getElementById('exibirBtnTema').style.marginLeft = "43px";
+  } 

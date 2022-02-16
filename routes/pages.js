@@ -61,7 +61,6 @@ const router = express.Router()
         Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
             res.render('user/metas', {
                 listMetas: Meta,
-                dataMeta: Meta.dataPrevista,
                 user: req.user,
                 page_name: 'metas'
                 })

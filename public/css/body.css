@@ -254,7 +254,8 @@ hr.hrMain {
     padding: 5px 11px 1px 11px;
     border-radius: 8px;
     background-color: #c7c5c54d;
-    transition: 0.5s all ease;
+    transition: 1s all ease;
+    cursor: pointer;
 }
 
 .cardPost .star {
@@ -278,6 +279,21 @@ hr.hrMain {
 
 .cardPost.success {
     background-color: var(--test);
+}
+
+.cardPost p {
+    display: block;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    margin-left: 8px;
+    color: var(--conteudo);
+}
+
+.cardPost .dFormatMeta {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--cor-2);
 }
 
 .btn-edit {
