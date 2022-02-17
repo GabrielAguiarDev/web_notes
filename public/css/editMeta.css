@@ -111,6 +111,7 @@
 }
 
 .confirmMeta {
+    display: none;
     position: absolute;
     top: -52px;
     left: 330px;

@@ -29,7 +29,7 @@
 
             <!-- <div class="cardPost" id="cardPost-<%= meta.id %>" onclick="metaStar('starSucess-<%= meta.id %>'), cardPost('cardPost-<%= meta.id %>')"> -->
 
-            <div class="cardPost" onclick="metaSuccess('cardPost-<%= meta.id %>')">
+            <div class="cardPost" onclick="metaSuccess('confirmMeta-<%= meta.id %>')">
                 <form action="/meta/delete" method="post">
                     <div class="btn-editMeta" onclick="btnEdit('metaEdit-<%= meta.id %>')">
                         <i class='bx bx-pencil'></i>
@@ -55,20 +55,19 @@
 
                     <hr class="hrMain">
                 </form>
-                <div class="confirmMeta">
+                <div class="confirmMeta" id="confirmMeta-<%= meta.id %> ">
                     <form action="/meta/metaSuccess">
-                        <div>
-                            <h1>Concluiu essa Meta? &#x1F929;</h1>
-                            <h4>Meta: </h4> 
-                            <span><%= meta.titulo %></span>
-                            <br>
-                            <h4>Data Prevista</h4> 
-                            <span class="dFormatMeta"><%= dFormatMeta %></span>
-                            <div class="cancelarConfirm">
-                                Ainda não &#x1F61E;
-                            </div>
-                            <button type="submit">SIM!!!</button>
+                        <h1>Concluiu essa Meta? &#x1F929;</h1>
+                        <h4>Meta: </h4> 
+                        <span><%= meta.titulo %></span>
+                        <br>
+                        <label for="dataPrevista">Data Prevista</label> 
+                        <input type="text" name="dataSuccess" id="dataPrevista" class="dFormatMeta"><%= dFormatMeta %></input>
+                        <div class="cancelarConfirm" onclick="cancelarEdit('confirmMeta-<%= meta.id %>')">
+                            Ainda não &#x1F61E;
                         </div>
+                        <button type="submit">SIM!!!</button>
+                        <input type="hidden" name="metaSuccess" value="<%= meta.id %>">
                     </form>
                 </div>
             </div>
