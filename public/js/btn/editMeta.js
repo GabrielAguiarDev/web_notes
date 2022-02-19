@@ -19,7 +19,8 @@ function cancelarEdit(el) {
 }
 
 function metaSuccess(el){
-    document.getElementById(el).style.display = 'block';
+    document.getElementById(el).style.opacity = '1';
+    document.getElementById(el).style.zIndex = "1"
     document.getElementById('fundoNavbar').style.backdropFilter = "blur(1px)"
     document.getElementById('fundoNavbar').style.zIndex = "1"
     document.getElementById('fundoNavbar').style.pointerEvents = "auto"

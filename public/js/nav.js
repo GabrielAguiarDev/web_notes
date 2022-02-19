@@ -8,7 +8,7 @@ perfil.onclick = function() {
     perfil.classList.toggle('activePerfil')
     config.classList.toggle('activeConfig')
     document.getElementById('fundoNavbar').style.backdropFilter = "blur(1px)"
-    document.getElementById('fundoNavbar').style.zIndex = "2"
+    document.getElementById('fundoNavbar').style.zIndex = "3"
 }
 
 fecharConfig.onclick = function () {

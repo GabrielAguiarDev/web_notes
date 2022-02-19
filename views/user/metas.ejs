@@ -26,9 +26,6 @@
             </form>
         </div>
         <% listMetas.forEach(meta => { %>
-
-            <!-- <div class="cardPost" id="cardPost-<%= meta.id %>" onclick="metaStar('starSucess-<%= meta.id %>'), cardPost('cardPost-<%= meta.id %>')"> -->
-
             <div class="cardPost" onclick="metaSuccess('confirmMeta-<%= meta.id %>')">
                 <form action="/meta/delete" method="post">
                     <div class="btn-editMeta" onclick="btnEdit('metaEdit-<%= meta.id %>')">
@@ -36,7 +33,6 @@
                     </div>
                     <button type="submit" class="btn-danger"><i class='bx bx-trash'></i></button>
                     <input type="hidden" name="id" value="<%= meta.id %>">
-                    <!-- <span class="star">&#x2B50;</span> -->
                     <span class="star" id="star"><i class='bx bx-star'></i></span>
                     <span class="starSuccess" id="starSucess-<%= meta.id %>">&#x2B50;</span>
                     <label for="tituloMeta" id="tituloLabelMeta"><%= meta.titulo %></label>
@@ -55,21 +51,21 @@
 
                     <hr class="hrMain">
                 </form>
-                <div class="confirmMeta" id="confirmMeta-<%= meta.id %> ">
-                    <form action="/meta/metaSuccess">
-                        <h1>Concluiu essa Meta? &#x1F929;</h1>
-                        <h4>Meta: </h4> 
-                        <span><%= meta.titulo %></span>
-                        <br>
-                        <label for="dataPrevista">Data Prevista</label> 
-                        <input type="text" name="dataSuccess" id="dataPrevista" class="dFormatMeta"><%= dFormatMeta %></input>
-                        <div class="cancelarConfirm" onclick="cancelarEdit('confirmMeta-<%= meta.id %>')">
-                            Ainda não &#x1F61E;
-                        </div>
-                        <button type="submit">SIM!!!</button>
-                        <input type="hidden" name="metaSuccess" value="<%= meta.id %>">
-                    </form>
-                </div>
+            </div>
+            <div class="confirmMeta" id="confirmMeta-<%= meta.id %>">
+                <form action="/meta/metaSuccess">
+                    <h1>Concluiu essa Meta? &#x1F929;</h1>
+                    <h4>Meta: </h4> 
+                    <span><%= meta.titulo %></span>
+                    <br>
+                    <label for="dataPrevista">Data Prevista</label> 
+                    <input type="text" name="dataSuccess" id="dataPrevista" class="dFormatMeta" value="<%= dFormatMeta %>">
+                    <div class="cancelarConfirm" onclick="cancelarEdit('confirmMeta-<%= meta.id %>')">
+                        Ainda não &#x1F61E;
+                    </div>
+                    <button type="submit">SIM!!!</button>
+                    <input type="hidden" name="metaSuccess" value="<%= meta.id %>">
+                </form>
             </div>
             <div class="editar" id="metaEdit-<%= meta.id %>">
                 <form action="/meta/edit" method="post">

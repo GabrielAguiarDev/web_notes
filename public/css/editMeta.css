@@ -111,9 +111,8 @@
 }
 
 .confirmMeta {
-    display: none;
     position: absolute;
-    top: -52px;
+    top: 52px;
     left: 330px;
     width: 450px;
     height: 170px;
@@ -121,7 +120,10 @@
     border: 2px solid #16746480;
     box-shadow: 2px 2px 3px #0000005c;
     background: rgb(154, 211, 192);
+    transition: 0.5s all ease;
     cursor: auto;
+    z-index: -1;
+    opacity: 0;
 }
 
 .confirmMeta h1 {
@@ -145,6 +147,7 @@
 .confirmMeta .dFormatMeta {
     font-size: 17px;
     color: var(--conteudo);
+    background-color: transparent;
 }
 
 .confirmMeta button {
