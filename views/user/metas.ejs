@@ -58,9 +58,10 @@
                     <h4>Meta: </h4> 
                     <span><%= meta.titulo %></span>
                     <br>
-                    <label for="dataPrevista">Data Prevista</label> 
-                    <input type="text" name="dataSuccess" id="dataPrevista" class="dFormatMeta" value="<%= dFormatMeta %>">
-                    <div class="cancelarConfirm" onclick="cancelarEdit('confirmMeta-<%= meta.id %>')">
+                    <h4>Data Prevista</h4> 
+                    <span class="dFormatMeta"><%= dFormatMeta %></span> 
+
+                    <div class="cancelarConfirm" onclick="cancelarMetaSuccess('confirmMeta-<%= meta.id %>'), fundo('confirmMeta-<%= meta.id %>')">
                         Ainda não &#x1F61E;
                     </div>
                     <button type="submit">SIM!!!</button>

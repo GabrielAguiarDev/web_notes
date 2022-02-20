@@ -13,4 +13,3 @@ fundo.onclick = function() {
     document.querySelector('.conteudoMeta').value = "";
     document.getElementById('adicionarMeta').style.display = "none";
 }
-    
