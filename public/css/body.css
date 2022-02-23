@@ -134,6 +134,7 @@ hr.hrMain {
     height: 100%;
     z-index: 0;
     background-color: transparent;
+    pointer-events: none;
 }
 
 #fundoNavbar {

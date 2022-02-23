@@ -19,16 +19,14 @@ function cancelarEdit(el) {
 }
 
 function metaSuccess(el){
-    document.getElementById(el).style.opacity = '1';
-    document.getElementById(el).style.zIndex = "1"
+    document.getElementById(el).classList.add("activeCard")
     document.getElementById('fundo').style.backdropFilter = "blur(1px)"
     document.getElementById('fundo').style.zIndex = "1"
     document.getElementById('fundo').style.pointerEvents = "auto"
 }
 
 function cancelarMetaSuccess(el) {
-    document.getElementById(el).style.opacity = '0';
-    document.getElementById(el).style.zIndex = "-1"
+    document.getElementById(el).classList.remove("activeCard")
     document.getElementById('fundo').style.backdropFilter = "blur(0px)"
     document.getElementById('fundo').style.zIndex = "0"
     document.getElementById('fundo').style.pointerEvents = "none"

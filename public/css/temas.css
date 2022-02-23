@@ -1,0 +1,65 @@
+.telaLight {
+    position: relative;
+    
+    height: 495px;
+    width: 100%;
+}
+
+.temasLight {
+    background-color: var(--test);
+    padding: 15px;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 4px #0000004a;
+}
+
+.telaDark {
+    width: 100%;
+    height: 495px;
+    background-color: black;
+}
+
+.temasDark {
+    background-color: var(--test);
+    padding: 15px;
+    margin: 0 auto;
+    height: 200px;
+    border-radius: 8px;
+    box-shadow: 3px 3px 4px #0000004a;
+}
+
+.temaPadrao {
+    display: inline-block;
+    border: 3px solid var(--cor-2);
+    border-radius: 8px;
+    padding: 10px;
+    height: 100%;
+    width: 195px;
+}
+
+.tema1 {
+    display: inline-block;
+    border: 3px solid rgb(250, 19, 135);
+    border-radius: 8px;
+    padding: 10px;
+    height: 100%;
+    width: 195px;
+}
+
+.tema2 {
+    display: inline-block;
+    border: 3px solid blue;
+    border-radius: 8px;
+    padding: 10px;
+    height: 100%;
+    width: 195px;
+}
+
+.tema3 {
+    display: inline-block;
+    border: 3px solid red;
+    border-radius: 8px;
+    padding: 10px;
+    height: 100%;
+    width: 195px;
+}
