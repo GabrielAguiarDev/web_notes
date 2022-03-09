@@ -1,4 +1,4 @@
-.navListTrash {
+/* .navListTrash {
     position: absolute;
     left: -113px;
     top: 55px;
@@ -7,7 +7,7 @@
     border: 2px solid var(--cor-2);
     border-radius: 8px;
     box-shadow: 2px 2px 3px #00000030;
-}
+} */
 
 .navListTrash h1 {
     margin: 30px 100px 7px 100px;
@@ -63,7 +63,7 @@
     z-index: 0;
 }
 
-.navListTrash ul li:nth-child(1).activeListTrash .bx-edit{
+/* .navListTrash ul li:nth-child(1).activeListTrash .bx-edit{
     color: var(--cor-2);
 }
 .navListTrash ul li:nth-child(2).activeListTrash .bx-line-chart{
@@ -71,15 +71,15 @@
 }
 .navListTrash ul li:nth-child(3).activeListTrash .bx-customize{
     color: var(--cor-2);
-}
+} */
 
-.navListTrash ul li:nth-child(1).activeListTrash {
+.navTrash ul li:nth-child(1).activeListTrash {
     color: var(--cor-2);
 }
-.navListTrash ul li:nth-child(2).activeListTrash {
+.navTrash ul li:nth-child(2).activeListTrash {
     color: var(--cor-2);
 }
-.navListTrash ul li:nth-child(3).activeListTrash {
+.navTrash ul li:nth-child(3).activeListTrash {
     color: var(--cor-2);
 }
 
@@ -102,15 +102,15 @@
     transition: all .5s ease-in-out;
 }
 
-.container {
+/* .container {
     position: relative;
     left: 190px;
     width: 72vw;
-}
+} */
 
-.container h1 {
+/* .container h1 {
     margin-left: 370px;
-}
+} */
 
 .iconeGrande .bx-trash {
     display: inline-block;
@@ -124,9 +124,9 @@
     animation: icone 5s infinite;
 }
 
-.cleanTrash {
+/* .cleanTrash {
     margin-bottom: 70px;
-}
+} */
 
 .nameTrash {
     font-size: 19px;
@@ -140,10 +140,12 @@
 
 .trashsNotes {
     position: relative;
+    margin-bottom: 30px;
 }
 
 .trashsMetas {
     position: relative;
+    margin-bottom: 30px;
 }
 
 #tituloTrash {

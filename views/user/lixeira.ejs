@@ -2,31 +2,58 @@
 <%- include('../include/navbar') %>
 
 <main>
-    <div class="navListTrash">
+    <!-- <div class="navListTrash">
         <h1>Tipos</h1>
         <hr>
         <ul>
-            <!-- <li onclick="displayMeta('cardNotesTrash')" class="lixeiraNote"><i class='bx bx-edit'></i> Anotações</li>
-            <li onclick="displayMeta('cardMetasTrash')" class="lixeiraMeta"><i class='bx bx-line-chart'></i> Metas</li> -->
+            <li onclick="displayMeta('cardNotesTrash')" class="lixeiraNote"><i class='bx bx-edit'></i> Anotações</li>
+            <li onclick="displayMeta('cardMetasTrash')" class="lixeiraMeta"><i class='bx bx-line-chart'></i> Metas</li> 
             <li class="lixeiraNote activeListTrash"><i class='bx bx-edit'></i> Anotações</li>
             <li class="lixeiraMeta"><i class='bx bx-line-chart'></i> Metas</li>
             <li><i class='bx bx-customize'></i> Outros tipos</li>
         </ul>
-        <div class="underline"></div>
+        <div class="underline"></div>  -->
     </div>
     <div class="container">
-        <h1>Minha Lixeira</h1>
-        <div class="iconeGrande">
+        
+        <div class="tituloPag">
+            <h1>Minha Lixeira</h1>
             <i class='bx bx-trash'></i>
         </div>
         <hr>
+        <div class="cleanTrash" id="cleanTrashNote">
+            <form action="/note/clean" method="post">
+                <!-- <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button> -->
+                <!-- <span class="nameTrash">Anotações</span> -->
+    
+                <div class="navTrash">
+                    <ul>
+                        <li class="lixeiraNote activeListTrash">Anotações</li>
+                        <li class="lixeiraMeta">Metas</li>
+                        <li>Outros tipos <i class='bx bx-chevron-down'></i></li>
+                    </ul>
+                    <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
+                </div>
+            </form>
+        </div>
+        <div class="cleanTrash" id="cleanTrashMeta">
+            <form action="/meta/clean" method="post">
+                <!-- <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button> -->
+                <!-- <span class="nameTrash">Metas</span> -->
+    
+                <div class="navTrash">
+                    <ul>
+                        <li class="lixeiraNote activeListTrash">Anotações</li>
+                        <li class="lixeiraMeta">Metas</li>
+                        <li>Outros tipos <i class='bx bx-chevron-down'></i></li>
+                    </ul>
+                    <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
+                </div>
+            </form>
+        </div>
+
+
         <div class="cardNotesTrash" id="cardNotesTrash">
-            <div class="cleanTrash">
-                <form action="/note/clean" method="post">
-                    <button type="submit" class="btn" onclick="return confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
-                    <span class="nameTrash">Anotações</span>
-                </form>
-            </div>
             <% listNotesTrash.forEach(trash => { %>
                 <div class="trashsNotes">
                     <form action="/note/rescue" method="post">
@@ -37,19 +64,13 @@
                         <label for="conteudoTrash" id="conteudoLabel"><%= trash.conteudo %></label>
                         <input type="hidden" name="conteudo" id="conteudoTrash" value="<%= trash.conteudo %>">
                         <hr>
-                        <button type="submit" class="btn-edit"><i class='bx bx-save'></i></button>
-                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="return confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
+                        <button type="submit" class="btn-rescue"><i class='bx bx-save'></i></button>
+                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
                     </form>
                 </div>
             <% }) %>
         </div>
         <div class="cardMetasTrash" id="cardMetasTrash">
-            <div class="cleanTrash">
-                <form action="/meta/clean" method="post">
-                    <button type="submit" class="btn" onclick="return confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
-                    <span class="nameTrash">Metas</span>
-                </form>
-            </div>
             <% listMetasTrash.forEach(trash => { %>
                 <div class="trashsMetas">
                     <form action="/meta/rescue" method="post">
@@ -61,14 +82,13 @@
                         <label for="conteudoTrash" id="conteudoLabel"><%= trash.conteudo %></label>
                         <input type="hidden" name="conteudo" id="conteudoTrash" value="<%= trash.conteudo %>">
                         <hr>
-                        <button type="submit" class="btn-edit"><i class='bx bx-save'></i></button>
-                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="return confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
+                        <button type="submit" class="btn-rescue"><i class='bx bx-save'></i></button>
+                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
                     </form>
                 </div>
             <% }) %>
         </div>
     </div>
-
 </main>
 
 <%- include('../include/footer') %>

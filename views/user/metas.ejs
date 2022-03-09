@@ -41,13 +41,13 @@
                     <label for="conteudoMeta" id="conteudoLabelMeta"><%= meta.conteudo %></label>
                     <input type="hidden" name="conteudo" id="conteudoMeta" value="<%= meta.conteudo %>"> 
 
-                    <% let day = meta.dataPrevista.getDate() %>
-                    <% let month = meta.dataPrevista.getMonth()+1 %>
-                    <% let year = meta.dataPrevista.getFullYear() %> 
+                    <!-- < let day = meta.dataPrevista.getDate() %>
+                    < let month = meta.dataPrevista.getMonth()+1 %>
+                    < let year = meta.dataPrevista.getFullYear() %> 
                     
-                    <% let dFormatMeta = `${day} / ${month} / ${year}` %>
+                    < let dFormatMeta = `${day} / ${month} / ${year}` %>
     
-                    <p>Data Prevista Para alcançar esta Meta: <span class="dFormatMeta"><%= dFormatMeta %></span></p>
+                    <p>Data Prevista Para alcançar esta Meta: <span class="dFormatMeta"><= dFormatMeta %></span></p> -->
 
                     <hr class="hrMain">
                 </form>
@@ -59,7 +59,7 @@
                     <span><%= meta.titulo %></span>
                     <br>
                     <h4>Data Prevista</h4> 
-                    <span class="dFormatMeta"><%= dFormatMeta %></span> 
+                    <span class="dFormatMeta">00/00/0000</span> 
 
                     <div class="cancelarConfirm" onclick="cancelarMetaSuccess('confirmMeta-<%= meta.id %>'), fundo('confirmMeta-<%= meta.id %>')">
                         Ainda não &#x1F61E;
