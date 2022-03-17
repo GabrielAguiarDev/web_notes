@@ -9,7 +9,7 @@
     box-shadow: 2px 2px 3px #00000030;
 } */
 
-.navListTrash h1 {
+/* .navListTrash h1 {
     margin: 30px 100px 7px 100px;
     font-size: 1.6em;
 }
@@ -48,9 +48,9 @@
     margin-right: 10px;
     font-size: 28px;
     color: var(--cor-3);
-}
+} */
 
-.navListTrash ul li {
+/* .navListTrash ul li {
     position: relative;
     text-align: left;
     line-height: 50px;
@@ -61,7 +61,7 @@
     cursor: pointer;
     transition: 0.5s all ease;
     z-index: 0;
-}
+} */
 
 /* .navListTrash ul li:nth-child(1).activeListTrash .bx-edit{
     color: var(--cor-2);
@@ -83,34 +83,47 @@
     color: var(--cor-2);
 }
 
-
-.navListTrash ul li:hover {
-    background-color: rgba(236, 235, 235, 0.507);
-}
-
-.navListTrash .underline::before {
-    content: '';
-    position: absolute;
-    bottom: 20px;
-    left: 35px;
-    height: 3px;
-    width: 70%;
-    z-index: 1;
-    opacity: 1;
-    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
-    transform: scale(1);
-    transition: all .5s ease-in-out;
-}
-
-/* .container {
+.navTrash ul li:nth-child(3) span {
     position: relative;
-    left: 190px;
-    width: 72vw;
-} */
+}
 
-/* .container h1 {
-    margin-left: 370px;
-} */
+.navTrash ul li:nth-child(3) span i {
+    position: absolute;
+    top: -2px;
+    font-size: 28px;
+}
+
+.navTrash ul li:nth-child(3) ul {
+    display: none;
+    position: absolute;
+    left: 53px;
+    width: 317px;
+    font-size: 14px;
+    background-color: hsla(170, 56%, 61%, 0.741);
+    border-radius: 6px 0px 6px 6px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.178);
+    transition: all 0.3s ease;
+}
+
+.navTrash ul li:nth-child(3) ul li {
+    position: relative;
+    left: 0;
+    max-width: 110px;
+    line-height: 35px;
+    padding: 5px;
+}
+
+.navTrash ul li:nth-child(3) ul li a {
+    margin: 0;
+}
+
+.navTrash ul li:nth-child(3):hover ul a {
+    
+}
+
+.navTrash ul li:nth-child(3):hover ul {
+    display: flex;
+}
 
 .iconeGrande .bx-trash {
     display: inline-block;
@@ -123,10 +136,6 @@
     transition: all .5s ease;
     animation: icone 5s infinite;
 }
-
-/* .cleanTrash {
-    margin-bottom: 70px;
-} */
 
 .nameTrash {
     font-size: 19px;

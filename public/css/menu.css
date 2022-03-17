@@ -80,7 +80,7 @@
     padding: 8px 102px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
     color: white;
     font-weight: 600;
 }
@@ -101,7 +101,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
 }
 
 .config .feedback {
@@ -111,7 +111,7 @@
     padding: 8px 77px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
     color: white;
     font-weight: 600;
 }
@@ -132,7 +132,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
 }
 
 .config .lixeira {
@@ -142,7 +142,7 @@
     padding: 8px 105px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
     color: white;
     font-weight: 600;
 }
@@ -163,7 +163,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
 }
 
 .config .linkAdmin {
@@ -173,7 +173,7 @@
     padding: 8px 86px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
     color: white;
     font-weight: 600;
 }
