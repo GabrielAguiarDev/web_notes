@@ -117,10 +117,6 @@
     margin: 0;
 }
 
-.navTrash ul li:nth-child(3):hover ul a {
-    
-}
-
 .navTrash ul li:nth-child(3):hover ul {
     opacity: 1;
     left: 53px;
