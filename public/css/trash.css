@@ -94,7 +94,6 @@
 }
 
 .navTrash ul li:nth-child(3) ul {
-    opacity: 0;
     position: absolute;
     left: 5px;
     width: 317px;
@@ -102,6 +101,8 @@
     background-color: rgb(100 211 193 / 41%);
     border-radius: 6px 0px 6px 6px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.178);
+    opacity: 0;
+    pointer-events: none;
     transition: all 0.3s ease;
 }
 
@@ -118,8 +119,9 @@
 }
 
 .navTrash ul li:nth-child(3):hover ul {
-    opacity: 1;
     left: 53px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .iconeGrande .bx-trash {
