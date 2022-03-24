@@ -41,7 +41,7 @@
     app.use('/js', express.static(__dirname + '/public/js'));
 
 // Body Parser 
-    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
 
 // Mongoose

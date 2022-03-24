@@ -1,77 +1,77 @@
-/* .navListTrash {
-    position: absolute;
-    left: -113px;
-    top: 55px;
-    width: 280px;
-    min-height: 360px;
-    border: 2px solid var(--cor-2);
-    border-radius: 8px;
-    box-shadow: 2px 2px 3px #00000030;
-} */
-
-/* .navListTrash h1 {
-    margin: 30px 100px 7px 100px;
-    font-size: 1.6em;
+.tituloPag {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.navListTrash hr {
-    margin: 0px 0px 35px 40px;
-    height: 2px;
-    width: 70%;
-    border: none;
-    border-radius: 8px;
-    background-color: var(--cor-2);
+.tituloPag i {
+    font-size: 38px;
+    animation: icone 5s infinite;
 }
 
-.navListTrash ul li .bx-edit {
-    position: relative;
-    right: 20px;
-    top: 6px;
-    margin-right: 13px;
-    font-size: 28px;
-    color: var(--cor-3);
-    animation: none;
+.navTrash {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: top;
+    margin-top: 10px;
 }
-.navListTrash ul li .bx-line-chart {
-    position: relative;
-    right: 20px;
-    top: 6px;
-    margin-right: 13px;
-    font-size: 28px;
-    color: var(--cor-3);
-    animation: none;
-}
-.navListTrash ul li .bx-customize {
-    position: relative;
-    right: 20px;
-    bottom: -6px;
-    margin-right: 10px;
-    font-size: 28px;
-    color: var(--cor-3);
-} */
 
-/* .navListTrash ul li {
-    position: relative;
-    text-align: left;
-    line-height: 50px;
-    padding-left: 55px;
-    font-size: 1.2em;
+.navTrash ul {
+    display: flex;
+    flex-wrap: wrap; 
+    z-index: 1;   
+}
+
+.navTrash ul li {
     font-weight: 600;
-    color: var(--cor-3);
+    padding: 0px 12px 10px 12px;
     cursor: pointer;
-    transition: 0.5s all ease;
-    z-index: 0;
-} */
+    transition: all 0.3s ease;
+}
 
-/* .navListTrash ul li:nth-child(1).activeListTrash .bx-edit{
+.navTrash ul li:hover {
     color: var(--cor-2);
 }
-.navListTrash ul li:nth-child(2).activeListTrash .bx-line-chart{
-    color: var(--cor-2);
+
+.navTrash ul li .bx-chevron-down {
+    position: relative;
+    top: 0px;
+    font-size: 23px;
 }
-.navListTrash ul li:nth-child(3).activeListTrash .bx-customize{
-    color: var(--cor-2);
-} */
+
+.navTrash ul li .bx-chevron-down:hover {
+    color: var(--cor-2)
+}
+
+.container {
+    width: 72vw;
+    margin: 0 auto;
+}
+
+.cardNotesTrash {
+    margin-top: 50px;
+}
+
+.cardNotesTrash .btn-rescue {
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    bottom: 7px;
+    font-weight: 500;
+    padding: 1px 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 27px;
+    cursor: pointer;
+    color: rgba(90, 90, 90, 0.877);
+    transition: 0.5s all ease;
+}
+
+#cleanTrashMeta {
+    display: none;
+}
 
 .navTrash ul li:nth-child(1).activeListTrash {
     color: var(--cor-2);
