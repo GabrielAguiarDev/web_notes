@@ -96,7 +96,7 @@
 .navTrash ul li:nth-child(3) ul {
     position: absolute;
     left: 5px;
-    width: 317px;
+    width: 530px;
     font-size: 14px;
     background-color: rgb(100 211 193 / 41%);
     border-radius: 6px 0px 6px 6px;
@@ -109,9 +109,16 @@
 .navTrash ul li:nth-child(3) ul li {
     position: relative;
     left: 0;
-    max-width: 110px;
+    max-width: 132px;
     line-height: 35px;
     padding: 5px;
+}
+
+.navTrash ul li:nth-child(3) ul li a i {
+    margin-right: 5px;
+    font-size: 21px;
+    position: relative;
+    top: 3px;
 }
 
 .navTrash ul li:nth-child(3) ul li a {
