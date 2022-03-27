@@ -7,6 +7,10 @@ header {
 }
 
 .logo {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--cor-3);
     display: inline-block;
     width: 265px;
     margin: 20px 0px 0px 35px;
