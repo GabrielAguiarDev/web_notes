@@ -53,6 +53,13 @@ exports.register = (req, res) => {
                 console.log("Já existe uma conta com esse endereço de email")
                 res.redirect('/cadastro')
             } else {
+                let date = Date.now()
+                let month = date.getMonth() + 1
+            
+                if(month < 10) {
+                    month = `0${month}`
+                }
+                
                 const novoUsuario = new User({
                     nome: req.body.nome,
                     usuario: req.body.usuario,

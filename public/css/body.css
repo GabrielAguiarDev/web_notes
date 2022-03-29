@@ -204,6 +204,10 @@ hr.hrMain {
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: var(--cor-3)
+}
+
 .btn-add-Note {
     position: absolute;
     right: 15px;
