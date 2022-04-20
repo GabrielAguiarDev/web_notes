@@ -13,16 +13,16 @@
             <form action="/note/clean" method="post">
                 <div class="navTrash">
                     <ul>
-                        <li class="lixeiraNote activeListTrash">Anotações</li>
-                        <li class="lixeiraMeta">Metas</li>
+                        <li class="lixeiraNote activeListTrash" id="anotacoes">Anotações</li>
+                        <li class="lixeiraMeta" id="metas">Metas</li>
                         <li class="outros">Outros tipos
                             <span><i class='bx bx-chevron-down'></i></span>
                             <ul>
-                                <li><a href="#"><i class='bx bx-list-ul'></i>Listas</a></li>
-                                <li><a href="#"><i class='bx bxs-bell'></i>Lembretes</a></li>
-                                <li><a href="#"><i class='bx bx-book-open'></i>Textos</a></li>
-                                <li><a href="#"><i class='bx bx-link'></i>Links</a></li>
-                                <li><a href="#"><i class='bx bx-code-alt'></i>Códigos</a></li>
+                                <li><a href="#" id="listas"><i class='bx bx-list-ul'></i>Listas</a></li>
+                                <li><a href="#" id="Lembretes"><i class='bx bxs-bell'></i>Lembretes</a></li>
+                                <li><a href="#" id="Textos"><i class='bx bx-book-open'></i>Textos</a></li>
+                                <li><a href="#" id="links"><i class='bx bx-link'></i>Links</a></li>
+                                <li><a href="#" id="codigos"><i class='bx bx-code-alt'></i>Códigos</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -30,23 +30,10 @@
                 </div>
             </form>
         </div>
-        <div class="cleanTrash" id="cleanTrashMeta">
-            <form action="/meta/clean" method="post">
-                <div class="navTrash">
-                    <ul>
-                        <li class="lixeiraNote activeListTrash">Anotações</li>
-                        <li class="lixeiraMeta">Metas</li>
-                        <li>Outros tipos <i class='bx bx-chevron-down'></i></li>
-                    </ul>
-                    <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
-                </div>
-            </form>
-        </div>
-
-
-        <div class="cardNotesTrash" id="cardNotesTrash">
+        
+        <div id="listTrash">
             <% listNotesTrash.forEach(trash => { %>
-                <div class="trashsNotes">
+                <div class="cardTrash">
                     <form action="/note/rescue" method="post">
                         <input type="hidden" name="id" value="<%= trash.id %>">
                         <label for="tituloTrash" id="tituloLabel" class="textTrash"><%= trash.titulo %></label>
@@ -61,24 +48,44 @@
                 </div>
             <% }) %>
         </div>
-        <div class="cardMetasTrash" id="cardMetasTrash">
-            <% listMetasTrash.forEach(trash => { %>
-                <div class="trashsMetas">
-                    <form action="/meta/rescue" method="post">
-                        <input type="hidden" name="id" value="<%= trash.id %>">
-                        <span class="star">&#x2B50;</span>
-                        <label for="tituloTrash" id="tituloLabel"><%= trash.titulo %></label>
-                        <input type="hidden" name="titulo" id="tituloTrash" value="<%= trash.titulo %>">
+
+        <!--
+
+        <div class="cardNotesTrash" id="cardNotesTrash">
+            < listNotesTrash.forEach(trash => { %>
+                <div class="trashsNotes">
+                    <form action="/note/rescue" method="post">
+                        <input type="hidden" name="id" value="< trash.id %>">
+                        <label for="tituloTrash" id="tituloLabel" class="textTrash">< trash.titulo %></label>
+                        <input type="hidden" name="titulo" id="tituloTrash" value="< trash.titulo %>">
                         <br>
-                        <label for="conteudoTrash" id="conteudoLabel"><%= trash.conteudo %></label>
-                        <input type="hidden" name="conteudo" id="conteudoTrash" value="<%= trash.conteudo %>">
+                        <label for="conteudoTrash" id="conteudoLabel" class="textTrash">< trash.conteudo %></label>
+                        <input type="hidden" name="conteudo" id="conteudoTrash" value="< trash.conteudo %>">
                         <button type="submit" class="btn-rescue"><i class='bx bx-save'></i></button>
-                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
+                        <a class="btn-danger"  href="/trash/delete/<trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
                         <hr class="hrTrash">
                     </form>
                 </div>
-            <% }) %>
+            < }) %>
         </div>
+        <div class="cardMetasTrash" id="cardMetasTrash">
+            < listMetasTrash.forEach(trash => { %>
+                <div class="trashsMetas">
+                    <form action="/meta/rescue" method="post">
+                        <input type="hidden" name="id" value="< trash.id %>">
+                        <span class="star">&#x2B50;</span>
+                        <label for="tituloTrash" id="tituloLabel">< trash.titulo %></label>
+                        <input type="hidden" name="titulo" id="tituloTrash" value="< trash.titulo %>">
+                        <br>
+                        <label for="conteudoTrash" id="conteudoLabel">< trash.conteudo %></label>
+                        <input type="hidden" name="conteudo" id="conteudoTrash" value="< trash.conteudo %>">
+                        <button type="submit" class="btn-rescue"><i class='bx bx-save'></i></button>
+                        <a class="btn-danger"  href="/trash/delete/< trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
+                        <hr class="hrTrash">
+                    </form>
+                </div>
+            < }) %>
+        </div> -->
     </div>
 </main>
 

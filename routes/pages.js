@@ -75,7 +75,7 @@ const router = express.Router()
         })
     })
 
-    // Temas
+    // TEMAS
     router.get('/temas', logado, (req, res)=>{
         res.render('user/temas', {
             user: req.user,
@@ -83,7 +83,7 @@ const router = express.Router()
         })
     })
 
-    // Feedback
+    // FEEDBACK
     router.get('/feedback', logado, (req, res)=>{
         res.render('user/feedback', {
             user: req.user,
@@ -91,19 +91,30 @@ const router = express.Router()
         })
     })
 
-    // Lixeira
+    // LIXEIRA
     router.get('/lixeira', logado, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
-            Trash.find({userId: { $eq: req.user.id }, tipo: "metas"}).sort({_id: -1}).then((trashesMetas)=>{
-                res.render('user/lixeira', {
+            res.render('user/lixeira', {
                 listNotesTrash: trashesNotes,
-                listMetasTrash: trashesMetas,
                 user: req.user,
                 page_name: 'lixeira'
             })
-            })
         })
     })
+
+    // Lixeira - requisições AJAX para listagem
+    router.get('/Lixeira/anotacoes', logado, (req, res)=>{
+        Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
+            res.send({listNotesTrash: trashesNotes})
+        })
+    })
+
+    router.get('/Lixeira/metas', logado, (req, res)=>{
+        Trash.find({userId: { $eq: req.user.id }, tipo: "metas"}).sort({_id: -1}).then((trashesMetas)=>{
+            res.send({listMetasTrash: trashesMetas})
+        })
+    })
+    
 
     // DELETAR PERMANENTEMENTE
     router.get('/trash/delete/:id', logado, (req, res)=>{
