@@ -42,6 +42,23 @@
 <body>
     <main class="container">
         <h2>Register</h2>
+
+            <% if(msg_error) { %>
+                <div class="msg_error">
+                    <p><%= msg_error %> </p>
+                </div>   
+            <% } else { %>
+
+            <% } %>  
+
+            <% if(msg_success) { %>
+                <div class="msg_success">
+                    <p><%= msg_success %> </p>
+                </div>   
+            <% } else { %>
+
+            <% } %>
+
         <form action="/register" method="post">
             <div class="input-field">
                 <input type="text" name="nome" id="username" placeholder="Enter Your Name" required>

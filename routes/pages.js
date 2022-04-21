@@ -53,7 +53,12 @@ const router = express.Router()
 
     // CADASTRO
     router.get('/cadastro', (req, res)=>{
-        res.render('user/cadastro')
+        let msg_error = req.flash('msg_error')
+        let msg_success = req.flash('msg_success')
+        res.render('user/cadastro', {
+            msg_error,
+            msg_success
+        })
     });
 
     // MINHAS METAS

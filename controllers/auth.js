@@ -51,10 +51,12 @@ exports.register = (req, res) => {
         User.findOne({email: req.body.email}).then((user)=>{
             if(user){
                 console.log("Já existe uma conta com esse endereço de email")
+
+                req.flash('msg_error','Já existe uma conta com esse endereço de email')
                 res.redirect('/cadastro')
             } else {
                 let date = Date.now()
-                let month = date.getMonth() + 1
+                let month = date.getMonth()+1
             
                 if(month < 10) {
                     month = `0${month}`
@@ -78,6 +80,7 @@ exports.register = (req, res) => {
 
                         novoUsuario.save().then(()=>{
                             console.log("Usuário criado com sucesso!")
+                            req.flash('msg_success', 'Usuário criado com sucesso!')
                             res.redirect('/')
                         }).catch((err)=>{
                             console.log("Erro ao criar o usuário: " + err)
@@ -88,7 +91,7 @@ exports.register = (req, res) => {
 
             }
         }).catch((err)=>{
-            console.log("Houve um erro interno")
+            console.log("Houve um erro interno ==> " + err)
             res.redirect('/cadastro')
         })
     }
@@ -221,13 +224,14 @@ exports.trashesMeta = (req, res)=> {
     })
 }
 
-exports.rescueNote = (req, res)=> {
+exports.rescueNote = (req, res)=> {  
     Trash.findOne({_id: req.body.id}).then( async(note)=>{
         const noteRescue = {
             titulo: req.body.titulo,
             conteudo: req.body.conteudo,
             userId: req.user.id
         }
+        console.log(noteRescue)
         await new Note(noteRescue).save().then((req, res)=>{
             console.log("Movido de volta para a página home")
         }).catch((err)=>{

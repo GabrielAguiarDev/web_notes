@@ -2,6 +2,7 @@
     const express = require('express');
     const session = require('express-session');
     const flash = require('connect-flash');
+    const cookieParser = require('cookie-parser')
     const app = express();
     const path = require('path');
     const mongoose = require('mongoose');
@@ -19,9 +20,10 @@
         resave: true,
         saveUninitialized: true
     }));
-    app.use(passport.initialize())
-    app.use(passport.session())
-    app.use(flash())
+    app.use(passport.initialize());
+    app.use(cookieParser());
+    app.use(passport.session());
+    app.use(flash());
 
 // Middlewere
     app.use((req, res, next)=>{
