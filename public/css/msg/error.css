@@ -1,0 +1,79 @@
+#divMsgErro {
+    position: absolute;
+    top: 90px;
+    right: 28px;
+    min-height: 40px;
+    min-width: 410px;
+    border-radius: 8px;
+    background-color: #940000;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.295);
+    transition: 0.5s all ease;
+}
+
+.limparErro {
+    right: -460px;
+    opacity: 0;
+}
+
+#divMsgErro .bx-x {
+    color: white;
+    background-color: #940000;
+    position: absolute;
+    top: 3px;
+    left: -46px;
+    font-size: 35px;
+    padding: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.247);
+    transition: 0.3s all ease;
+}
+
+#divMsgErro .bx-x:hover {
+    box-shadow: -3px -3px 3px rgba(0, 0, 0, 0.247);
+    background-color: #a30d0d; 
+    transform: rotate(180deg);
+}
+
+.msg_error {
+    position: relative;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 7px;
+    transition: all 0.3s ease;
+}
+
+.msg_error.active {
+    top: 70px;
+    opacity: 1;
+}
+
+.divMsgSuccess {
+    position: absolute;
+    top: 90px;
+    right: 28px;
+    min-height: 40px;
+    min-width: 410px;
+    border-radius: 8px;
+    background-color: #0a914d;
+    opacity: 0;
+    z-index: -1;
+}
+
+.divMsgSuccess .bx-check {
+    background-color: #0a914d;
+    position: absolute;
+    top: 3px;
+    left: -46px;
+    font-size: 35px;
+    padding: 1px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.divMsgSuccess .bx-check:hover {
+    background-color: #0eb160; 
+}
