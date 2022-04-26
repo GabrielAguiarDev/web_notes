@@ -20,32 +20,31 @@ exports.index = (req, res, next) => {
 }
 
 exports.register = (req, res) => {
-    
-    var massage_erros = []
 
     if(!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
-        massage_erros.push({erros: "Nome inválido"})
-    }
+        req.flash('msg_error','Nome Inválido!')
+        res.redirect('/cadastro')
 
-    if(!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
-        massage_erros.push({erros: "Usuário inválido"})
-    }
+    } else if(!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
+        req.flash('msg_error','Usuário Inválido!')
+        res.redirect('/cadastro')
 
-    if(!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
-        massage_erros.push({erros: "Email inválido"})
-    }
+    } else if(!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
+        req.flash('msg_error','Email Inválido!')
+        res.redirect('/cadastro')
 
-    if(req.body.senha !== req.body.confirmarSenha || !req.body.senha || typeof req.body.usuario == undefined || req.body.usuario == null){
-        massage_erros.push({erros: "Senha inválida"})
-    }
+    } else if(!req.body.senha || typeof req.body.usuario == undefined || req.body.usuario == null){
+        req.flash('msg_error','Senhas inválida!')
+        res.redirect('/cadastro')
 
-    if(req.body.senha < 5){
-        massage_erros.push({erros: "Senha muito curta"})
-    }
+    } else if(req.body.senha !== req.body.confirmarSenha) {
+        req.flash('msg_error','As senhas não correspondem!')
+        res.redirect('/cadastro')
 
-    if(massage_erros.length > 0){
-        res.render('cadastro', massage_erros)
-        console.log(massage_erros)
+    } else if(req.body.senha.length <= 7){
+        req.flash('msg_error','Senha muito curta! (Mínimo 8 caracteres)')
+        res.redirect('/cadastro')
+
     } else {
 
         User.findOne({email: req.body.email}).then((user)=>{
@@ -55,12 +54,6 @@ exports.register = (req, res) => {
                 req.flash('msg_error','Já existe uma conta com esse endereço de email')
                 res.redirect('/cadastro')
             } else {
-                let date = Date.now()
-                let month = date.getMonth()+1
-            
-                if(month < 10) {
-                    month = `0${month}`
-                }
                 
                 const novoUsuario = new User({
                     nome: req.body.nome,
@@ -80,8 +73,15 @@ exports.register = (req, res) => {
 
                         novoUsuario.save().then(()=>{
                             console.log("Usuário criado com sucesso!")
+                            let msg_error = req.flash('msg_error')
                             req.flash('msg_success', 'Usuário criado com sucesso!')
-                            res.redirect('/')
+                            let msg_success = req.flash('msg_success') 
+                            res.render('user/index', {
+                                dadosEmail: req.body.email,
+                                dadosSenha: req.body.senha,
+                                msg_error,
+                                msg_success
+                            })
                         }).catch((err)=>{
                             console.log("Erro ao criar o usuário: " + err)
                             res.redirect('/cadastro')

@@ -16,10 +16,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 main.container {
     background: white;
+    min-width: 310px;
     max-width: 350px;
     min-height: 60vh;
     padding: 2rem;
@@ -85,6 +87,7 @@ form {
 }
 
 .input-field input {
+    width: 245px;
     outline: none;
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.7)
@@ -132,17 +135,28 @@ footer {
     
 }
 
-.social-field.twitter {
-    background: linear-gradient(to right, #56a7f2, #468aca);
+.social-field.google a {
+    color: black;
+}
+
+.social-field a .bxl-google {
+    color: black;
+    font-size: 16px;
+    margin: 0px 11px 0px 5px;
+}
+
+.social-field.google {
+    background-color: rgb(243, 243, 243);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.199);
     border-radius: 4px;
-    padding-left: 3px;
+    padding: 3px;
     margin-top: 1rem;
 }
 .social-field.facebook {
     background: linear-gradient(to right, #1e3c72, #2a5298);
     border-radius: 4px;
-    padding-left: 3px;
-    margin-top: 1rem;
+    padding: 3px;
+    margin-top: 6px;
 }
 .social-field a i {
     margin: 0 0.5rem;
@@ -157,4 +171,48 @@ a {
 
 span > a:hover {
     text-decoration: underline;
+}
+
+#olho {
+    position: absolute;
+    right: 12px;
+    top: 1px;
+    font-size: 22px;
+    color: #a09f9fa9;
+    cursor: pointer;
+}
+
+.hrColor {
+    height: 1px;
+    background-color: #13ccadf6;
+    margin-bottom: 20px;
+    margin-top: 25px;
+}
+
+.redefinir {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    color: #13ccadf6;
+}
+
+.redefinir:hover {
+    text-decoration: underline;
+}
+
+#btnCadastro {
+    margin: 0 auto;
+    width: 147px;
+    padding: 5px;
+    background-color: #13ccadf6;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 4px;
+    box-shadow: 2px 3px 3px #00000024;
+    transition: 0.3s all ease;
+}
+
+#btnCadastro:hover {
+    background-color: #0cc0a2f6;
 }

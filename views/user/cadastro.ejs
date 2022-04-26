@@ -4,62 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" type="text/css" href="css/msg/error.css">
-    <link rel="stylesheet" type="text/css" href="css/keyframes/msg.css">
 </head>
 <body>
-    <div id="divMsgErro"onclick="fecharErro('divMsgErro')">
-        <i class='bx bx-x' id="btnX"></i>
-        <% if(msg_error) { %>
-            <p class="msg_error"><%= msg_error %> </p>
-        <% } else { %>
-
-        <% } %> 
+    <div class="divMsgErro <%= msg_error != "" ? 'active' : '' %>">
+        <i class='bx bx-x'></i>
+        <p class="msg_error" id="msgTeste"><%= msg_error %> </p>
     </div>  
-    <div class="divMsgSuccess">
-        <i class='bx bx-check'></i>
-        <% if(msg_success) { %>
-            <p class="msg_success"><%= msg_success %> </p> 
-        <% } else { %>
-    
-        <% } %>
-    </div>
-
-
     
     <main class="container">
         <h2>Register</h2>
         <form action="/register" method="post">
             <div class="input-field">
-                <input type="text" name="nome" id="username" placeholder="Enter Your Name" required>
+                <input type="text" name="nome" id="nome" placeholder="Enter Your Name" required>
                 <div class="underline">
 
                 </div>
             </div>
             <div class="input-field" style="margin-bottom: 1.5rem">
-                <input type="text" name="usuario" id="password" style="margin-bottom: 6px;" placeholder="Enter Your User" required>
+                <input type="text" name="usuario" id="usuario" placeholder="Enter Your User" required>
                 <div class="underline">
 
                 </div>
             </div>
             <div class="input-field" style="margin-bottom: 1.5rem">
-                <input type="email" name="email" id="username" placeholder="Enter Your Email" required>
+                <input type="email" name="email" id="email" placeholder="Enter Your Email" required>
                 <div class="underline">
 
                 </div>
             </div>
             <div class="input-field" style="margin-bottom: 1.5rem">
                 <input type="password" name="senha" id="password" placeholder="Enter Your Password" required>
+                <i class='bx bx-show' id="olho"></i>
                 <div class="underline">
 
                 </div>
             </div>
             <div class="input-field" style="margin-bottom: 1.5rem">
-                <input type="password" name="confirmarSenha" id="username" placeholder="Confirm password" required>
+                <input type="password" name="confirmarSenha" id="confirmarSenha" placeholder="Confirm password" required>
                 <div class="underline">
 
                 </div>
@@ -72,16 +58,34 @@
                 <div class="social-field twitter">
                     <a href="#">
                         <i class="fab fa-twitter"></i>
-                        Sign in with Twitter
+                        Sign up with Twitter
                     </a>
                 </div>
                 <div class="social-field facebook">
                     <a href="#">
                         <i class="fab fa-facebook-f"></i>
-                        Sign in with Facebook
+                        Sign up with Facebook
                     </a>
                 </div>
             </div>
+            <script src="js/btn/msg.js"></script>
+            <script>
+                document.getElementById('olho').addEventListener('mousedown', function() {
+                    document.getElementById('password').type = 'text';
+                    document.getElementById('olho').style.color = "#585858";
+                });
+
+                document.getElementById('olho').addEventListener('mouseup', function() {
+                    document.getElementById('password').type = 'password';
+                    document.getElementById('olho').style.color = "#a09f9fa9";
+                });
+
+                // Para que o password não fique exposto apos mover a imagem.
+                document.getElementById('olho').addEventListener('mousemove', function() {
+                    document.getElementById('password').type = 'password';
+                    document.getElementById('olho').style.color = "#a09f9fa9";
+                });
+            </script>
         </footer>
     </main>
 </body>

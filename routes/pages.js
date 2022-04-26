@@ -7,14 +7,20 @@ const Meta = mongoose.model("metas")
 const Trash = mongoose.model("trashes")
 const {eAdmin} = require('../helpers/authadmin')
 const {logado} = require('../helpers/authadmin')
-const erros = require('../controllers/auth')
 
 const router = express.Router()
 
 // Rotas 
     // INDEX
     router.get('/', (req, res)=>{
-        res.render('user/index')
+        let msg_error = req.flash('msg_error')
+        let msg_success = req.flash('msg_success')
+        res.render('user/index', {
+            dadosEmail: "",
+            dadosSenha: "",
+            msg_error,
+            msg_success
+        })
     }); 
 
     // HOME 
