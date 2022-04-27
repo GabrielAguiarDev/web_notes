@@ -26,7 +26,7 @@
         <form action="/" method="post">
             <% if(dadosEmail && dadosSenha !== "") { %>
                 <div class="input-field">
-                    <input type="text" name="user" id="username" placeholder="Entre com seu usuário" value="<%= dadosEmail %>" required>
+                    <input type="text" name="user" id="username" placeholder="Entre com seu usuário" value="<%= dadosUsername %>" required>
                     <div class="underline">
 
                     </div>
@@ -54,18 +54,18 @@
         <footer>
             <a href="#"><span class="redefinir">Esqueceu a senha?</span></a>
             <div class="social-field">
-                <div class="social-field google">
-                    <a href="#">
+                <a href="#">
+                    <div class="social-field google">
                         <img src="https://img.icons8.com/fluency/48/000000/google-logo.png"/>
                         Entrar com o Google
-                    </a>
-                </div>
-                <div class="social-field facebook">
-                    <a href="#">
+                    </div>
+                </a>
+                <a href="#">
+                    <div class="social-field facebook">
                         <i class="fab fa-facebook-f"></i>
                         Entrar com o Facebook
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
             <div class="hrColor"></div>
             <a href="http://127.0.0.1:3000/cadastro" id="btnCadastro">Criar nova conta</a>
