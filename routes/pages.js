@@ -1,4 +1,5 @@
 const express = require('express')
+const passport = require('passport');
 const authController = require('../controllers/auth');
 const mongoose = require('mongoose')
 const User = mongoose.model("user")
@@ -22,6 +23,24 @@ const router = express.Router()
             msg_success
         })
     }); 
+
+    // LOGIN - GOOGLE
+    router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+    router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
+            Note.findOne({_id: req.body.id}).then((noteEdit)=>{
+                res.render('user/home', {
+                    listNotes: note,
+                    editNote: noteEdit,
+                    user: req.user,
+                    page_name: 'home'
+                })
+            })
+        })
+    });
 
     // HOME 
     router.get('/home',logado, (req, res) => {
