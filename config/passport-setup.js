@@ -7,12 +7,16 @@ require('../models/User')
 
 const userSchema = new mongoose.Schema({
     googleId: String,
-    userName: String
+    email: Object,
+    userName: String,
+    oneName: String,
+    surName: String,
+    photo: Object
 })
 
 userSchema.plugin(findOrCreate); // Erro: findOrCreate não é uma função
 
-// const User = mongoose.model('user', userSchema); Erro: Não pode substituir o model 'user' uma vez compilado
+const UserGoogle = mongoose.model('googleUser', userSchema); 
 
 // Login com o Google
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -22,19 +26,19 @@ passport.use(new GoogleStrategy({
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
 },function(accessToken, refreshToken, profile, done) {
-    Click.findOrCreate({ googleId: profile.id, userName: profile.displayName }, function (err, user) {
+    UserGoogle.findOrCreate({ googleId: profile.id, email: profile.emails, userName: profile.displayName, oneName: profile.name.givenName, surName: profile.name.familyName, photo: profile.photos }, function (err, user) {
         return done(err, user);
     });
-}
+}   
 ));
 
-passport.serializeUser((user, done)=>{
+passport.serializeUser((user, done)=>{k
 
     done(null, user.id)
 })
 
 passport.deserializeUser((id, done)=>{
-    User.findById(id, (err, user)=>{
+    UserGoogle.findById(id, (err, user)=>{
         done(err, user)
     })
 })

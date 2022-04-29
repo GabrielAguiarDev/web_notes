@@ -35,8 +35,8 @@ const router = express.Router()
                 res.render('user/home', {
                     listNotes: note,
                     editNote: noteEdit,
-                    user: req.user,
-                    page_name: 'home'
+                    page_name: 'home',
+                    userG: req.user
                 })
             })
         })

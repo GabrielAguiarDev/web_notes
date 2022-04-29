@@ -4,7 +4,7 @@ module.exports = {
             return next()
         }
 
-        req.flash("error_msg", "Você precisa ser Admin")
+        req.flash("msg_error", "Você precisa ser Admin")
         console.log("Você precisa ser Admin")
         res.redirect('/')
     },
@@ -14,7 +14,7 @@ module.exports = {
             return next()
         }
 
-        req.flash("error_msg", "Você precisa estar logado")
+        req.flash("msg_error", "Você precisa estar logado")
         console.log("Você precisa estar logado")
         res.redirect('/')
     }

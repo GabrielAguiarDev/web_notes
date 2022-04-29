@@ -1,17 +1,17 @@
 <div class="config">
-    <a href="/perfil" class="linkPerfil"><img class="imgPerfil" src="img/imagem_lulamolusco.jpg" alt="Imagem de perfil do Lula Molusco"> <%= user.usuario %> </a>
+    <a href="/perfil" class="linkPerfil"><img class="imgPerfil" src="/img/imagem_lulamolusco.jpg" alt="Imagem de perfil do Lula Molusco"> <%= user ? user.usuario : userG.oneName %> </a>
     <i class='bx bx-chevron-right'></i>
     <a href="/temas" class="linkTema"><i class='bx bx-palette'></i> Temas</a>
     <a href="/feedback" class="feedback"><i class='bx bxs-megaphone'></i> Feedback</a>
     <a href="/lixeira" class="lixeira"><i class='bx bx-trash'></i> Lixeira</a>
-    <% if(user.eAdmin){ %>
-        <a href="/admin" 
-        class="linkAdmin"><i class='bx bx-user'></i> Usuários</a>
-    <% } else { %>
-        <div class="underline"></div>
+    <% if(user) { %> 
+        <% if(user.eAdmin){ %>
+            <a href="/admin" 
+            class="linkAdmin"><i class='bx bx-user'></i> Usuários</a>
+        <% } else { %>
+            <div class="underline"></div>
+        <% } %>
     <% } %> 
-    <!-- <label for="darkMode" class="darkMode"><i class='bx bxs-moon'></i></label>
-    <input name="theme" type="checkbox" class="toggle-dark-mode" data-none id="darkMode"> -->
     <div class="btnDark">
         <div id="exibirBtnTema"></div>
         <button onclick="tema('light'), exibirLight('exibirBtnTema')" type="button" id="btnTemaLight"><i class='bx bxs-sun'></i></button>

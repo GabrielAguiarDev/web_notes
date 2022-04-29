@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Notes</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-    <link rel="stylesheet" type="text/css" href="css/darkMode.css">
-    <link rel="stylesheet" type="text/css" href="css/body.css">
-    <link rel="stylesheet" type="text/css" href="css/clientes.css">
-    <link rel="stylesheet" type="text/css" href="css/temas.css">
-    <link rel="stylesheet" type="text/css" href="css/feedback.css">
-    <link rel="stylesheet" type="text/css" href="css/perfil.css">
-    <link rel="stylesheet" type="text/css" href="css/trash.css">
-    <link rel="stylesheet" type="text/css" href="css/editNote.css">
-    <link rel="stylesheet" type="text/css" href="css/editMeta.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/keyframes.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/darkMode.css">
+    <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/css/clientes.css">
+    <link rel="stylesheet" type="text/css" href="/css/temas.css">
+    <link rel="stylesheet" type="text/css" href="/css/feedback.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfil.css">
+    <link rel="stylesheet" type="text/css" href="/css/trash.css">
+    <link rel="stylesheet" type="text/css" href="/css/editNote.css">
+    <link rel="stylesheet" type="text/css" href="/css/editMeta.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/keyframes.css">
 </head>
 <body>
     <div id="fundo"></div>
@@ -35,7 +35,7 @@
                 <li <% if (page_name === 'home') { %>class="active" <% } %>>
                     <a href="/home" class="anotacoes"><i class='bx bx-edit'></i> Anotações <div class="underline"></div></a>
                 </li>
-                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user.nome %> <div class="underline"></div></h4>
+                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user ? user.nome : userG.userName %> <div class="underline"></div></h4>
                 </li>
             </ul>
     </header>

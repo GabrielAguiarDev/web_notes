@@ -16,7 +16,7 @@ exports.index = (req, res, next) => {
         successRedirect: "/home",
         failureRedirect: "/",
         failureFlash: true
-    })(req, res, next) 
+    })(req, res, next)
 }
 
 exports.register = (req, res) => {
