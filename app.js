@@ -17,15 +17,15 @@
     const porta = process.env.PORT || 3000;
 
 //  Session
-    // app.use(session({
-    //     secret: 'session secret key',
-    //     resave: true,
-    //     saveUninitialized: true
-    // }));
-    app.use(cookieSession({
-        maxAge: 24*60*60*1000,
-        keys:[process.env.COOKIE_SECRET]
-      }))
+    app.use(session({
+        secret: process.env.SECRET,
+        resave: true,
+        saveUninitialized: true
+    }));
+    // app.use(cookieSession({
+    //     maxAge: 24*60*60*1000,
+    //     keys:[process.env.SECRET]
+    //   }))
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(cookieParser());
@@ -55,7 +55,7 @@
 
 // Mongoose
     mongoose.Promise = global.Promise
-    mongoose.connect('mongodb://localhost/Anotacoes_web').then(()=> {
+    mongoose.connect(process.env.MONGOOSE_CONNECT).then(()=> {
         console.log("MongoDB connected...")
     }).catch((err)=> {
         console.log("Houve um erro ao se conectar ao MongoDB: " + err)
@@ -63,15 +63,15 @@
 
 // Rotas
 
-    // Index
-    app.use('/', require('./routes/pages'))
+    // Login
+    app.use('/login', require('./routes/pages'))
 
     // Login - Google
     app.use('/google/callback', require('./routes/pages'));
     app.use('/google', require('./routes/pages'));
 
-    // Anotações
-    app.use('/home', require('./routes/pages'));
+    // Index
+    app.use('/', require('./routes/pages'));
 
     // Perfil
     app.use('/perfil', require('./routes/pages'))
@@ -103,8 +103,7 @@
     // LogOut
     app.get('/logout', function(req, res){
         req.logout();
-        req.session = null
-        res.redirect('/')
+        res.redirect('/login')
     })
 
 // Servidor rodando na porta 3000

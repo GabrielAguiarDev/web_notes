@@ -10,11 +10,10 @@ const Trash = mongoose.model("trashes")
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
-exports.index = (req, res, next) => {
-
+exports.login = (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/home",
-        failureRedirect: "/",
+        successRedirect: "/",
+        failureRedirect: "/login",
         failureFlash: true
     })(req, res, next)
 }
@@ -56,10 +55,11 @@ exports.register = (req, res) => {
             } else {
                 
                 const novoUsuario = new User({
-                    nome: req.body.nome,
+                    name: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha
+                    senha: req.body.senha,
+                    eAdmin: 1
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{
@@ -76,7 +76,7 @@ exports.register = (req, res) => {
                             let msg_error = req.flash('msg_error')
                             req.flash('msg_success', 'Usuário criado com sucesso!')
                             let msg_success = req.flash('msg_success') 
-                            res.render('user/index', {
+                            res.render('user/login', {
                                 dadosUsername: req.body.usuario,
                                 dadosSenha: req.body.senha,
                                 msg_error,
@@ -118,7 +118,7 @@ exports.notes = async(req, res)=>{
         }).catch((err)=>{
             console.log("Houve um erro ao salvar a Anotacao: " + err)
         })
-        res.redirect('/home')
+        res.redirect('/')
     }
 }
 
@@ -169,10 +169,10 @@ exports.edit = (req, res)=> {
 
         note.save().then(()=>{
             console.log("Anotação editada com sucesso!")
-            res.redirect('/home')
+            res.redirect('/')
         }).catch((err)=>{
             console.log("Erro ao salvar a edição da anotação... " + err)
-            res.redirect('/home')
+            res.redirect('/')
         })
 
     }).catch((err)=>{
@@ -198,7 +198,7 @@ exports.trashesNote = (req, res)=> {
         }).catch((err)=>{
             console.log("Erro ao apagar das anotações: " + err)
         })
-        res.redirect('/home')
+        res.redirect('/')
     })
 }
 
@@ -313,7 +313,7 @@ exports.updateUser = (req, res)=> {
 
     // // fetch user
     // User.findById(req.user.id, function(err, post) {
-    //     if (err) return next(err);
+    //     if (err) return next(err)
 
     //     _.assign(post, req.body); // update user
     //     post.save(function(err) {
@@ -326,6 +326,6 @@ exports.updateUser = (req, res)=> {
         if (err) throw err
         console.log('Usuário atualizado')
     })
-    res.redirect('/home')
+    res.redirect('/')
     
 }

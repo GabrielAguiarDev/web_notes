@@ -33,7 +33,6 @@ passport.use(new GoogleStrategy({
 ));
 
 passport.serializeUser((user, done)=>{k
-
     done(null, user.id)
 })
 

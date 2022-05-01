@@ -6,19 +6,28 @@ const User = mongoose.model("user")
 const Note = mongoose.model("notes")
 const Meta = mongoose.model("metas")
 const Trash = mongoose.model("trashes")
-const {eAdmin} = require('../helpers/authadmin')
-const {logado} = require('../helpers/authadmin')
+const {eAdmin, checkAuthenticate, checkLoginIn} = require('../helpers/authadmin')
 
 const router = express.Router()
 
 // Rotas 
-    // INDEX
-    router.get('/', (req, res)=>{
+    // CADASTRO
+    router.get('/cadastro', (req, res)=>{
         let msg_error = req.flash('msg_error')
         let msg_success = req.flash('msg_success')
-        res.render('user/index', {
-            dadosEmail: "",
-            dadosSenha: "",
+        res.render('user/cadastro', {
+            msg_error,
+            msg_success
+        })
+    });
+
+    // INDEX
+    router.get('/login', checkLoginIn, (req, res)=>{
+        let msg_error = req.flash('msg_error')
+        let msg_success = req.flash('msg_success')
+        res.render('user/login', {
+            dadosUsername: undefined,
+            dadosSenha: undefined,
             msg_error,
             msg_success
         })
@@ -27,12 +36,12 @@ const router = express.Router()
     // LOGIN - GOOGLE
     router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
-    router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/' }),
+    router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
         // Successful authentication, redirect home.
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
-                res.render('user/home', {
+                res.render('user/index', {
                     listNotes: note,
                     editNote: noteEdit,
                     page_name: 'home',
@@ -43,10 +52,11 @@ const router = express.Router()
     });
 
     // HOME 
-    router.get('/home',logado, (req, res) => {
+    router.get('/', checkAuthenticate, (req, res) => {
+        console.log(req.user.name)
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
-                res.render('user/home', {
+                res.render('user/index', {
                     listNotes: note,
                     editNote: noteEdit,
                     user: req.user,
@@ -57,7 +67,7 @@ const router = express.Router()
     })
 
     // PERFIL
-    router.get('/perfil', logado, async(req, res)=>{
+    router.get('/perfil', checkAuthenticate, async(req, res)=>{
 
         let countMeta = await Meta.find({userId: req.user.id}).count().then((count) => {
             return count
@@ -76,18 +86,8 @@ const router = express.Router()
         })
     })           
 
-    // CADASTRO
-    router.get('/cadastro', (req, res)=>{
-        let msg_error = req.flash('msg_error')
-        let msg_success = req.flash('msg_success')
-        res.render('user/cadastro', {
-            msg_error,
-            msg_success
-        })
-    });
-
     // MINHAS METAS
-    router.get('/metas', logado, (req, res)=>{
+    router.get('/metas', checkAuthenticate, (req, res)=>{
         Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
             res.render('user/metas', {
                 listMetas: Meta,
@@ -98,7 +98,7 @@ const router = express.Router()
     })
 
     // OUTROS
-    router.get('/outros', logado, (req, res)=>{
+    router.get('/outros', checkAuthenticate, (req, res)=>{
         res.render('user/outros', {
             user: req.user,
             page_name: 'outros'
@@ -106,7 +106,7 @@ const router = express.Router()
     })
 
     // TEMAS
-    router.get('/temas', logado, (req, res)=>{
+    router.get('/temas', checkAuthenticate, (req, res)=>{
         res.render('user/temas', {
             user: req.user,
             page_name: 'temas'
@@ -114,7 +114,7 @@ const router = express.Router()
     })
 
     // FEEDBACK
-    router.get('/feedback', logado, (req, res)=>{
+    router.get('/feedback', checkAuthenticate, (req, res)=>{
         res.render('user/feedback', {
             user: req.user,
             page_name: 'feedback'
@@ -122,7 +122,7 @@ const router = express.Router()
     })
 
     // LIXEIRA
-    router.get('/lixeira', logado, (req, res)=>{
+    router.get('/lixeira', checkAuthenticate, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
             res.render('user/lixeira', {
                 listNotesTrash: trashesNotes,
@@ -133,13 +133,13 @@ const router = express.Router()
     })
 
     // Lixeira - requisições AJAX para listagem
-    router.get('/Lixeira/anotacoes', logado, (req, res)=>{
+    router.get('/Lixeira/anotacoes', checkAuthenticate, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
             res.send({listNotesTrash: trashesNotes})
         })
     })
 
-    router.get('/Lixeira/metas', logado, (req, res)=>{
+    router.get('/Lixeira/metas', checkAuthenticate, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "metas"}).sort({_id: -1}).then((trashesMetas)=>{
             res.send({listMetasTrash: trashesMetas})
         })
@@ -147,7 +147,7 @@ const router = express.Router()
     
 
     // DELETAR PERMANENTEMENTE
-    router.get('/trash/delete/:id', logado, (req, res)=>{
+    router.get('/trash/delete/:id', checkAuthenticate, (req, res)=>{
         Trash.deleteOne({_id: req.params.id}).then((note)=>{
             console.log("Deletado da lixeira permanentemente com sucesso!")
             res.redirect('/lixeira')
@@ -170,7 +170,7 @@ const router = express.Router()
                 })
             }).catch((err)=>{
                 console.log("Erro ao listar usuarios: " + err)
-                res.redirect('/home')
+                res.redirect('/')
             })
         })
 
@@ -186,7 +186,7 @@ const router = express.Router()
     router.post('/goal', authController.metas)
 
     // Rota Index
-    router.post('/', authController.index)
+    router.post('/login', authController.login)
 
     // Limpar Lixeira (Notes)
     router.post('/note/clean', authController.cleanTrashNotes)
