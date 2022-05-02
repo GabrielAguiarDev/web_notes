@@ -26,8 +26,14 @@
     <header>
         <i class="logo">Web Notes</i>
             <ul class="nav">
-                <li <% if (page_name === 'outros') { %>class="active" <% } %>>
-                    <a href="/outros" class="outros"><i class='bx bx-customize'></i> Outros <div class="underline"></div></a>
+                <li class="outros" <% if (page_name === 'outros') { %>class="active" <% } %>>
+                    <i class='bx bx-chevron-down'></i> Outros
+                    <ul class="submenu">
+                        <li><a href="#">Listas</a></li>
+                        <li><a href="#">Lembretes</a></li>
+                        <li><a href="#">Textos</a></li>
+                        <li><a href="#">Códigos</a></li>
+                    </ul>
                 </li>
                 <li <% if (page_name === 'metas') { %>class="active" <% } %>>
                     <a href="/metas" class="metas"><i class='bx bx-line-chart'></i> Metas <div class="underline"></div></a>

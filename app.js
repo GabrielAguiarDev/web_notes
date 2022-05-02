@@ -39,7 +39,7 @@
         res.locals.user = req.user || null
         next()
     })
-  
+
 // EJS Layouts
     app.set('view engine', 'ejs');
     app.set('views', './views')
@@ -63,21 +63,15 @@
 
 // Rotas
 
-    // Login
-    app.use('/login', require('./routes/pages'))
+    // Basic Routes
+    app.use('/', require('./routes/pages'));
 
     // Login - Google
     app.use('/google/callback', require('./routes/pages'));
     app.use('/google', require('./routes/pages'));
 
-    // Index
-    app.use('/', require('./routes/pages'));
-
     // Perfil
-    app.use('/perfil', require('./routes/pages'))
-
-    // Cadastro
-    app.use('/cadastro', require('./routes/pages'))
+    app.use('/perfil/:name', require('./routes/pages'))
 
     // Postagem
     app.use('/postagem', require('./routes/pages'));
@@ -97,14 +91,8 @@
     // Lixeira
     app.use('/lixeira', require('./routes/pages'))
 
-    // Admin: Clientes
+    // Admin
     app.use('/admin', require('./routes/pages'))
-
-    // LogOut
-    app.get('/logout', function(req, res){
-        req.logout();
-        res.redirect('/login')
-    })
 
 // Servidor rodando na porta 3000
     app.listen(porta, ()=>{console.log(`Servidor Rodando na porta ${porta}`)});

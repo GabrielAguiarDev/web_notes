@@ -58,8 +58,7 @@ exports.register = (req, res) => {
                     name: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
-                    senha: req.body.senha,
-                    eAdmin: 1
+                    senha: req.body.senha
                 })
 
                 bcrypt.genSalt(10, (erro, salt)=>{

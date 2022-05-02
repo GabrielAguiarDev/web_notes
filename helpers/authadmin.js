@@ -7,7 +7,6 @@ module.exports = {
             console.log("Você precisa ser Admin")
             res.redirect('/login')
         }
-
     },
 
     checkAuthenticate: function(req, res, next){

@@ -174,3 +174,11 @@ span > a:hover {
     color: #a09f9fa9;
     cursor: pointer;
 }
+
+.linkPagLogin {
+    color: #13ccadf6;
+}
+
+.linkPagLogin:hover {
+    text-decoration: underline;
+}

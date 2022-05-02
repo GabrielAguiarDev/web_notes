@@ -1,14 +1,14 @@
-const express = require('express')
+const express = require('express');
 const passport = require('passport');
 const authController = require('../controllers/auth');
-const mongoose = require('mongoose')
-const User = mongoose.model("user")
-const Note = mongoose.model("notes")
-const Meta = mongoose.model("metas")
-const Trash = mongoose.model("trashes")
-const {eAdmin, checkAuthenticate, checkLoginIn} = require('../helpers/authadmin')
+const mongoose = require('mongoose');
+const User = mongoose.model("user");
+const Note = mongoose.model("notes");
+const Meta = mongoose.model("metas");
+const Trash = mongoose.model("trashes");
+const {eAdmin, checkAuthenticate, checkLoginIn} = require('../helpers/authadmin');
 
-const router = express.Router()
+const router = express.Router();
 
 // Rotas 
     // CADASTRO
@@ -24,7 +24,7 @@ const router = express.Router()
     // INDEX
     router.get('/login', checkLoginIn, (req, res)=>{
         let msg_error = req.flash('msg_error')
-        let msg_success = req.flash('msg_success')
+         let msg_success = req.flash('msg_success')
         res.render('user/login', {
             dadosUsername: undefined,
             dadosSenha: undefined,
@@ -53,9 +53,8 @@ const router = express.Router()
 
     // HOME 
     router.get('/', checkAuthenticate, (req, res) => {
-        console.log(req.user.name)
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
-            Note.findOne({_id: req.body.id}).then((noteEdit)=>{
+             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
                 res.render('user/index', {
                     listNotes: note,
                     editNote: noteEdit,
@@ -63,11 +62,11 @@ const router = express.Router()
                     page_name: 'home'
                 })
             })
-        })       
+        })  
     })
 
     // PERFIL
-    router.get('/perfil', checkAuthenticate, async(req, res)=>{
+    router.get('/perfil/:name', checkAuthenticate, async(req, res)=>{
 
         let countMeta = await Meta.find({userId: req.user.id}).count().then((count) => {
             return count
@@ -84,7 +83,7 @@ const router = express.Router()
             countNote,
             page_name: 'perfil'
         })
-    })           
+    })
 
     // MINHAS METAS
     router.get('/metas', checkAuthenticate, (req, res)=>{
@@ -132,7 +131,7 @@ const router = express.Router()
         })
     })
 
-    // Lixeira - requisições AJAX para listagem
+    // LIXEIRA - requisições AJAX para listagem
     router.get('/Lixeira/anotacoes', checkAuthenticate, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
             res.send({listNotesTrash: trashesNotes})
@@ -157,10 +156,16 @@ const router = express.Router()
         })
     })
 
+    // LOGOUT
+    router.get('/logout', (req, res)=>{
+        req.logout();
+        res.redirect('/login')
+    })
+
     // PAGES ADMIN
     
         // Lista de Clientes
-        router.get('/admin', eAdmin, (req, res)=>{
+        router.get('/admin/:name', eAdmin, (req, res)=>{
             User.find().sort({data: 'desc'}).then((User)=> {
                 res.render('admin/clientes', {
                     users: User,
@@ -175,7 +180,8 @@ const router = express.Router()
         })
 
 
-// MÉTODO POST
+// MÉTODOS POST
+
     // Rota Cadastro
     router.post('/register', authController.register)
 
