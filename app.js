@@ -79,8 +79,20 @@
     // Metas
     app.use('/metas', require('./routes/pages'));
 
-    // Outros
-    app.use('/outros', require('./routes/pages'))
+    // Listas
+    app.use('/listas', require('./routes/pages'));
+
+    // Lembretes
+    app.use('/lembretes', require('./routes/pages'));
+
+    // Textos
+    app.use('/textos', require('./routes/pages'));
+
+    // Links
+    app.use('/links', require('./routes/pages'));
+
+    // Códigos
+    app.use('/codigos', require('./routes/pages'));
 
     // Temas
     app.use('/temas', require('./routes/pages'))

@@ -8,6 +8,8 @@ header {
     width: 100%;
     height: 130px;
     position: fixed;
+    display: flex;
+    justify-content: space-between;
     z-index: 2;
 }
 
@@ -22,13 +24,13 @@ header {
 }
 
 ul.nav {
-    position: absolute;
-    right: 45px;
-    top: 35px;
     display: flex;
+    position: relative;
+    top: 35px;
+    right: 45px;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
-   
 }
 
 ul li {
@@ -38,9 +40,8 @@ ul li {
 }
 
 .bx-chevron-down {
-    position: absolute;
-    right: 66px;
-    bottom: 13px;
+    position: relative;
+    top: 8px;
     font-size: 33px;
 }
 
@@ -74,18 +75,104 @@ ul li {
 ul li.outros {
     display: inline-block;
     position: relative;
-    width: 75px;
-    height: 40px;
-    margin-left: 50px;
-    padding-left: 10px;
+    bottom: 13px;
+    height: 50px;
+    width: 140px;
     font-size: 1.2em;
     font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
     text-decoration: none;
     font-weight: 600;
     color: var(--cor-3);
     cursor: pointer;
-    transition: all .3s ease;
+    transition: all 0.2s ease;
 }
+
+ul li.outros span .underline {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 28px;
+    left: 0;
+    z-index: 1;
+    opacity: 0;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    transition: all .5s ease-in-out;
+}
+
+ul li.outros span.active .underlineListas {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 40px;
+    left: 53px;
+    width: 100px;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    animation: 1s ease 0s normal forwards 1 delayNav;
+    transition: all .5s ease-in-out;
+}
+
+ul li.outros span.active .underlineLembretes {
+    content: '';
+    position: absolute;
+    height: 3px;
+    top: 40px;
+    left: 8px;
+    width: 140px;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    animation: 1s ease 0s normal forwards 1 delayNav;
+    transition: all .5s ease-in-out;
+}
+
+ul li.outros span.active .underlineTextos {
+    content: '';
+    position: absolute;
+    height: 3px;
+    top: 40px;
+    left: 50px;
+    width: 100px;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    animation: 1s ease 0s normal forwards 1 delayNav;
+    transition: all .5s ease-in-out;
+}
+
+ul li.outros span.active .underlineLinks {
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    top: 40px;
+    left: 60px;
+    width: 91px;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    animation: 1s ease 0s normal forwards 1 delayNav;
+    transition: all .5s ease-in-out;
+}
+
+ul li.outros span.active .underlineCodigos {
+    content: '';
+    position: absolute;
+    height: 3px;
+    top: 40px;
+    left: 30px;
+    width: 120px;
+    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
+    transform: scale(1);
+    animation: 1s ease 0s normal forwards 1 delayNav;
+    transition: all .5s ease-in-out;
+}   
+
+ul li.outros span.active {
+    color: var(--cor-2);
+}
+
 
 ul li.outros:hover {
     color: var(--cor-2);
@@ -99,8 +186,11 @@ ul li.outros:hover ul.submenu {
 ul li.outros ul.submenu {
     position: relative;
     top: 10px;
-    left: -36px;
-    width: 130px;
+    left: 18px;
+    width: 143px;
+    background-color: #d1fff8ed;
+    padding: 0px 5px 5px 5px;
+    border-radius: 8px;
     transition: all .3s ease;
     pointer-events: none;
     opacity: 0;
@@ -114,8 +204,21 @@ ul li.outros ul.submenu li {
 }
 
 ul li.outros ul.submenu li a {
+    text-align: left;
     margin-left: 0px;
     padding-left: 0px;
+}
+
+ul li.outros ul.submenu li a span {
+    position: relative;
+    left: 36px;
+    font-size: 17px;
+}
+
+ul li.outros ul.submenu li a i {
+    position: absolute;
+    top: 5px;
+    left: 0;
     font-size: 19px;
 }
 
@@ -129,7 +232,6 @@ ul li a {
     text-decoration: none;
     font-weight: 600;
     color: var(--cor-3);
-    transition: 0.5s;
 }
 
 ul li a:hover {
@@ -152,7 +254,6 @@ ul li h4.perfil {
     text-decoration: none;
     font-weight: 600;
     color: var(--cor-3);
-    transition: 0.5s;
 }
 
 ul li h4.perfil:hover {
@@ -188,12 +289,6 @@ ul li .underline::before {
     transition: all .5s ease-in-out;
 }
 
-ul li:nth-child(1).active a .underline::before {
-    left: -30px;
-    width: 160%;
-    opacity: 1;
-    animation: 1s ease 0s normal forwards 1 delayNav;
-}
 ul li:nth-child(2).active a .underline::before {
     left: -27px;
     width: 160%;

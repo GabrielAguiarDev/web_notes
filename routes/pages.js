@@ -15,7 +15,7 @@ const router = express.Router();
     router.get('/cadastro', (req, res)=>{
         let msg_error = req.flash('msg_error')
         let msg_success = req.flash('msg_success')
-        res.render('user/cadastro', {
+        res.render('pages/cadastro', {
             msg_error,
             msg_success
         })
@@ -25,7 +25,7 @@ const router = express.Router();
     router.get('/login', checkLoginIn, (req, res)=>{
         let msg_error = req.flash('msg_error')
          let msg_success = req.flash('msg_success')
-        res.render('user/login', {
+        res.render('pages/login', {
             dadosUsername: undefined,
             dadosSenha: undefined,
             msg_error,
@@ -45,6 +45,7 @@ const router = express.Router();
                     listNotes: note,
                     editNote: noteEdit,
                     page_name: 'home',
+                    pageOutros: undefined,
                     userG: req.user
                 })
             })
@@ -55,11 +56,12 @@ const router = express.Router();
     router.get('/', checkAuthenticate, (req, res) => {
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
              Note.findOne({_id: req.body.id}).then((noteEdit)=>{
-                res.render('user/index', {
+                res.render('pages/index', {
                     listNotes: note,
                     editNote: noteEdit,
                     user: req.user,
-                    page_name: 'home'
+                    page_name: 'home',
+                    pageOutros: undefined
                 })
             })
         })  
@@ -76,57 +78,101 @@ const router = express.Router();
             return count
         })
 
-        res.render('user/perfil', {
+        res.render('pages/perfil', {
             user: req.user,
             dateUser: req.user.data,
             countMeta, 
             countNote,
-            page_name: 'perfil'
+            page_name: 'perfil',
+            pageOutros: undefined
         })
     })
 
-    // MINHAS METAS
+    // METAS
     router.get('/metas', checkAuthenticate, (req, res)=>{
         Meta.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Meta)=>{
-            res.render('user/metas', {
+            res.render('pages/metas', {
                 listMetas: Meta,
                 user: req.user,
-                page_name: 'metas'
+                page_name: 'metas',
+                pageOutros: undefined
                 })
         })  
     })
 
-    // OUTROS
-    router.get('/outros', checkAuthenticate, (req, res)=>{
-        res.render('user/outros', {
-            user: req.user,
-            page_name: 'outros'
-        })
-    })
+    // OUTROS TIPOS
+        // listas
+        router.get('/listas', checkAuthenticate, (req, res)=>{
+            res.render('pages/listas', {
+                user: req.user,
+                page_name: 'listas',
+                pageOutros: 'listas'
+            })
+        }) 
+
+        // lembretes
+        router.get('/lembretes', checkAuthenticate, (req, res)=>{
+            res.render('pages/lembretes', {
+                user: req.user,
+                page_name: 'lembretes',
+                pageOutros: 'lembretes'
+            })
+        }) 
+
+        // textos
+        router.get('/textos', checkAuthenticate, (req, res)=>{
+            res.render('pages/textos', {
+                user: req.user,
+                page_name: 'textos',
+                pageOutros: 'textos'
+            })
+        }) 
+
+        // links
+        router.get('/links', checkAuthenticate, (req, res)=>{
+            res.render('pages/links', {
+                user: req.user,
+                page_name: 'links',
+                pageOutros: 'links'
+            })
+        }) 
+
+        // códigos
+        router.get('/codigos', checkAuthenticate, (req, res)=>{
+            res.render('pages/codigos', {
+                user: req.user,
+                page_name: 'codigos',
+                pageOutros: 'codigos'
+            })
+        }) 
+    
 
     // TEMAS
     router.get('/temas', checkAuthenticate, (req, res)=>{
-        res.render('user/temas', {
+        res.render('pages/temas', {
             user: req.user,
-            page_name: 'temas'
+            page_name: 'temas',
+            pageOutros: undefined
         })
     })
 
     // FEEDBACK
     router.get('/feedback', checkAuthenticate, (req, res)=>{
-        res.render('user/feedback', {
+        res.render('pages/feedback', {
             user: req.user,
-            page_name: 'feedback'
+            page_name: 'feedback',
+            pageOutros: undefined
         })
     })
 
     // LIXEIRA
     router.get('/lixeira', checkAuthenticate, (req, res)=>{
         Trash.find({userId: { $eq: req.user.id }, tipo: "notes"}).sort({_id: -1}).then((trashesNotes)=>{
-            res.render('user/lixeira', {
+            res.render('pages/lixeira', {
                 listNotesTrash: trashesNotes,
                 user: req.user,
-                page_name: 'lixeira'
+                page_name: 'lixeira',
+                pageOutros: undefined
             })
         })
     })
@@ -171,7 +217,8 @@ const router = express.Router();
                     users: User,
                     User: req.user,
                     dateUser: req.user.data,
-                    page_name: 'admin'
+                    page_name: 'admin',
+                    pageOutros: undefined
                 })
             }).catch((err)=>{
                 console.log("Erro ao listar usuarios: " + err)

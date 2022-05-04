@@ -75,7 +75,7 @@ exports.register = (req, res) => {
                             let msg_error = req.flash('msg_error')
                             req.flash('msg_success', 'Usuário criado com sucesso!')
                             let msg_success = req.flash('msg_success') 
-                            res.render('user/login', {
+                            res.render('pages/login', {
                                 dadosUsername: req.body.usuario,
                                 dadosSenha: req.body.senha,
                                 msg_error,
