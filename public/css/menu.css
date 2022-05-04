@@ -3,7 +3,7 @@
     right: 20px;
     top: 70px;
     opacity: 1;
-    transition: 0.5s all ease;
+    transition: 0.2s all ease;
 }
 
 .config {
@@ -33,7 +33,7 @@
     cursor: pointer;
     color: white;
     background-color: rgba(31, 182, 94, 0.432);
-    transition: 0.5s all ease;
+    transition: 0.3s all ease;
 }
 
 .bx-chevron-right:hover {
@@ -53,7 +53,7 @@
     border-radius: 8px 0px 0px 0px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.5s all ease;
+    transition: 0.1s all ease;
     color: white;
     font-weight: 700;
     text-align: center;
@@ -70,7 +70,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.5s all ease;
+    transition: 0.1s all ease;
 }
 
 .config .linkTema {
@@ -80,7 +80,7 @@
     padding: 8px 102px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
     color: white;
     font-weight: 600;
 }
@@ -101,7 +101,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
 }
 
 .config .feedback {
@@ -111,7 +111,7 @@
     padding: 8px 77px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
     color: white;
     font-weight: 600;
 }
@@ -132,7 +132,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
 }
 
 .config .lixeira {
@@ -142,7 +142,7 @@
     padding: 8px 105px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
     color: white;
     font-weight: 600;
 }
@@ -163,7 +163,7 @@
     left: 25px;
     color: white;
     font-size: 23px;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
 }
 
 .config .linkAdmin {
@@ -173,7 +173,7 @@
     padding: 8px 86px 8px 83px;
     background-color: transparent;
     text-decoration: none;
-    transition: 0.3s all ease;
+    transition: 0.1s all ease;
     color: white;
     font-weight: 600;
 }

@@ -51,6 +51,11 @@
 
 .cardNotesTrash {
     margin-top: 50px;
+    
+}
+
+.cardMetasTrash {
+    margin-top: 50px;
 }
 
 .cardNotesTrash .btn-rescue {
@@ -67,6 +72,74 @@
     cursor: pointer;
     color: rgba(90, 90, 90, 0.877);
     transition: 0.5s all ease;
+}
+
+.cardMetasTrash .btn-rescue {
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    bottom: 7px;
+    font-weight: 500;
+    padding: 1px 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 27px;
+    cursor: pointer;
+    color: rgba(90, 90, 90, 0.877);
+    transition: 0.5s all ease;
+}
+
+.cleanTrash {
+    margin-bottom: 50px;
+}
+
+.cardTrash {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 5px 11px 1px 11px;
+    border-radius: 8px;
+    background-color: #c7c5c54d;
+}
+
+.cardTrash .btn-rescue {
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    bottom: 7px;
+    font-weight: 500;
+    padding: 1px 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 27px;
+    cursor: pointer;
+    color: rgba(90, 90, 90, 0.877);
+    transition: 0.5s all ease;
+}
+
+.cardTrash .btn-rescue {
+    display: inline-block;
+    position: absolute;
+    right: 55px;
+    bottom: 7px;
+    font-weight: 500;
+    padding: 1px 14px;
+    border-radius: 5px;
+    border: none;
+    background-color: transparent;
+    font-size: 27px;
+    cursor: pointer;
+    color: rgba(90, 90, 90, 0.877);
+    transition: 0.5s all ease;
+}
+
+.cardTrash #tituloLabel {
+    color: #b91212f8;
+}
+
+.btn-rescue:hover {
+    color: var(--cor-2);
 }
 
 #cleanTrashMeta {
@@ -96,9 +169,10 @@
 .navTrash ul li:nth-child(3) ul {
     position: absolute;
     left: 5px;
-    width: 317px;
+    height: 56px;
+    width: 528px;
     font-size: 14px;
-    background-color: rgb(100 211 193 / 41%);
+    background-color: rgba(182, 238, 229, 0.918);
     border-radius: 6px 0px 6px 6px;
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.178);
     opacity: 0;
@@ -109,13 +183,20 @@
 .navTrash ul li:nth-child(3) ul li {
     position: relative;
     left: 0;
-    max-width: 110px;
-    line-height: 35px;
-    padding: 5px;
+    max-width: 132px;
+    padding: 0px;
 }
 
 .navTrash ul li:nth-child(3) ul li a {
+    padding: 14px 8px 17px 12px;
     margin: 0;
+}
+
+.navTrash ul li:nth-child(3) ul li a i {
+    margin-right: 5px;
+    font-size: 21px;
+    position: relative;
+    top: 3px;
 }
 
 .navTrash ul li:nth-child(3):hover ul {
@@ -148,18 +229,41 @@
 
 .trashsNotes {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 5px 11px 1px 11px;
+    border-radius: 8px;
+    background-color: #c7c5c54d;
 }
 
 .trashsMetas {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 5px 11px 1px 11px;
+    border-radius: 8px;
+    background-color: #c7c5c54d;
+}
+
+.hrTrash {
+    margin-top: 5px;
+    border: none;
+    height: 1px;
+    width: 100%;
+    background-color: #b91212f8;
+    box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.363);
 }
 
 #tituloTrash {
     display: inline-block;
     font-weight: 600;
     color: var(--cor-2);
+}
+
+.trashsNotes #tituloLabel {
+    color: #b91212f8;
+}
+
+.trashsMetas #tituloLabel {
+    color: #b91212f8;
 }
 
 #conteudoTrash {

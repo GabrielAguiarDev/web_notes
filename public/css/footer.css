@@ -230,7 +230,7 @@ footer h4 {
 .setaParaCima {
     position: absolute;
     top: -74px;
-    left: 40px;
+    right: 40px;
     opacity: 1;
 }
 

@@ -10,7 +10,7 @@
 }
 
 :root {
-    --header: #e9e9e9;
+    --header: #e2e2e2;
     --body: #ffffff;
     --conteudo: #505050;
     --footer: #024c2f;
@@ -21,7 +21,7 @@
 }
 
 body.light {
-    --header: #e9e9e9;
+    --header: #e2e2e2;
     --body: #ffffff;
     --conteudo: #505050;
     --footer: #024c2f;
@@ -202,6 +202,10 @@ hr.hrMain {
     border: 0 none;
     outline: 0;
     cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--cor-3)
 }
 
 .btn-add-Note {

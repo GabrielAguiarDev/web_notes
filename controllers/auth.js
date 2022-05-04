@@ -10,51 +10,52 @@ const Trash = mongoose.model("trashes")
 const bcrypt = require('bcryptjs')
 const passport = require('passport')
 
-exports.index = (req, res, next) => {
-
+exports.login = (req, res, next) => {
     passport.authenticate("local", {
-        successRedirect: "/home",
-        failureRedirect: "/",
+        successRedirect: "/",
+        failureRedirect: "/login",
         failureFlash: true
-    })(req, res, next) 
+    })(req, res, next)
 }
 
 exports.register = (req, res) => {
-    
-    var massage_erros = []
 
     if(!req.body.nome || typeof req.body.nome == undefined || req.body.nome == null) {
-        massage_erros.push({erros: "Nome inválido"})
-    }
+        req.flash('msg_error','Nome Inválido!')
+        res.redirect('/cadastro')
 
-    if(!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
-        massage_erros.push({erros: "Usuário inválido"})
-    }
+    } else if(!req.body.usuario || typeof req.body.usuario == undefined || req.body.usuario == null) {
+        req.flash('msg_error','Usuário Inválido!')
+        res.redirect('/cadastro')
 
-    if(!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
-        massage_erros.push({erros: "Email inválido"})
-    }
+    } else if(!req.body.email || typeof req.body.email == undefined || req.body.email == null) {
+        req.flash('msg_error','Email Inválido!')
+        res.redirect('/cadastro')
 
-    if(req.body.senha !== req.body.confirmarSenha || !req.body.senha || typeof req.body.usuario == undefined || req.body.usuario == null){
-        massage_erros.push({erros: "Senha inválida"})
-    }
+    } else if(!req.body.senha || typeof req.body.usuario == undefined || req.body.usuario == null){
+        req.flash('msg_error','Senhas inválida!')
+        res.redirect('/cadastro')
 
-    if(req.body.senha < 5){
-        massage_erros.push({erros: "Senha muito curta"})
-    }
+    } else if(req.body.senha !== req.body.confirmarSenha) {
+        req.flash('msg_error','As senhas não correspondem!')
+        res.redirect('/cadastro')
 
-    if(massage_erros.length > 0){
-        res.render('cadastro', massage_erros)
-        console.log(massage_erros)
+    } else if(req.body.senha.length <= 7){
+        req.flash('msg_error','Senha muito curta! (Mínimo 8 caracteres)')
+        res.redirect('/cadastro')
+
     } else {
 
         User.findOne({email: req.body.email}).then((user)=>{
             if(user){
                 console.log("Já existe uma conta com esse endereço de email")
+
+                req.flash('msg_error','Já existe uma conta com esse endereço de email')
                 res.redirect('/cadastro')
             } else {
+                
                 const novoUsuario = new User({
-                    nome: req.body.nome,
+                    name: req.body.nome,
                     usuario: req.body.usuario,
                     email: req.body.email,
                     senha: req.body.senha
@@ -71,7 +72,15 @@ exports.register = (req, res) => {
 
                         novoUsuario.save().then(()=>{
                             console.log("Usuário criado com sucesso!")
-                            res.redirect('/')
+                            let msg_error = req.flash('msg_error')
+                            req.flash('msg_success', 'Usuário criado com sucesso!')
+                            let msg_success = req.flash('msg_success') 
+                            res.render('pages/login', {
+                                dadosUsername: req.body.usuario,
+                                dadosSenha: req.body.senha,
+                                msg_error,
+                                msg_success
+                            })
                         }).catch((err)=>{
                             console.log("Erro ao criar o usuário: " + err)
                             res.redirect('/cadastro')
@@ -81,7 +90,7 @@ exports.register = (req, res) => {
 
             }
         }).catch((err)=>{
-            console.log("Houve um erro interno")
+            console.log("Houve um erro interno ==> " + err)
             res.redirect('/cadastro')
         })
     }
@@ -108,7 +117,7 @@ exports.notes = async(req, res)=>{
         }).catch((err)=>{
             console.log("Houve um erro ao salvar a Anotacao: " + err)
         })
-        res.redirect('/home')
+        res.redirect('/')
     }
 }
 
@@ -159,10 +168,10 @@ exports.edit = (req, res)=> {
 
         note.save().then(()=>{
             console.log("Anotação editada com sucesso!")
-            res.redirect('/home')
+            res.redirect('/')
         }).catch((err)=>{
             console.log("Erro ao salvar a edição da anotação... " + err)
-            res.redirect('/home')
+            res.redirect('/')
         })
 
     }).catch((err)=>{
@@ -188,7 +197,7 @@ exports.trashesNote = (req, res)=> {
         }).catch((err)=>{
             console.log("Erro ao apagar das anotações: " + err)
         })
-        res.redirect('/home')
+        res.redirect('/')
     })
 }
 
@@ -214,13 +223,14 @@ exports.trashesMeta = (req, res)=> {
     })
 }
 
-exports.rescueNote = (req, res)=> {
+exports.rescueNote = (req, res)=> {  
     Trash.findOne({_id: req.body.id}).then( async(note)=>{
         const noteRescue = {
             titulo: req.body.titulo,
             conteudo: req.body.conteudo,
             userId: req.user.id
         }
+        console.log(noteRescue)
         await new Note(noteRescue).save().then((req, res)=>{
             console.log("Movido de volta para a página home")
         }).catch((err)=>{
@@ -302,7 +312,7 @@ exports.updateUser = (req, res)=> {
 
     // // fetch user
     // User.findById(req.user.id, function(err, post) {
-    //     if (err) return next(err);
+    //     if (err) return next(err)
 
     //     _.assign(post, req.body); // update user
     //     post.save(function(err) {
@@ -315,6 +325,6 @@ exports.updateUser = (req, res)=> {
         if (err) throw err
         console.log('Usuário atualizado')
     })
-    res.redirect('/home')
+    res.redirect('/')
     
 }

@@ -7,13 +7,14 @@ const bcrypt = require('bcryptjs')
 require('../models/User')
 const User = mongoose.model('user')
 
-module.exports = function(passport) {
+module.exports = (passport)=> {
 
-    passport.use(new localStrategy({usernameField: 'email', passwordField: 'senha'}, (email, senha, done)=>{
-        User.findOne({email: email}).then((usuario)=>{
+    passport.use(new localStrategy({usernameField: 'user', passwordField: 'senha'}, (user, senha, done)=>{
+        User.findOne({usuario: user}).then((usuario)=>{
 
             if(!usuario) {
-                return done(null, false, ()=>{
+                return done(null, false, (req, res)=>{
+                    req.flash('msg_error','Esta conta não existe! Faça seu cadastro.')
                     console.log("Esta conta não existe")
                 })
             }
@@ -23,7 +24,8 @@ module.exports = function(passport) {
                 if(batem){
                     return done(null, usuario)
                 } else {
-                    return done(null, false, ()=>{
+                    return done(null, false, (req, res)=>{
+                        req.flash('msg_error','Usuário ou senha incorreto!')
                         console.log("Senha incorreta")
                     })
                 }

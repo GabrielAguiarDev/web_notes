@@ -16,6 +16,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-x: hidden;
 }
 
 main.container {
@@ -86,6 +87,7 @@ form {
 }
 
 .input-field input {
+    width: 285px;
     outline: none;
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.7)
@@ -161,5 +163,22 @@ a {
 }
 
 span > a:hover {
+    text-decoration: underline;
+}
+
+#olho {
+    position: absolute;
+    right: 12px;
+    top: 1px;
+    font-size: 22px;
+    color: #a09f9fa9;
+    cursor: pointer;
+}
+
+.linkPagLogin {
+    color: #13ccadf6;
+}
+
+.linkPagLogin:hover {
     text-decoration: underline;
 }

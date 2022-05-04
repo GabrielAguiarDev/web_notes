@@ -1,0 +1,58 @@
+<%- include('../include/header') %>
+<%- include('../include/navbar') %>
+
+<main>
+    <div class="topoPerfil">
+        <div class="divImgPerfil">
+            <img class="imgPerfil" src="img/imagem_lulamolusco.jpg" alt="Imagem de perfil do Lula Molusco">
+            <div class="alterPerfil">
+                <i class='bx bx-pencil'></i>
+            </div>
+        </div>
+        <div class="infoPerfil">
+            <ul>
+                <li><span>Nome: </span> <%= user.name %></li>
+                <li><span>Usuário: </span> <%= user.usuario %></li>
+                <li><span>Email: </span> <%= user.email %></li>
+                <% let dFormat = dateUser.getDate()+" / "+(dateUser.getMonth()+1)+" / "+(dateUser.getMonth()+1)+ " " + " às " + " " + dateUser.getHours() + ":" + dateUser.getMinutes() + ":" + dateUser.getSeconds() %> 
+                <li><span>Data e Hora de Registro: </span> <%= dFormat %></li>
+            </ul>
+            <div class="linha"></div>
+            <div class="countPerfil">
+                <ul>
+                    <li><span>Anotações: </span><%= countNote %></li>
+                    <li><span>Metas: </span><%= countMeta %></li>
+                    <li><span>Outros Tipos: </span>undefine</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="mainPerfil">
+        <p>O usuário poderá colocar foto, alterar a foto, alterar tema, alterar dados pessoais, e etc.</p>
+        <h3>Dados do Usuário</h3>
+        <form action="/update/user" method="post">
+            <label for="nome">Nome: </label>
+            <input type="text" name="nome" id="nome" value="<%= user.nome %>">
+            <br>
+            <label for="senha">Usuário: </label>
+            <input type="text" name="usuario" id="usuario" value="<%= user.usuario %>">
+            <br>
+            <label for="email">Email: </label>
+            <input type="text" name="email" id="email" value="<%= user.email %>">
+            <br>
+            <label for="senha">Senha: </label>
+            <input type="text" name="senha" id="senha" value="<%= user.senha %>">
+            <br>
+            <label for="eAdmin">Admin </label>
+            <% if(user.eAdmin){ %>
+                <input type="text" name="eAdmin" id="eAdmin" value="<%= user.eAdmin %>">
+            <% } else {%>
+                <input type="text" name="eAdmin" id="eAdmin" value="0">
+            <% } %>
+            <br><br>
+            <button type="submit">Salvar</button>
+        </form>
+    </div> -->
+</main>
+
+<%- include('../include/footer') %>

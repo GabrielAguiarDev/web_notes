@@ -1,0 +1,54 @@
+<%- include('../include/header') %>
+<%- include('../include/navbar') %>
+
+<main>
+    <div class="container">
+        
+        <div class="tituloPag">
+            <h1>Minha Lixeira</h1>
+            <i class='bx bx-trash'></i>
+        </div>
+        <hr class="hrColor">
+        <div class="cleanTrash" id="cleanTrashNote">
+            <form action="/note/clean" method="post">
+                <div class="navTrash">
+                    <ul>
+                        <li class="lixeiraNote activeListTrash" id="anotacoes">Anotações</li>
+                        <li class="lixeiraMeta" id="metas">Metas</li>
+                        <li class="outros">Outros tipos
+                            <span><i class='bx bx-chevron-down'></i></span>
+                            <ul>
+                                <li><a href="#" id="listas"><i class='bx bx-list-ul'></i>Listas</a></li>
+                                <li><a href="#" id="Lembretes"><i class='bx bxs-bell'></i>Lembretes</a></li>
+                                <li><a href="#" id="Textos"><i class='bx bx-book-open'></i>Textos</a></li>
+                                <li><a href="#" id="links"><i class='bx bx-link'></i>Links</a></li>
+                                <li><a href="#" id="codigos"><i class='bx bx-code-alt'></i>Códigos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button type="submit" class="btn" onclick="confirm('Deseja limpar toda a lixeira permanentemente?');">Limpar Lixeira</button>
+                </div>
+            </form>
+        </div>
+        
+        <div id="listTrash">
+            <% listNotesTrash.forEach(trash => { %>
+                <div class="cardTrash">
+                    <form action="/note/rescue" method="post">
+                        <input type="hidden" name="id" value="<%= trash.id %>">
+                        <label for="tituloTrash" id="tituloLabel" class="textTrash"><%= trash.titulo %></label>
+                        <input type="hidden" name="titulo" id="tituloTrash" value="<%= trash.titulo %>">
+                        <br>
+                        <label for="conteudoTrash" id="conteudoLabel" class="textTrash"><%= trash.conteudo %></label>
+                        <input type="hidden" name="conteudo" id="conteudoTrash" value="<%= trash.conteudo %>">
+                        <button type="submit" class="btn-rescue"><i class='bx bx-save'></i></button>
+                        <a class="btn-danger"  href="/trash/delete/<%= trash.id %>" onclick="confirm('Deseja deletar permanentemente?');"><i class='bx bx-trash'></i></a>
+                        <hr class="hrTrash">
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</main>
+
+<%- include('../include/footer') %>

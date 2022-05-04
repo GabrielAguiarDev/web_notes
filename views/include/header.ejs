@@ -4,38 +4,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anotações Web</title>
+    <title>Web Notes</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" type="text/css" href="css/header.css">
-    <link rel="stylesheet" type="text/css" href="css/menu.css">
-    <link rel="stylesheet" type="text/css" href="css/darkMode.css">
-    <link rel="stylesheet" type="text/css" href="css/body.css">
-    <link rel="stylesheet" type="text/css" href="css/clientes.css">
-    <link rel="stylesheet" type="text/css" href="css/temas.css">
-    <link rel="stylesheet" type="text/css" href="css/feedback.css">
-    <link rel="stylesheet" type="text/css" href="css/perfil.css">
-    <link rel="stylesheet" type="text/css" href="css/trash.css">
-    <link rel="stylesheet" type="text/css" href="css/editNote.css">
-    <link rel="stylesheet" type="text/css" href="css/editMeta.css">
-    <link rel="stylesheet" type="text/css" href="css/footer.css">
-    <link rel="stylesheet" type="text/css" href="css/keyframes.css">
+    <link rel="stylesheet" type="text/css" href="/css/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="/css/darkMode.css">
+    <link rel="stylesheet" type="text/css" href="/css/body.css">
+    <link rel="stylesheet" type="text/css" href="/css/clientes.css">
+    <link rel="stylesheet" type="text/css" href="/css/temas.css">
+    <link rel="stylesheet" type="text/css" href="/css/feedback.css">
+    <link rel="stylesheet" type="text/css" href="/css/perfil.css">
+    <link rel="stylesheet" type="text/css" href="/css/trash.css">
+    <link rel="stylesheet" type="text/css" href="/css/editNote.css">
+    <link rel="stylesheet" type="text/css" href="/css/editMeta.css">
+    <link rel="stylesheet" type="text/css" href="/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/keyframes.css">
 </head>
 <body>
     <div id="fundo"></div>
     <div id="fundoNavbar"></div>
     <header>
-        <h1 class="logo">Anotações Web</h1>
+        <i class="logo">Web Notes</i>
             <ul class="nav">
-                <li <% if (page_name === 'outros') { %>class="active" <% } %>>
-                    <a href="/outros" class="outros"><i class='bx bx-customize'></i> Outros <div class="underline"></div></a>
+                <li class="outros">
+                    <span  <% if (page_name === pageOutros) { %>class="active" <% } %>>
+                        <i class='bx bx-chevron-down'></i> 
+                        <%= pageOutros != undefined ? pageOutros : "Outros" %>
+                        <% if(pageOutros === 'listas') { %>
+                            <div class="underlineListas"></div>
+                        <% } else if(pageOutros === 'lembretes') { %>
+                            <div class="underlineLembretes"></div>
+                        <% } else if(pageOutros === 'textos') { %>
+                            <div class="underlineTextos"></div>
+                        <% } else if(pageOutros === 'links') { %>
+                            <div class="underlineLinks"></div>
+                        <% } else { %>
+                            <div class="underlineCodigos"></div>
+                        <% } %>
+                    </span>
+                    <ul class="submenu">
+                        <li><a href="/listas"><i class='bx bx-list-ul'></i><span>Listas</span></a></li>
+                        <li><a href="/lembretes"><i class='bx bxs-bell'></i><span>Lembretes</span></a></li>
+                        <li><a href="/textos"><i class='bx bx-book-open'></i><span>Textos</span></a></li>
+                        <li><a href="/links"><i class='bx bx-link'></i><span>Links</span></a></li>
+                        <li><a href="/codigos"><i class='bx bx-code-alt'></i><span>Códigos</span></a></li>
+                    </ul>
                 </li>
                 <li <% if (page_name === 'metas') { %>class="active" <% } %>>
                     <a href="/metas" class="metas"><i class='bx bx-line-chart'></i> Metas <div class="underline"></div></a>
                 </li>
                 <li <% if (page_name === 'home') { %>class="active" <% } %>>
-                    <a href="/home" class="anotacoes"><i class='bx bx-edit'></i> Anotações <div class="underline"></div></a>
+                    <a href="/" class="anotacoes"><i class='bx bx-edit'></i> Anotações <div class="underline"></div></a>
                 </li>
-                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user.nome %> <div class="underline"></div></h4>
+                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user ? user.name : userG.userName %> <div class="underline"></div></h4>
                 </li>
             </ul>
     </header>

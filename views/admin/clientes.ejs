@@ -17,7 +17,7 @@
                 <div class="users">
                     <% if(User.id !== user.id) { %>
                         <i class='bx bx-chevron-down' id="setaInfo-<%= user.id %>"></i>
-                        <h4 class="nomeClientes"><%= user.nome %></h4>
+                        <h4 class="nomeClientes"><%= user.name %></h4>
                         <% if(user.eAdmin) {%>
                             <h6 class="userAdmin">• <i>Admin</i></h6>
                         <% } %>
