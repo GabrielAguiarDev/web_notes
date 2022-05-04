@@ -88,20 +88,6 @@ ul li.outros {
     transition: all 0.2s ease;
 }
 
-ul li.outros span .underline {
-    content: '';
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    top: 28px;
-    left: 0;
-    z-index: 1;
-    opacity: 0;
-    background: linear-gradient(to right, var(--cor-1), var(--cor-2), var(--cor-2), var(--cor-1));
-    transform: scale(1);
-    transition: all .5s ease-in-out;
-}
-
 ul li.outros span.active .underlineListas {
     content: '';
     position: absolute;
