@@ -1,11 +1,10 @@
 const passport = require('passport');
 const findOrCreate = require('mongoose-findorcreate')
-
-// Model de usuário
 const mongoose = require('mongoose')
-require('../models/User')
+//require('../models/User')
 
-const userSchema = new mongoose.Schema({
+// Model de usuário do Google
+const googleSchema = new mongoose.Schema({
     googleId: String,
     email: Object,
     userName: String,
@@ -14,9 +13,9 @@ const userSchema = new mongoose.Schema({
     photo: Object
 })
 
-userSchema.plugin(findOrCreate); // Erro: findOrCreate não é uma função
+googleSchema.plugin(findOrCreate);
 
-const UserGoogle = mongoose.model('googleUser', userSchema); 
+const UserGoogle = mongoose.model('googleUser', googleSchema); 
 
 // Login com o Google
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -38,6 +37,49 @@ passport.serializeUser((user, done)=>{k
 
 passport.deserializeUser((id, done)=>{
     UserGoogle.findById(id, (err, user)=>{
+        done(err, user)
+    })
+})
+
+// Model de usuário do Facebook
+//require('../models/User')
+const facebookSchema = new mongoose.Schema({
+    facebookId: String,
+    email: Object,
+    userName: String,
+    oneName: String,
+    surName: String,
+    photo: Object
+})
+
+facebookSchema.plugin(findOrCreate);
+
+const UserFacebook = mongoose.model('facebookUser', facebookSchema); 
+
+
+// Login com o Facebook
+const FacebookStrategy = require('passport-facebook').Strategy;
+
+passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_APP_ID,
+    clientSecret: process.env.FACEBOOK_APP_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+    profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)', 'email']
+},function(accessToken, refreshToken, profile, done) {
+    console.log(profile)
+    // UserFacebook.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    //   return done(err, user);
+    // });
+    return done(null, profile)
+}
+));
+
+passport.serializeUser((user, done)=>{k
+    done(null, user.id)
+})
+
+passport.deserializeUser((id, done)=>{
+    UserFacebook.findById(id, (err, user)=>{
         done(err, user)
     })
 })

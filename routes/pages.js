@@ -34,14 +34,33 @@ const router = express.Router();
     }); 
 
     // LOGIN - GOOGLE
-    router.get('/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+    router.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
     router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/login' }),
     function(req, res) {
         // Successful authentication, redirect home.
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
             Note.findOne({_id: req.body.id}).then((noteEdit)=>{
-                res.render('user/index', {
+                res.render('pages/index', {
+                    listNotes: note,
+                    editNote: noteEdit,
+                    page_name: 'home',
+                    pageOutros: undefined,
+                    userG: req.user
+                })
+            })
+        })
+    });
+
+    // LOGIN - FACEBOOK
+    router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+
+    router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+        // Successful authentication, redirect home.
+        Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{
+            Note.findOne({_id: req.body.id}).then((noteEdit)=>{
+                res.render('pages/index', {
                     listNotes: note,
                     editNote: noteEdit,
                     page_name: 'home',
