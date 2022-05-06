@@ -1,6 +1,6 @@
 // Imports
     const express = require('express');
-    const session = require('express-session');
+    // const session = require('express-session');
     const flash = require('connect-flash');
     const cookieParser = require('cookie-parser');
     const cookieSession = require('cookie-session');
