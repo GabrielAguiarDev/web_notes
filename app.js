@@ -17,15 +17,15 @@
     const porta = process.env.PORT || 3000;
 
 //  Session
-    app.use(session({
-        secret: process.env.SECRET,
-        resave: true,
-        saveUninitialized: true
-    }));
-    // app.use(cookieSession({
-    //     maxAge: 24*60*60*1000,
-    //     keys:[process.env.SECRET]
-    //   }))
+    // app.use(session({
+    //     secret: process.env.SECRET,
+    //     resave: true,
+    //     saveUninitialized: true
+    // }));
+    app.use(cookieSession({
+        maxAge: 24*60*60*1000,
+        keys:[process.env.SECRET]
+      }))
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(cookieParser());
