@@ -53,9 +53,9 @@ const router = express.Router();
     });
 
     // LOGIN - FACEBOOK
-    router.get('/auth/facebook', passport.authenticate('facebook', { scope: 'email' }));
+    router.get('/auth/twitter', passport.authenticate('twitter', { scope: 'email' }));
 
-    router.get('/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login' }),
+    router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }),
     function(req, res) {
         // Successful authentication, redirect home.
         Note.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((note)=>{

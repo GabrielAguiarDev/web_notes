@@ -41,10 +41,9 @@ passport.deserializeUser((id, done)=>{
     })
 })
 
-// Model de usuário do Facebook
-//require('../models/User')
-const facebookSchema = new mongoose.Schema({
-    facebookId: String,
+// Model de usuário do Twitter
+const twitterSchema = new mongoose.Schema({
+    twitterId: String,
     email: Object,
     userName: String,
     oneName: String,
@@ -52,22 +51,22 @@ const facebookSchema = new mongoose.Schema({
     photo: Object
 })
 
-facebookSchema.plugin(findOrCreate);
+twitterSchema.plugin(findOrCreate);
 
-const UserFacebook = mongoose.model('facebookUser', facebookSchema); 
+const UserTwitter = mongoose.model('twitterUser', twitterSchema); 
 
 
 // Login com o Facebook
-const FacebookStrategy = require('passport-facebook').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
 
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_APP_ID,
-    clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: process.env.FACEBOOK_CALLBACK_URL,
+passport.use(new TwitterStrategy({
+    consumerKey: process.env.TWITTER_CONSUMER_KEY,
+    consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
+    callbackURL: process.env.TWITTER_CALLBACK_URL,
     profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)', 'email']
 },function(accessToken, refreshToken, profile, done) {
     console.log(profile)
-    UserFacebook.findOrCreate({ facebookId: profile.id }, function (err, user) {
+    UserTwitter.findOrCreate({ twitterId: profile.id }, function (err, user) {
       return done(err, user);
     });
 }
@@ -78,7 +77,7 @@ passport.serializeUser((user, done)=>{k
 })
 
 passport.deserializeUser((id, done)=>{
-    UserFacebook.findById(id, (err, user)=>{
+    UserTwitter.findById(id, (err, user)=>{
         done(err, user)
     })
 })

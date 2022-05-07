@@ -5,6 +5,9 @@
     const cookieParser = require('cookie-parser');
     const cookieSession = require('cookie-session');
     const app = express();
+    const fs = require('fs');
+    const https = require('https');
+    const cors = require('cors')
     const path = require('path');
     const mongoose = require('mongoose');
     const bodyParser = require('body-parser');
@@ -14,7 +17,8 @@
     require('./config/passport-setup');
 
 // Porta
-    const porta = process.env.PORT || 3000;
+    const portaHTTP = process.env.PORT || 3000;
+    const portaHTTPS = process.env.PORT || 3001;
 
 //  Session
     // app.use(session({
@@ -30,6 +34,7 @@
     app.use(passport.session());
     app.use(cookieParser());
     app.use(flash());
+    app.use(cors());
 
 // Middlewere
     app.use((req, res, next)=>{
@@ -107,4 +112,9 @@
     app.use('/admin', require('./routes/pages'))
 
 // Servidor rodando na porta 3000
-    app.listen(porta, ()=>{console.log(`Servidor Rodando na porta ${porta}`)});
+    app.listen(portaHTTP, ()=>{console.log(`Servidor Rodando na porta HTTP ${portaHTTP}`)});
+
+    https.createServer({
+        cert: fs.readFileSync('SSL/code.crt'),
+        key: fs.readFileSync('SSL/code.key')
+    }, app).listen(portaHTTPS, ()=>{console.log(`Rodando na porta HTTPS ${portaHTTPS}`)})
