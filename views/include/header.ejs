@@ -56,7 +56,7 @@
                 <li <% if (page_name === 'home') { %>class="active" <% } %>>
                     <a href="/" class="anotacoes"><i class='bx bx-edit'></i> Anotações <div class="underline"></div></a>
                 </li>
-                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i> <%= user ? user.name : userG.userName %> <div class="underline"></div></h4>
+                <li <% if (page_name === 'perfil') { %> class="activePerfil" <% } %>> <h4 class="perfil"><i class='bx bx-user-pin'></i><%= user.name %><div class="underline"></div></h4>
                 </li>
             </ul>
     </header>

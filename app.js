@@ -1,9 +1,9 @@
 // Imports
     const express = require('express');
-    // const session = require('express-session');
+    const session = require('express-session');
     const flash = require('connect-flash');
     const cookieParser = require('cookie-parser');
-    const cookieSession = require('cookie-session');
+    //const cookieSession = require('cookie-session');
     const app = express();
     const fs = require('fs');
     const https = require('https');
@@ -21,15 +21,15 @@
     const portaHTTPS = process.env.PORT || 3001;
 
 //  Session
-    // app.use(session({
-    //     secret: process.env.SECRET,
-    //     resave: true,
-    //     saveUninitialized: true
-    // }));
-    app.use(cookieSession({
-        maxAge: 24*60*60*1000,
-        keys:[process.env.SECRET]
-      }))
+    app.use(session({
+        secret: process.env.SECRET,
+        resave: true,
+        saveUninitialized: true,
+    }));
+    // app.use(cookieSession({
+    //     maxAge: 24*60*60*1000,
+    //     keys:[process.env.SECRET]
+    //   }))
     app.use(passport.initialize());
     app.use(passport.session());
     app.use(cookieParser());
@@ -112,9 +112,9 @@
     app.use('/admin', require('./routes/pages'))
 
 // Servidor rodando na porta 3000
-    app.listen(portaHTTP, ()=>{console.log(`Servidor Rodando na porta HTTP ${portaHTTP}`)});
+    app.listen(portaHTTP, ()=>{console.log(`Servidor Rodando na porta ${portaHTTP}`)});
 
     https.createServer({
         cert: fs.readFileSync('SSL/code.crt'),
         key: fs.readFileSync('SSL/code.key')
-    }, app).listen(portaHTTPS, ()=>{console.log(`Rodando na porta HTTPS ${portaHTTPS}`)})
+    }, app).listen(portaHTTPS, ()=>{console.log(`HTTPS rodando na porta ${portaHTTPS}`)})

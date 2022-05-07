@@ -7,9 +7,8 @@ const mongoose = require('mongoose')
 const googleSchema = new mongoose.Schema({
     googleId: String,
     email: Object,
-    userName: String,
-    oneName: String,
-    surName: String,
+    name: String,
+    usuario: String,
     photo: Object
 })
 
@@ -20,12 +19,13 @@ const UserGoogle = mongoose.model('googleUser', googleSchema);
 // Login com o Google
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+
 passport.use(new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     callbackURL: process.env.GOOGLE_CALLBACK_URL
 },function(accessToken, refreshToken, profile, done) {
-    UserGoogle.findOrCreate({ googleId: profile.id, email: profile.emails, userName: profile.displayName, oneName: profile.name.givenName, surName: profile.name.familyName, photo: profile.photos }, function (err, user) {
+    UserGoogle.findOrCreate({ googleId: profile.id, email: profile.emails, name: profile.displayName, usuario: profile.name.givenName, surName: profile.name.familyName, photo: profile.photos }, function (err, user) {
         return done(err, user);
     });
 }   
@@ -44,10 +44,9 @@ passport.deserializeUser((id, done)=>{
 // Model de usuário do Twitter
 const twitterSchema = new mongoose.Schema({
     twitterId: String,
-    email: Object,
-    userName: String,
-    oneName: String,
-    surName: String,
+    name: String,
+    usuario: String,
+    location: String,
     photo: Object
 })
 
@@ -62,11 +61,9 @@ const TwitterStrategy = require('passport-twitter').Strategy;
 passport.use(new TwitterStrategy({
     consumerKey: process.env.TWITTER_CONSUMER_KEY,
     consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-    callbackURL: process.env.TWITTER_CALLBACK_URL,
-    profileFields: ['id', 'displayName', 'name', 'gender', 'picture.type(large)', 'email']
+    callbackURL: process.env.TWITTER_CALLBACK_URL
 },function(accessToken, refreshToken, profile, done) {
-    console.log(profile)
-    UserTwitter.findOrCreate({ twitterId: profile.id }, function (err, user) {
+    UserTwitter.findOrCreate({ twitterId: profile.id, name: profile.displayName, usuario: profile.username, location: profile.location, photo: profile.photos }, function (err, user) {
       return done(err, user);
     });
 }

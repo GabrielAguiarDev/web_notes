@@ -46,14 +46,14 @@ const router = express.Router();
                     editNote: noteEdit,
                     page_name: 'home',
                     pageOutros: undefined,
-                    userG: req.user
+                    user: req.user
                 })
             })
         })
     });
 
-    // LOGIN - FACEBOOK
-    router.get('/auth/twitter', passport.authenticate('twitter', { scope: 'email' }));
+    // LOGIN - TWITTER
+    router.get('/auth/twitter', passport.authenticate('twitter'));
 
     router.get('/auth/twitter/callback', passport.authenticate('twitter', { failureRedirect: '/login' }),
     function(req, res) {
@@ -65,7 +65,7 @@ const router = express.Router();
                     editNote: noteEdit,
                     page_name: 'home',
                     pageOutros: undefined,
-                    userG: req.user
+                    user: req.user
                 })
             })
         })
