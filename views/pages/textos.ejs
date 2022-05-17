@@ -2,8 +2,27 @@
 <%- include('../include/navbar') %>
 
 <main>
-    <h1>Página Textos</h1>
-    <p>Servirá para guardar textos grandes, tais como, redação, publicações, citações, artigos, e etc...</p>
+    <h1>Meus Textos</h1>
+    <i class='bx bx-book-open'></i>
+    <hr class="hrColor">
+    <div class="adicionar">
+        <button class="btn-add-Note">Adicionar texto</button>
+    </div>
+    <div class="adicionarNote" id="adicionarNote">
+        <form action="/texts" method="post">
+            <h1>Adicionar Novo Texto</h1>
+            <br>
+            <label for="titulo" id="labelTitulo">Título: </label>
+            <input type="text" name="titulo" id="Titulo" placeholder="Titulo" class="tituloNote">
+            <br>
+            <label for="conteudo" id="labelConteudo">Conteudo: </label>
+            <textarea name="conteudo" id="Code" class="conteudoCode" placeholder="Opcional" cols="30" rows="10"></textarea>
+            <br>
+            <label for="titulo" id="labelTitulo">Complemento: </label>
+            <input type="text" name="Complemento" id="Complemento" placeholder="Complemento... ex: Biografia, resumo pequeno, e etc." class="tituloNote">
+            <br>
+            <input type="submit" class="salvarEdit" value="Adicionar">
+            <div class="cancelarAddNote">Cancelar</div>
 </main>
 
 <%- include('../include/footer') %>

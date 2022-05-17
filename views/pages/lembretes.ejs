@@ -2,8 +2,27 @@
 <%- include('../include/navbar') %>
 
 <main>
-    <h1>Página Lembretes</h1>
-    <p>Servirá para adicionar lembretes onde a aplicação enviará uma notificação avisando por meio de uma API</p>
+    <h1>Meus Lembretes</h1>
+    <i class='bx bxs-bell'></i>
+    <hr class="hrColor">
+    <div class="adicionar">
+        <button class="btn-add-Note">Adicionar lembretes</button>
+    </div>
+    <div class="adicionarNote" id="adicionarNote">
+        <form action="/reminders" method="post">
+            <h1>Adicionar Novo Código</h1>
+            <br>
+            <label for="titulo" id="labelTitulo">Título: </label>
+            <input type="text" name="titulo" id="Titulo" placeholder="Titulo" class="tituloNote">
+            <br>
+            <label for="code" id="labelConteudo">Conteudo: </label>
+            <input type="text" name="code" id="Code" class="conteudoCode" placeholder="Opcional"></input>
+            <br>
+            <label for="dataReminder">Data para lembrar-me </label>
+            <input type="date" name="dataReminder" id="dataReminder">
+            <br>
+            <input type="submit" class="salvarEdit" value="Adicionar">
+            <div class="cancelarAddNote">Cancelar</div>
 </main>
 
 <%- include('../include/footer') %>
