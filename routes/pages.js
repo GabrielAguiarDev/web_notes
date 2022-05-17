@@ -277,7 +277,22 @@ const router = express.Router();
     // Rota Metas
     router.post('/goal', authController.metas)
 
-    // Rota Index
+    // Rota Codigos
+    router.post('/codes', authController.codes)
+
+    // Rota Lembretes
+    router.post('/reminders', authController.reminders)
+
+    // Rota Links
+    router.post('/links', authController.links)
+
+    // Rota Listas
+    router.post('/lists', authController.lists)
+
+    // Rota Textos
+    router.post('/texts', authController.texts)
+
+    // Rota Login
     router.post('/login', authController.login)
 
     // Limpar Lixeira (Notes)

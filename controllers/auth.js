@@ -153,6 +153,146 @@ exports.metas = async(req, res)=>{ // Pendente...
     }
 }
 
+exports.codes = async(req, res)=> {
+    const novoCode = {
+        titulo: req.body.titulo,
+        code: req.body.code,
+        language: req.body.language,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/codigos')
+    }
+    if(!req.body.code || typeof req.body.code == undefined || req.body.code == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/codigos')
+    }
+    if(!req.body.language || typeof req.body.language == undefined || req.body.language == null){
+        console.log("Linguagem inválido!")
+        res.redirect('/codigos')
+    } else {
+        await new Code(novoCode).save().then((req, res)=>{
+            console.log("Código salva com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar o código: " + err)
+        })
+        res.redirect('/codigos')
+    }
+}
+
+exports.reminders = async(req, res)=> {
+    const novoReminder = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        dataReminder: req.body.dataReminder,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/lembretes')
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/lembretes')
+    }
+    if(!req.body.dataReminder || typeof req.body.dataReminder == undefined || req.body.dataReminder == null){
+        console.log("Data de lembrete inválida!")
+        res.redirect('/lembretes')
+    } else {
+        await new Reminder(novoReminder).save().then((req, res)=>{
+            console.log("Lembrete salvo com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar o lembrete: " + err)
+        })
+        res.redirect('/lembretes')
+    }
+}
+
+exports.links = async(req, res)=> {
+    const novoLink = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/links')
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/links')
+    } else {
+        await new Link(novoLink).save().then((req, res)=>{
+            console.log("Link salvo com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar o link: " + err)
+        })
+        res.redirect('/links')
+    }
+}
+
+exports.lists = async(req, res)=> {
+    const novaList = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/listas')
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/listas')
+    } else {
+        await new List(novaList).save().then((req, res)=>{
+            console.log("Lista salvo com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar a lista: " + err)
+        })
+        res.redirect('/listas')
+    }
+}
+
+exports.texts = async(req, res)=> {
+    const novoText = {
+        titulo: req.body.titulo,
+        conteudo: req.body.conteudo,
+        complemento: req.body.complemento,
+        userId: req.user.id
+    }
+
+    if(!req.body.titulo || typeof req.body.titulo == undefined || req.body.titulo == null){
+        console.log("Titulo inválido!")
+        res.redirect('/textos')
+    }
+    if(!req.body.conteudo || typeof req.body.conteudo == undefined || req.body.conteudo == null){
+        console.log("Conteudo inválido!")
+        res.redirect('/textos')
+    }
+    if(!req.body.complemento || typeof req.body.complemento == undefined || req.body.complemento == null){
+        console.log("Complemento inválido!")
+        res.redirect('/textos')
+    } else {
+        await new Text(novoText).save().then((req, res)=>{
+            console.log("Texto salvo com sucesso!")
+
+        }).catch((err)=>{
+            console.log("Houve um erro ao salvar o texto: " + err)
+        })
+        res.redirect('/textos')
+    }
+}
+
 exports.editMeta = (req, res)=> {
     Meta.findOne({_id: req.body.id}).then((meta)=>{
         meta.titulo = req.body.titulo
