@@ -6,6 +6,11 @@ const User = mongoose.model("user");
 const Note = mongoose.model("notes");
 const Meta = mongoose.model("metas");
 const Trash = mongoose.model("trashes");
+const Code = mongoose.model("codes")
+const Link = mongoose.model("links")
+const List = mongoose.model("lists")
+const Reminder = mongoose.model("reminders")
+const Text = mongoose.model("texts")
 const {eAdmin, checkAuthenticate, checkLoginIn} = require('../helpers/authadmin');
 
 const router = express.Router();
@@ -122,46 +127,61 @@ const router = express.Router();
     // OUTROS TIPOS
         // listas
         router.get('/listas', checkAuthenticate, (req, res)=>{
-            res.render('pages/listas', {
-                user: req.user,
-                page_name: 'listas',
-                pageOutros: 'listas'
+            List.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((List)=>{
+                res.render('pages/listas', {
+                    listLists: List,
+                    user: req.user,
+                    page_name: 'listas',
+                    pageOutros: 'listas'
+                })
             })
         }) 
 
         // lembretes
         router.get('/lembretes', checkAuthenticate, (req, res)=>{
-            res.render('pages/lembretes', {
-                user: req.user,
-                page_name: 'lembretes',
-                pageOutros: 'lembretes'
+            Reminder.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Reminder)=>{
+                res.render('pages/lembretes', {
+                    listReminders: Reminder,
+                    user: req.user,
+                    page_name: 'lembretes',
+                    pageOutros: 'lembretes'
+                })
             })
         }) 
 
         // textos
         router.get('/textos', checkAuthenticate, (req, res)=>{
-            res.render('pages/textos', {
-                user: req.user,
-                page_name: 'textos',
-                pageOutros: 'textos'
+            Text.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Text)=>{
+                res.render('pages/textos', {
+                    listTexts: Text,
+                    user: req.user,
+                    page_name: 'textos',
+                    pageOutros: 'textos'
+                })
             })
         }) 
 
         // links
         router.get('/links', checkAuthenticate, (req, res)=>{
-            res.render('pages/links', {
-                user: req.user,
-                page_name: 'links',
-                pageOutros: 'links'
+            Link.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Link)=>{
+                res.render('pages/links', {
+                    listLinks: Link, 
+                    user: req.user,
+                    page_name: 'links',
+                    pageOutros: 'links'
+                })
             })
         }) 
 
         // códigos
         router.get('/codigos', checkAuthenticate, (req, res)=>{
-            res.render('pages/codigos', {
-                user: req.user,
-                page_name: 'codigos',
-                pageOutros: 'codigos'
+            Code.find({userId: { $eq: req.user.id }}).sort({_id: -1}).then((Code)=>{
+                res.render('pages/codigos', {
+                    listCode: Code,
+                    user: req.user,
+                    page_name: 'codigos',
+                    pageOutros: 'codigos'
+                })
             })
         }) 
     

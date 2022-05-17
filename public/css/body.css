@@ -112,6 +112,66 @@ main .bx-line-chart {
     animation: icone 5s infinite;
 }
 
+main .bx-code-alt {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
+main .bxs-bell {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
+main .bx-book-open {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
+main .bx-link {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
+main .bx-list-ul {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    text-decoration: none;
+    color: var(--cor-2);
+    transition: all .5s ease;
+    animation: icone 5s infinite;
+}
+
 main .hrColor {
     border: 1px solid var(--cor-2);
     margin-bottom: 20px;
